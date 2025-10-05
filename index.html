@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>AEROTECH</title>
+    <meta name="description" content="AEROTECH — инновационные беспилотные платформы для критически важных задач. Инженерные решения, производство, R&D, проекты, контакты.">
+    <meta name="keywords" content="AEROTECH, беспилотник, дрон, БПЛА, инженерия, R&D, композиты, аэродинамика, проекты, технологии, безопасность, спасение, логистика">
+        <meta name="theme-color" content="#0A0A0A">
+    <meta property="og:title" content="AEROTECH — Инновационные беспилотные платформы">
+    <meta property="og:description" content="Передовые инженерные решения для задач, где нет права на ошибку. Производство, проекты, контакты.">
+        <meta property="og:image" content="https://arlist.tech/images/k1-drone-MAINVIEW.jpg">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://arlist.tech/">
+        <meta property="og:locale" content="ru_RU">
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" content="AEROTECH — Инновационные беспилотные платформы">
+        <meta name="twitter:description" content="Передовые инженерные решения для задач, где нет права на ошибку.">
+        <meta name="twitter:image" content="https://arlist.tech/images/k1-drone-MAINVIEW.jpg">
+        <link rel="canonical" href="https://arlist.tech/">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+        <link rel="preload" href="images/k1-drone-MAINVIEW.jpg" as="image" fetchpriority="high">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "AEROTECH",
+            "url": "https://arlist.tech/",
+            "logo": "https://arlist.tech/favicon.ico",
+            "sameAs": []
+        }
+        </script>
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Product",
+            "name": "AEROTECH K1",
+            "image": [
+                "https://arlist.tech/images/k1-drone-MAINVIEW.jpg",
+                "https://arlist.tech/images/AEROTECH-K1-UPPERVIEW.png",
+                "https://arlist.tech/images/K1-RAZOBRANNY.png"
+            ],
+            "description": "Модульная беспилотная платформа K1 с точностью позиционирования до 1 см, автономностью до 2 часов и устойчивостью к РЭБ.",
+            "brand": {
+                "@type": "Brand",
+                "name": "AEROTECH"
+            },
+            "offers": {
+                "@type": "Offer",
+                "availability": "https://schema.org/PreOrder",
+                "priceCurrency": "RUB",
+                "url": "https://arlist.tech/k1.html"
+            }
+        }
+        </script>
+</head>
+<body>
+    <a class="skip-link" href="#main-content">Пропустить к основному содержимому</a>
+    <!-- Навигация -->
+    <nav class="main-nav" role="navigation" aria-label="Главная навигация">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="logo-text">AEROTECH</span>
+                <span class="logo-caption">Является частью концерна ARLIST TECH</span>
+            </div>
+            <button class="nav-toggle" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="primary-navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="nav-menu" id="primary-navigation">
+                <a href="#about">О нас</a>
+                <a href="#applications">Области применения</a>
+                <a href="#technology">Технологии</a>
+                <a href="k1.html">Платформа K1</a>
+                <a href="synergia.html">Synergia 1.0</a>
+                <a href="sgp.html">Ground Pro</a>
+                <a href="#gallery">Галерея</a>
+                <a href="#projects">Проекты</a>
+                <a href="#faq">FAQ</a>
+                <a href="#contact">Контакты</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Главный экран -->
+    <main id="main-content">
+    <section id="hero" class="hero-section" aria-label="Заставка">
+        <div class="hero-background" aria-hidden="true">
+            <canvas id="hero-canvas" class="hero-canvas" aria-hidden="true"></canvas>
+        </div>
+        <div class="hero-content">
+            <div class="hero-logo">
+                <span class="logo-text">AEROTECH</span>
+                <span class="logo-caption">Является частью концерна ARLIST TECH</span>
+            </div>
+            <h1 class="hero-title">Беспилотные платформы для миссий без права на ошибку.</h1>
+            <p class="hero-subtitle">Мы разрабатываем и производим модульные БПЛА, которые выдерживают экстремальные условия и выполняют сложные сценарии автономно.</p>
+            <div class="hero-value">
+              
+            </div>
+            <div class="hero-cta">
+                <a href="k1.html" class="cta-button">
+                    <span class="btn-text">Познакомиться с K1</span>
+                    <div class="btn-glow"></div>
+                </a>
+                <a href="#contact" class="btn-outline hero-secondary">Связаться с командой</a>
+            </div>
+        </div>
+    </section>
+
+<section id="about" class="about-section">
+    <div class="container">
+        <h2 class="section-title">Инженерная философия AEROTECH.</h2>
+        <div class="about-grid">
+            <div class="about-content">
+                <p class="about-text">
+                    Мы проектируем и собираем высоконадежные беспилотные платформы для критически важных миссий — от обороны и спасения до промышленной логистики. 
+                </p>
+               
+                <ul class="about-pillars">
+                    <li><span>Собственная библиотека аэродинамических профилей и CFD-моделей.</span></li>
+                    <li><span>Композитные корпуса и узлы, напечатанные на 3D-принтерах нашего производства.</span></li>
+                    <li><span>Интеграция модульных полезных нагрузок и различным ПО .</span></li>
+                </ul>
+            </div>
+            <aside class="team-card" aria-label="Команда AEROTECH">
+                <figure class="team-figure">
+                    <img src="images/VOVA-PHOTO.jpg" alt="Владимир Летуновский — основатель AEROTECH" loading="lazy">
+                    <figcaption>
+                        <strong>Владимир Летуновский</strong>
+                        <span>Основатель и главный инженер</span>
+                        <span>8 класс • 14 лет</span>
+                    </figcaption>
+                </figure>
+
+                <p>Возраст — преимущество: отсутствие стереотипов, скорость решений и глубокое погружение в инженерные детали. Вместе мы изменим мир авиационных технологий.</p>
+            </aside>
+        </div>
+    </div>
+</section>
+
+    <!-- Области применения -->
+    <section id="applications" class="applications-section">
+        <div class="container">
+            <h2 class="section-title">Где технологии AEROTECH меняют правила игры.</h2>
+            <p class="section-intro">
+                Наши БПЛА-платформы разрабатываются для эффективного функционирования в самых требовательных условиях, 
+                обеспечивая надежность и производительность там, где это критически важно.
+            </p>
+            
+            <div class="applications-grid">
+                <div class="application-item">
+                    
+                    <h3 class="app-title">Оборона и Безопасность</h3>
+                    <p class="app-description">
+                        Разведывательные миссии, патрулирование границ, мониторинг объектов, борьба с терроризмом, наведение огня, устойчивость к РЭБ и возможность скрытного функционирования.
+                    </p>
+                </div>
+                
+                <div class="application-item">
+
+                    <h3 class="app-title">Спасательные операции и гуманитарные миссии</h3>
+                    <p class="app-description">
+                        Оперативная оценка ситуации в зонах стихийных бедствий, поиск пострадавших (в т.ч. с тепловизорами, высокоточными камерами),
+                        доставка критически важных грузов в труднодоступные районы.
+                    </p>
+                </div>
+                
+                <div class="application-item">
+                    
+                    <h3 class="app-title">Медицинская логистика</h3>
+                    <p class="app-description">
+                        Автономная и быстрая доставка медикаментов, вакцин и донорской крови в удаленные или экстренные зоны, 
+                        где каждая минута на счету.
+                    </p>
+                </div>
+                
+                <div class="application-item">
+                    
+                    <h3 class="app-title">Специализированная логистика</h3>
+                    <p class="app-description">
+                        Транспортировка высокоценных или срочных грузов в сложных условиях, где наземные или стандартные 
+                        воздушные маршруты неэффективны или недоступны.
+                    </p>
+                </div>
+                 <div class="application-item">
+
+                    <h3 class="app-title">Коммерческая логистика</h3>
+                    <p class="app-description">
+                        Доставка заказов клиентов частных компаний и маркетплейсов в условиях городской застройки и загруженного трафика.
+                    </p>
+                </div>
+                 <div class="application-item">
+                    
+                    <h3 class="app-title">Защита неба и воздушная безопасность</h3>
+                    <p class="app-description">
+                        Детекция и нейтрализация малых беспилотных систем, обеспечение безопасности воздушного пространства критически важных объектов.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Технологии -->
+    <section id="technology" class="technology-section">
+        <div class="container">
+            <h2 class="section-title">Наши принципы инжиниринга.</h2>
+            <p class="section-intro">
+                В основе каждой платформы AEROTECH лежат передовые инженерные решения, гарантирующие превосходство 
+                в производительности и надежности.
+            </p>
+            
+            <div class="tech-grid">
+                <div class="tech-item">
+                 
+                    <div class="tech-number">01</div>
+                    <h3 class="tech-title">Глубокая аэродинамическая экспертиза</h3>
+                    <p class="tech-description">
+                        Наш подход основан на комплексном анализе аэродинамических характеристик,
+                        включая CFD-моделирование и обширные полевые испытания, что позволяет создавать
+                        высокоэффективные и надежные решения для различных задач.
+                    </p>
+                </div>
+                
+                <div class="tech-item">
+                  
+                    <div class="tech-number">02</div>
+                    <h3 class="tech-title">Продвинутые материалы</h3>
+                    <p class="tech-description">
+                        Разработка и применение кастомных композитных полимеров, обеспечивающих исключительное соотношение 
+                        прочности к весу, вибростойкость и долговечность в экстремальных условиях.
+                    </p>
+                </div>
+                
+                <div class="tech-item">
+                    
+                    <div class="tech-number">03</div>
+                    <h3 class="tech-title">Модульная архитектура</h3>
+                    <p class="tech-description">
+                        Все наши платформы имеют модульную конструкцию, что значительно упрощает обслуживание, ремонт, 
+                        модернизацию и кастомизацию под специфические требования заказчика.
+                    </p>
+                </div>
+                
+                <div class="tech-item">
+              
+                    <div class="tech-number">04</div>
+                    <h3 class="tech-title">Адаптивная аэродинамика</h3>
+                    <p class="tech-description">
+                        Индивидуальный расчет и оптимизация аэродинамических характеристик каждой платформы для максимальной 
+                        эффективности, стабильности и грузоподъемности.
+                    </p>
+                </div>
+                
+                <div class="tech-item tech-highlight">
+                   
+                    <div class="tech-number">K1</div>
+                    <h3 class="tech-title">Платформа K1</h3>
+                    <p class="tech-description">
+                        Наша текущая флагманская разработка, платформа K1, объединяет все эти принципы. Она представляет собой 
+                        высоконадежную основу, готовую к интеграции специализированных модулей для выполнения широкого круга задач.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Платформа K1 -->
+    <section id="k1-showcase" class="k1-showcase-section">
+        <div class="container">
+            <div class="k1-content">
+                <div class="k1-image-container">
+                    <picture>
+                        <source srcset="images/k1-drone-MAINVIEW.jpg" type="image/jpeg">
+                        <img src="images/k1-drone-MAINVIEW.jpg" alt="Платформа AEROTECH K1 — основной вид, аэродинамические испытания" class="k1-image" loading="lazy">
+                    </picture>
+                    <div class="k1-image-overlay">
+                        <div class="k1-specs">
+                            <div class="spec-item">
+                                <span class="spec-label">Статус:</span>
+                                <span class="spec-value">Аэродинамические испытания</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-label">Готовность:</span>
+                                <span class="spec-value">20%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="k1-description">
+                    <h2 class="k1-title">Платформа K1</h2>
+                    <p class="k1-subtitle">Наша флагманская разработка</p>
+                    <p class="k1-text">
+                        K1 — это воплощение  исследований и инженерных решений нашей исследовательской группы. 
+                        Эта универсальная платформа создана для выполнения критически важных миссий 
+                        в самых сложных условиях.
+                    </p>
+                    <div class="k1-sticky">
+                        <div class="k1-sticky-body">
+                            <span class="k1-sticky-label">Запросить доступ к демонстрации K1</span>
+                            <div class="k1-sticky-actions">
+                                <a href="https://forms.yandex.ru/u/68e14d2084227c8bc2c7d282/?page=1" target="_blank" rel="noopener noreferrer" class="btn-gradient btn-small">Запросить демо</a>
+                                <a href="k1.html" class="btn-outline btn-small">Подробнее о K1</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="k1-features">
+                        <div class="feature-highlight">
+                            <div class="feature-icon"></div>
+                            <div class="feature-content">
+                                <h4>Точность позиционирования</h4>
+                                <p>GPS/ГЛОНАСС с точностью до 1 сантиметра</p>
+                            </div>
+                        </div>
+                        <div class="feature-highlight">
+                            <div class="feature-icon"></div>
+                            <div class="feature-content">
+                                <h4>Модульные полезные нагрузки</h4>
+                                <p>Быстрая смена разведывательных, cargo и emergency модулей на шасси одного дрона</p>
+                            </div>
+                        </div>
+                        <div class="feature-highlight">
+                            <div class="feature-icon"></div>
+                            <div class="feature-content">
+                                <h4>Автономность</h4>
+                                <p>До 2 часов непрерывного полета</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-highlight">
+                            <div class="feature-icon"></div>
+                            <div class="feature-content">
+                                <h4>Надежность</h4>
+                                <p>Устойчивость к ветру до 12 м/с</p>
+                                <p>Устойчивость к осадкам по стандарту IP68</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Галерея -->
+    <section id="gallery" class="gallery-section">
+        <div class="container">
+            <h2 class="section-title">Галерея.</h2>
+            <p class="section-intro">Подборка визуалов текущих разработок и производственных процессов.</p>
+
+            <div class="gallery-grid">
+                <figure class="gallery-item">
+                    <a href="images/AEROTECH-K1-UPPERVIEW.png" class="gallery-trigger" data-lightbox="gallery" aria-label="Открыть изображение: K1 — верхний вид">
+                        <picture>
+                            <source srcset="images/AEROTECH-K1-UPPERVIEW.png" type="image/png">
+                            <img src="images/AEROTECH-K1-UPPERVIEW.png" alt="AEROTECH K1 — верхний вид, инженерная разработка" class="gallery-img" loading="lazy">
+                        </picture>
+                    </a>
+                    <figcaption class="gallery-caption">K1 — верхний вид</figcaption>
+                </figure>
+
+                <figure class="gallery-item">
+                    <a href="images/k1-drone-MAINVIEW.jpg" class="gallery-trigger" data-lightbox="gallery" aria-label="Открыть изображение: K1 — основной вид">
+                        <picture>
+                            <source srcset="images/k1-drone-MAINVIEW.jpg" type="image/jpeg">
+                            <img src="images/k1-drone-MAINVIEW.jpg" alt="AEROTECH K1 — основной вид, испытания" class="gallery-img" loading="lazy">
+                        </picture>
+                    </a>
+                    <figcaption class="gallery-caption">K1 — основной вид</figcaption>
+                </figure>
+
+                <figure class="gallery-item">
+                    <a href="images/K1-RAZOBRANNY.png" class="gallery-trigger" data-lightbox="gallery" aria-label="Открыть изображение: K1 — модульная сборка">
+                        <picture>
+                            <source srcset="images/K1-RAZOBRANNY.png" type="image/png">
+                            <img src="images/K1-RAZOBRANNY.png" alt="AEROTECH K1 — разобранный вид, модульные компоненты" class="gallery-img" loading="lazy">
+                        </picture>
+                    </a>
+                    <figcaption class="gallery-caption">K1 — модульная сборка</figcaption>
+                </figure>
+
+                <figure class="gallery-item">
+                    <a href="images/esctruder OF 3D PRINTER.jpeg" class="gallery-trigger" data-lightbox="gallery" aria-label="Открыть изображение: Экструдер 3D-принтера">
+                        <picture>
+                            <source srcset="images/esctruder OF 3D PRINTER.jpeg" type="image/jpeg">
+                            <img src="images/esctruder OF 3D PRINTER.jpeg" alt="Экструдер 3D‑принтера — R&D, производство композитных деталей" class="gallery-img" loading="lazy">
+                        </picture>
+                    </a>
+                    <figcaption class="gallery-caption">R&D: Экструдер 3D‑принтера</figcaption>
+                </figure>
+            </div>
+        </div>
+    </section>
+
+    <!-- Проекты -->
+    <section id="projects" class="projects-section">
+        <div class="container">
+            <h2 class="section-title">Наши разработки в действии.</h2>
+            <p class="section-intro">
+                Мы постоянно работаем над новыми решениями и оптимизацией существующих платформ. 
+                Здесь мы делимся ключевыми вехами и достижениями.
+            </p>
+            
+            <div class="projects-timeline">
+                <div class="project-item active">
+                    <div class="project-status">В разработке</div>
+                    <h3 class="project-title">Проект K1</h3>
+                    <p class="project-description">Аэродинамические испытания.</p>
+                    <div class="project-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 20%"></div>
+                        </div>
+                        <span class="progress-text">20% завершено</span>
+                    </div>
+                </div>
+                <div class="project-item active">
+                    <div class="project-status">В разработке</div>
+                    <h3 class="project-title">Проект интеллектуальной системы управления полетом</h3>
+                    <p class="project-description">Разработка системы, способной на натуральном языке управлять полётом дронов и координировать действия нескольких платформ в сложных сценариях.</p>
+                    <div class="project-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 70%"></div>
+                        </div>
+                        <span class="progress-text">70% завершено</span>
+                    </div>
+                    <div class="project-link-wrapper">
+                        <a class="project-link" href="synergia.html">Подробнее о Synergia 1.0</a>
+                    </div>
+                </div>
+                <div class="project-item">
+                    <div class="project-status">Исследование</div>
+                    <h3 class="project-title">Системы динамической устойчивости</h3>
+                    <p class="project-description">Разработка систем динамической устойчивости в условиях тяжелой метеорологической обстановки.</p>
+                    <div class="project-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 10%"></div>
+                        </div>
+                        <span class="progress-text">10% завершено</span>
+                    </div>
+                </div>
+                
+                <div class="project-item">
+                    <div class="project-status">Тестирование</div>
+                    <h3 class="project-title">Композитные материалы нового поколения</h3>
+                    <p class="project-description">Тестирование нового поколения композитных полимеров для облегченных рам из кевлара и углеродного волокна.</p>
+                    <div class="project-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 30%"></div>
+                        </div>
+                        <span class="progress-text">30% завершено</span>
+                    </div>
+                </div>
+                
+                <div class="project-item upcoming">
+                    <div class="project-status">Планируется</div>
+                    <h3 class="project-title">Будущие проекты</h3>
+                    <p class="project-description">Следующее поколение платформ находится в стадии концептуального проектирования.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Join our team -->
+    <section id="careers" class="join-section">
+        <div class="container">
+            <div class="join-card">
+                <h2 class="section-title">Присоединяйтесь к нашей команде.</h2>
+                <p class="join-intro">Мы расширяем R&D-направления и ищем тех, кому интересна аэродинамика, автономные системы и высоконагруженная электроника. Если хотите строить беспилотные платформы нового поколения — напишите нам.</p>
+                <ul class="join-list">
+                    <li>Инженеры-конструкторы и системные инженеры</li>
+                    <li>Специалисты по управлению полётом и встроенным системам</li>
+                    <li>Разработчики компьютерного зрения и автономной навигации</li>
+                </ul>
+                <div class="join-actions">
+                    <a href="mailto:vladimir@letunovskiu.ru" class="btn-gradient btn-large">Отправить резюме</a>
+                    <a href="#contact" class="btn-outline btn-large">Узнать подробности</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Контакты -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2 class="section-title">Готовы к сотрудничеству?</h2>
+            <p class="section-intro">
+                Инициатива AEROTECH открыта для партнерства, запросов на разработку специализированных решений и любых вопросов о наших технологиях.
+            </p>
+            <div class="contact-criteria">
+                <h3>Оставьте заявку, если вы:</h3>
+                <ul>
+                    <li>Правительственный или корпоративный заказчик</li>
+                    <li>Представитель Министерства обороны или полиции</li>
+                    <li>Инвестор, заинтересованный в поддержке инновационных технологий</li>
+                    <li>Журналист или блогер, желающий осветить наши разработки</li>
+                    <li>Государственный орган, интересующийся регулированием использования БПЛА</li>
+                    <li>Частное лицо с серьезным интересом к нашим технологиям</li>
+                </ul>
+            </div>
+            <div class="contact-criteria">
+                <h3>Пожалуйста, не оставляйте заявку, если вы:</h3>
+                <ul>
+                    <li>Ищете коммерческие дроны для хобби или развлекательного использования</li>
+                    <li>Представляете лицо, работающее на зарубежные государства (в частности: Украина, США, страны НАТО и др.)</li>
+                    <li>Не являетесь гражданином РФ или резидентом РФ с гражданством страны СНГ</li>
+                    <li>Имеете мотивы, связанные с причинением вреда гражданам РФ или государственным интересам РФ</li>
+                </ul>
+            </div>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <h3 class="contact-type">Общие вопросы:</h3>
+                    <a href="mailto:vladimir@letunovskiu.ru" class="contact-email">vladimir@letunovskiu.ru</a>
+                </div>
+                
+                <div class="contact-item">
+                    <h3 class="contact-type">Партнерство:</h3>
+                    <a href="mailto:vladimir@letunovskiu.ru" class="contact-email">vladimir@letunovskiu.ru</a>
+                </div>
+            </div>
+
+            <div class="contact-cta-card">
+                <h3 class="contact-cta-title">Быстрый контакт</h3>
+                <p class="contact-cta-sub">Напишите нам или оставьте заявку — ответим в кратчайшие сроки.</p>
+                <div class="contact-cta-actions">
+                    <a href="mailto:vladimir@letunovskiu.ru" class="btn-gradient btn-large">Написать письмо</a>
+                    <a href="https://forms.yandex.ru/u/68e14d2084227c8bc2c7d282/?page=1" target="_blank" rel="noopener noreferrer" class="btn-outline btn-large">Оставить заявку</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    </main>
+
+    <!-- Футер -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span class="logo-text">AEROTECH</span>
+                    <span class="logo-caption">Является частью концерна ARLIST TECH</span>
+                </div>
+                <div class="footer-text">
+                    © 2025 AEROTECH. Все права защищены. 
+                    <a href="privacy.html" class="footer-link">Политика конфиденциальности</a>
+                </div>
+            </div>
+            <div class="arlist-signature">ARLIST TECH</div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
