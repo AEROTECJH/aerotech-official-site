@@ -144,13 +144,13 @@ html {
 }
 
 .nav-container {
-    max-width: min(96vw, 1440px);
+    max-width: min(98vw, 1500px);
     margin: 0 auto;
-    padding: 0 clamp(20px, 4vw, 48px);
+    padding: 0 clamp(12px, 3vw, 30px);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: clamp(18px, 3vw, 36px);
+    gap: clamp(12px, 2vw, 24px);
     height: 80px;
     flex-wrap: nowrap;
 }
@@ -158,10 +158,11 @@ html {
 .nav-logo {
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 3px;
     line-height: 1.05;
     font-family: var(--font-mono);
-    flex: 0 0 240px;
+    flex: 0 0 220px;
+    max-width: 220px;
 }
 
 .nav-logo .logo-text {
@@ -226,9 +227,16 @@ html {
     align-items: center;
     justify-content: center;
     flex: 1 1 auto;
-    gap: clamp(14px, 2.2vw, 28px);
+    gap: clamp(10px, 1.8vw, 22px);
     flex-wrap: nowrap;
     min-width: 0;
+    overflow-x: auto;
+    -ms-overflow-style: none; /* IE и Edge */
+    scrollbar-width: none; /* Firefox */
+}
+
+.nav-menu::-webkit-scrollbar {
+    display: none; /* Chrome, Safari и Opera */
 }
 
 .nav-menu a {
@@ -275,28 +283,35 @@ html {
     width: 100%;
 }
 
-@media (max-width: 1180px) {
+@media (max-width: 1280px) {
     .nav-container {
-        gap: clamp(16px, 3vw, 24px);
-        padding: 0 clamp(18px, 5vw, 36px);
+        gap: clamp(12px, 2vw, 20px);
+        padding: 0 clamp(12px, 3vw, 24px);
     }
 
     .nav-logo {
-        flex: 0 0 200px;
+        flex: 0 0 180px;
+        max-width: 180px;
     }
 
     .nav-menu {
-        gap: clamp(10px, 1.5vw, 18px);
+        gap: clamp(8px, 1.2vw, 14px);
     }
 
     .nav-menu a {
-        font-size: 0.85rem;
+        font-size: 0.82rem;
+        letter-spacing: 0.01em;
     }
 }
 
 @media (max-width: 960px) {
     .nav-toggle {
         display: flex;
+    }
+    
+    .nav-logo {
+        flex: 1 1 auto;
+        max-width: none;
     }
 
     .nav-menu {
@@ -316,6 +331,7 @@ html {
         z-index: 900;
         flex: 0 0 auto;
         overflow-y: auto;
+        overflow-x: visible;
         -webkit-overflow-scrolling: touch;
     }
 
