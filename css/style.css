@@ -161,7 +161,7 @@ html {
     gap: 4px;
     line-height: 1.05;
     font-family: var(--font-mono);
-    flex: 0 0 auto;
+    flex: 0 0 240px;
 }
 
 .nav-logo .logo-text {
@@ -173,7 +173,7 @@ html {
 
 .logo-caption {
     font-family: var(--font-mono);
-    font-size: 0.65rem;
+    font-size: 0.6rem;
     letter-spacing: 0.22em;
     text-transform: uppercase;
     color: var(--text-secondary);
@@ -281,12 +281,16 @@ html {
         padding: 0 clamp(18px, 5vw, 36px);
     }
 
+    .nav-logo {
+        flex: 0 0 200px;
+    }
+
     .nav-menu {
-        gap: clamp(12px, 2vw, 22px);
+        gap: clamp(10px, 1.5vw, 18px);
     }
 
     .nav-menu a {
-        font-size: 0.9rem;
+        font-size: 0.85rem;
     }
 }
 
