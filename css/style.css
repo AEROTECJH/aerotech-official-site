@@ -144,14 +144,15 @@ html {
 }
 
 .nav-container {
-    max-width: 1400px;
+    max-width: min(96vw, 1440px);
     margin: 0 auto;
-    padding: 0 30px;
+    padding: 0 clamp(20px, 4vw, 48px);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 24px;
+    gap: clamp(18px, 3vw, 36px);
     height: 80px;
+    flex-wrap: nowrap;
 }
 
 .nav-logo {
@@ -223,9 +224,11 @@ html {
 .nav-menu {
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: center;
     flex: 1 1 auto;
-    gap: clamp(16px, 3vw, 36px);
+    gap: clamp(14px, 2.2vw, 28px);
+    flex-wrap: nowrap;
+    min-width: 0;
 }
 
 .nav-menu a {
@@ -272,6 +275,21 @@ html {
     width: 100%;
 }
 
+@media (max-width: 1180px) {
+    .nav-container {
+        gap: clamp(16px, 3vw, 24px);
+        padding: 0 clamp(18px, 5vw, 36px);
+    }
+
+    .nav-menu {
+        gap: clamp(12px, 2vw, 22px);
+    }
+
+    .nav-menu a {
+        font-size: 0.9rem;
+    }
+}
+
 @media (max-width: 960px) {
     .nav-toggle {
         display: flex;
@@ -285,6 +303,7 @@ html {
         backdrop-filter: blur(18px);
         flex-direction: column;
         align-items: flex-start;
+        justify-content: flex-start;
         gap: var(--space-xl);
         transform: translateY(-100%);
         transition: transform 0.35s ease;
@@ -313,6 +332,663 @@ html {
     .nav-menu a {
         font-size: 1.2rem;
         font-weight: 600;
+    }
+}
+
+/* ------------------------------ */
+/* ARLIST TECH page               */
+/* ------------------------------ */
+
+.arlist-hero {
+    padding: clamp(120px, 22vh, 180px) 0 clamp(80px, 14vh, 140px);
+    text-align: left;
+}
+
+.arlist-hero .hero-background {
+    opacity: 0.45;
+}
+
+.arlist-hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
+    gap: clamp(36px, 6vw, 72px);
+    position: relative;
+    z-index: 2;
+}
+
+.arlist-hero-copy {
+    display: grid;
+    gap: clamp(18px, 4vw, 28px);
+}
+
+.arlist-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    border-radius: 999px;
+    border: 1px solid rgba(0, 192, 192, 0.35);
+    background: rgba(0, 192, 192, 0.08);
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent-color);
+}
+
+.arlist-hero .hero-title {
+    margin: 0;
+    text-align: left;
+}
+
+.arlist-hero .hero-subtitle {
+    margin: 0;
+    max-width: 640px;
+    text-align: left;
+    color: rgba(224, 224, 224, 0.82);
+}
+
+.arlist-hero-tags {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.58);
+}
+
+.arlist-hero-panels {
+    display: grid;
+    gap: 18px;
+}
+
+.arlist-panel {
+    padding: 28px;
+    border-radius: 20px;
+    border: 1px solid rgba(0, 192, 192, 0.18);
+    background: radial-gradient(circle at 20% 20%, rgba(0, 192, 192, 0.16), rgba(10, 10, 10, 0.9));
+    backdrop-filter: blur(12px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+}
+
+.arlist-panel h2 {
+    font-size: 1.2rem;
+    margin-bottom: 16px;
+}
+
+.arlist-panel ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 12px;
+    color: var(--text-secondary);
+}
+
+.arlist-panel ul li::before {
+    content: '▹';
+    margin-right: 10px;
+    color: var(--accent-color);
+    font-family: var(--font-mono);
+    letter-spacing: 0.16em;
+}
+
+.arlist-overview {
+    padding: clamp(72px, 12vw, 120px) 0;
+}
+
+.arlist-overview-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(240px, 0.8fr);
+    gap: clamp(32px, 5vw, 64px);
+    align-items: start;
+}
+
+.arlist-overview-main {
+    display: grid;
+    gap: 20px;
+}
+
+.arlist-points {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 14px;
+    color: var(--text-secondary);
+}
+
+.arlist-points li {
+    position: relative;
+    padding-left: 28px;
+}
+
+.arlist-points li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 9px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 2px solid var(--accent-color);
+}
+
+.arlist-overview-aside {
+    padding: 26px 28px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(14, 14, 14, 0.8);
+    display: grid;
+    gap: 16px;
+}
+
+.arlist-overview-aside h3 {
+    margin: 0;
+    font-size: 1.1rem;
+}
+
+.arlist-highlight-grid {
+    margin-top: clamp(36px, 6vw, 64px);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 18px;
+}
+
+.arlist-highlight-card {
+    padding: 22px 24px;
+    border-radius: 18px;
+    border: 1px solid rgba(0, 192, 192, 0.18);
+    background: linear-gradient(135deg, rgba(0, 192, 192, 0.08), rgba(0, 192, 192, 0.02));
+    display: grid;
+    gap: 10px;
+}
+
+.arlist-highlight-card span {
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.arlist-focus {
+    padding: clamp(72px, 12vw, 110px) 0;
+}
+
+.arlist-focus-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+}
+
+.arlist-focus-card {
+    padding: 28px;
+    border-radius: 20px;
+    border: 1px solid rgba(0, 192, 192, 0.18);
+    background: rgba(10, 10, 10, 0.78);
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.3);
+    display: grid;
+    gap: 14px;
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.arlist-focus-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 24px 60px rgba(0, 192, 192, 0.18);
+}
+
+.arlist-focus-code {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    letter-spacing: 0.2em;
+    color: var(--accent-color);
+    text-transform: uppercase;
+}
+
+.arlist-synergy {
+    padding: clamp(70px, 10vw, 110px) 0;
+}
+
+.arlist-synergy-card {
+    border-radius: 24px;
+    border: 1px solid rgba(0, 192, 192, 0.25);
+    background: linear-gradient(135deg, rgba(0, 192, 192, 0.08), rgba(0, 0, 0, 0.9));
+    padding: clamp(32px, 5vw, 48px);
+    display: grid;
+    gap: clamp(28px, 4vw, 36px);
+}
+
+.arlist-synergy-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 18px;
+}
+
+.arlist-synergy-step {
+    position: relative;
+    padding: 24px;
+    border-radius: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(10, 10, 10, 0.78);
+    display: grid;
+    gap: 12px;
+}
+
+.arlist-synergy-step .step-label {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid rgba(0, 192, 192, 0.4);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    color: var(--accent-color);
+}
+
+.arlist-contact {
+    padding: clamp(80px, 12vw, 120px) 0 clamp(100px, 14vw, 140px);
+}
+
+.arlist-contact-card {
+    border-radius: 24px;
+    border: 1px solid rgba(0, 192, 192, 0.25);
+    background: radial-gradient(circle at 20% 20%, rgba(0, 192, 192, 0.18), rgba(10, 10, 10, 0.92));
+    padding: clamp(32px, 5vw, 48px);
+    display: flex;
+    flex-wrap: wrap;
+    gap: clamp(20px, 4vw, 32px);
+    align-items: center;
+    justify-content: space-between;
+}
+
+.arlist-contact-copy {
+    max-width: 540px;
+    display: grid;
+    gap: 12px;
+}
+
+.arlist-contact-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    align-items: center;
+}
+
+.arlist-contact .secondary-link {
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.75);
+}
+
+@media (max-width: 1024px) {
+    .arlist-hero-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .arlist-hero-panels {
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    }
+
+    .arlist-overview-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 640px) {
+    .arlist-hero {
+        padding-top: 120px;
+    }
+
+    .arlist-hero .hero-title {
+        font-size: clamp(2.2rem, 8vw, 3rem);
+    }
+
+    .arlist-panel {
+        padding: 22px;
+    }
+
+    .arlist-contact-card {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .arlist-contact-actions {
+        width: 100%;
+    }
+
+    .arlist-contact-actions .btn-gradient,
+    .arlist-contact-actions .secondary-link {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/* ------------------------------ */
+/* Maintenance placeholder page   */
+/* ------------------------------ */
+
+.maintenance-mode {
+    min-height: 100vh;
+    margin: 0;
+    background: radial-gradient(circle at 20% 20%, rgba(0, 192, 192, 0.08), transparent 50%)
+                , radial-gradient(circle at 80% 30%, rgba(0, 192, 192, 0.06), transparent 50%)
+                , var(--bg-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-sans);
+    color: var(--text-color);
+}
+
+.maintenance-wrapper {
+    padding: 40px 20px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.maintenance-card {
+    max-width: 720px;
+    width: 100%;
+    padding: clamp(32px, 6vw, 48px);
+    border-radius: 24px;
+    border: 1px solid rgba(0, 192, 192, 0.25);
+    background: linear-gradient(135deg, rgba(10, 10, 10, 0.95), rgba(20, 20, 20, 0.85));
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
+    display: grid;
+    gap: clamp(20px, 4vw, 32px);
+    text-align: center;
+}
+
+.maintenance-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.maintenance-logo .logo-text {
+    font-family: var(--font-mono);
+    font-size: clamp(1.8rem, 5vw, 2.4rem);
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: var(--accent-color);
+}
+
+.maintenance-logo .logo-caption {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+}
+
+.maintenance-card h1 {
+    font-size: clamp(2rem, 5vw, 2.8rem);
+    font-weight: 600;
+    margin: 0;
+    color: var(--text-color);
+}
+
+.maintenance-lead {
+    font-size: clamp(1.05rem, 2.5vw, 1.3rem);
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin: 0;
+}
+
+.maintenance-progress {
+    text-align: left;
+    display: grid;
+    gap: 12px;
+    padding: 22px 24px;
+    border-radius: 18px;
+    border: 1px solid rgba(0, 192, 192, 0.25);
+    background: rgba(0, 192, 192, 0.05);
+}
+
+.maintenance-progress .progress-title {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.progress-bar-track {
+    width: 100%;
+    height: 10px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.07);
+    overflow: hidden;
+}
+
+.progress-bar-fill {
+    display: block;
+    height: 100%;
+    border-radius: inherit;
+    background: linear-gradient(90deg, rgba(0, 192, 192, 0.2), var(--accent-color));
+    box-shadow: 0 0 20px rgba(0, 192, 192, 0.45);
+}
+
+.progress-meta {
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.maintenance-status-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 18px;
+}
+
+.maintenance-status-card {
+    position: relative;
+    padding: 24px 22px 24px 60px;
+    border-radius: 18px;
+    border: 1px solid rgba(0, 192, 192, 0.18);
+    background: rgba(10, 10, 10, 0.65);
+    text-align: left;
+    overflow: hidden;
+}
+
+.maintenance-status-card::before {
+    content: '';
+    position: absolute;
+    top: 24px;
+    left: 24px;
+    width: 20px;
+    height: 20px;
+    border-radius: 6px;
+    background: linear-gradient(135deg, rgba(0, 192, 192, 0.15), rgba(0, 192, 192, 0.6));
+    border: 1px solid rgba(0, 192, 192, 0.55);
+    box-shadow: 0 0 14px rgba(0, 192, 192, 0.35);
+}
+
+.maintenance-status-card h2 {
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+    color: var(--text-color);
+}
+
+.maintenance-status-card p {
+    margin: 0;
+    font-size: 0.97rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+.maintenance-checklist {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 12px;
+}
+
+.maintenance-checklist li {
+    position: relative;
+    padding-left: 28px;
+    text-align: left;
+    color: var(--text-secondary);
+    font-size: 0.98rem;
+    line-height: 1.5;
+}
+
+.maintenance-checklist li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 9px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 2px solid var(--accent-color);
+    box-shadow: 0 0 10px rgba(0, 192, 192, 0.35);
+}
+
+.maintenance-note {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin: 0;
+}
+
+.maintenance-timeline {
+    text-align: left;
+    display: grid;
+    gap: 16px;
+}
+
+.maintenance-timeline h2 {
+    font-size: 1.2rem;
+    margin: 0;
+    color: var(--text-color);
+}
+
+.maintenance-timeline ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 12px;
+}
+
+.maintenance-timeline li {
+    position: relative;
+    padding-left: 68px;
+    min-height: 46px;
+    display: flex;
+    align-items: center;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+.maintenance-timeline li span {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    letter-spacing: 0.16em;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.maintenance-timeline li::before {
+    content: '';
+    position: absolute;
+    left: 38px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.4);
+}
+
+.maintenance-timeline li.done::before {
+    background: var(--accent-color);
+    border-color: rgba(0, 192, 192, 0.6);
+}
+
+.maintenance-timeline li.done {
+    color: rgba(255, 255, 255, 0.65);
+}
+
+.maintenance-timeline li.active {
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+.maintenance-cta {
+    display: grid;
+    gap: 12px;
+    text-align: center;
+}
+
+.maintenance-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 16px 28px;
+    border-radius: 12px;
+    border: 1px solid rgba(0, 192, 192, 0.5);
+    background: linear-gradient(135deg, rgba(0, 192, 192, 0.18), rgba(0, 192, 192, 0.4));
+    color: var(--bg-color);
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    text-decoration: none;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.maintenance-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 32px rgba(0, 192, 192, 0.3);
+}
+
+.cta-hint {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.55);
+}
+
+.maintenance-note a {
+    color: var(--accent-color);
+    text-decoration: none;
+}
+
+.maintenance-note a:hover {
+    text-decoration: underline;
+}
+
+.maintenance-footer {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.45);
+}
+
+@media (max-width: 540px) {
+    .maintenance-card {
+        border-radius: 18px;
+        padding: 28px 22px;
+    }
+
+    .maintenance-checklist li {
+        font-size: 0.95rem;
     }
 }
 

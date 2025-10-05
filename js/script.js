@@ -126,8 +126,8 @@ class Navigation {
     constructor() {
         this.nav = $('.main-nav');
         this.toggle = $('.nav-toggle');
-        this.menu = $('#primary-navigation');
-        this.links = this.menu ? this.menu.querySelectorAll('a[href^="#"]') : [];
+    this.menu = $('#primary-navigation');
+    this.menuLinks = this.menu ? this.menu.querySelectorAll('a') : [];
         this.navHeight = this.nav ? this.nav.offsetHeight : 80;
         this.init();
     }
@@ -177,7 +177,7 @@ class Navigation {
                 this.toggleMenu(willOpen);
             });
 
-            this.links.forEach(link => {
+            this.menuLinks.forEach(link => {
                 link.addEventListener('click', () => {
                     this.toggleMenu(false);
                 });
@@ -344,7 +344,7 @@ class ScrollAnimations {
     }
 
     init() {
-    const animatedElements = $$('.feature-highlight, .contact-item, .team-card, .gallery-item, .tech-item, .faq-item, .project-item, .synergia-card, .synergia-card-compact');
+    const animatedElements = $$('.feature-highlight, .contact-item, .team-card, .gallery-item, .tech-item, .faq-item, .project-item, .synergia-card, .synergia-card-compact, .arlist-panel, .arlist-focus-card, .arlist-highlight-card, .arlist-synergy-step, .arlist-contact-card');
         
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
