@@ -292,6 +292,8 @@ html {
         opacity: 0;
         z-index: 900;
         flex: 0 0 auto;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
     }
 
     body.nav-open .nav-menu {
@@ -498,6 +500,73 @@ html {
 
     .hero-value li {
         font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .nav-container {
+        padding: 0 20px;
+    }
+
+    .hero-section {
+        padding-top: 100px;
+        padding-bottom: 80px;
+    }
+
+    .hero-content {
+        padding: 0 16px;
+    }
+
+    .hero-title {
+        font-size: clamp(2.1rem, 8vw, 2.8rem);
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+        margin-bottom: 32px;
+    }
+
+    .hero-cta {
+        flex-direction: column;
+        align-items: stretch;
+        gap: var(--space-sm);
+    }
+
+    .hero-cta a {
+        width: 100%;
+        justify-content: center;
+        text-align: center;
+    }
+
+    section {
+        padding: 60px 0;
+    }
+
+    .applications-grid,
+    .tech-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    .application-item,
+    .tech-item {
+        padding: 28px 22px;
+    }
+
+    .about-grid {
+        gap: var(--space-xl);
+    }
+
+    .team-card {
+        padding: 28px 22px;
+    }
+
+    .projects-timeline {
+        padding: 0 12px;
+    }
+
+    .project-item {
+        padding: 28px 22px;
     }
 }
 
