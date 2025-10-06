@@ -128,10 +128,9 @@ class PageLoader {
         this.isHidden = false;
         this.startTime = performance.now();
 
-        if (!this.loader) {
-            document.body.classList.remove('is-loading');
-            return;
-        }
+        this.ensureLoader();
+
+        document.body.classList.add('is-loading');
 
         this.loader.setAttribute('aria-hidden', 'false');
         this.fallbackTimeout = setTimeout(() => this.hide(), this.minDisplay + 7000);
@@ -140,6 +139,53 @@ class PageLoader {
         if (document.readyState === 'complete') {
             this.handleLoaded();
         }
+    }
+
+    ensureLoader() {
+        if (this.loader) {
+            return;
+        }
+
+        const loader = document.createElement('div');
+        loader.className = 'page-loader';
+        loader.id = 'page-loader';
+        loader.setAttribute('role', 'status');
+        loader.setAttribute('aria-live', 'polite');
+
+        const inner = document.createElement('div');
+        inner.className = 'page-loader__inner';
+
+        const logo = document.createElement('div');
+        logo.className = 'loader-logo';
+        logo.setAttribute('aria-label', 'AEROTECH');
+
+        const logoText = document.createElement('span');
+        logoText.className = 'loader-logo__text';
+        logoText.textContent = 'AEROTECH';
+
+        const logoCaption = document.createElement('span');
+        logoCaption.className = 'loader-logo__caption';
+        logoCaption.textContent = 'Является частью концерна ARLIST TECH';
+
+        const ring = document.createElement('div');
+        ring.className = 'loader-ring';
+        ring.setAttribute('aria-hidden', 'true');
+
+        const status = document.createElement('p');
+        status.className = 'loader-status';
+        status.setAttribute('role', 'presentation');
+        status.textContent = 'Загрузка…';
+
+        logo.appendChild(logoText);
+        logo.appendChild(logoCaption);
+
+        inner.appendChild(logo);
+        inner.appendChild(ring);
+        inner.appendChild(status);
+        loader.appendChild(inner);
+
+        document.body.prepend(loader);
+        this.loader = loader;
     }
 
     handleLoaded() {
@@ -158,22 +204,20 @@ class PageLoader {
 
         document.body.classList.remove('is-loading');
 
-        if (!this.loader) {
-            return;
+        if (this.loader) {
+            this.loader.setAttribute('aria-hidden', 'true');
+            this.loader.classList.add('page-loader--hidden');
+
+            const cleanup = () => {
+                if (this.loader) {
+                    this.loader.remove();
+                    this.loader = null;
+                }
+            };
+
+            this.loader.addEventListener('transitionend', cleanup, { once: true });
+            setTimeout(cleanup, 800);
         }
-
-        this.loader.setAttribute('aria-hidden', 'true');
-        this.loader.classList.add('page-loader--hidden');
-
-        const cleanup = () => {
-            if (this.loader) {
-                this.loader.remove();
-                this.loader = null;
-            }
-        };
-
-        this.loader.addEventListener('transitionend', cleanup, { once: true });
-        setTimeout(cleanup, 800);
     }
 }
 

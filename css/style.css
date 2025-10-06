@@ -329,6 +329,7 @@ html {
     opacity: 0.85;
 }
 
+
 .nav-toggle {
     display: none;
     flex-direction: column;
@@ -343,7 +344,15 @@ html {
     transition: transform var(--transition-base), border-color var(--transition-base);
 }
 
-.nav-toggle span {
+.nav-toggle__bars {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 6px;
+    width: 100%;
+}
+
+.nav-toggle__bars span {
     display: block;
     width: 22px;
     height: 2px;
@@ -353,22 +362,15 @@ html {
     transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
+.nav-toggle__close {
+    display: none;
+}
+
 .nav-toggle:focus-visible {
     outline: 2px solid var(--accent-color);
     outline-offset: 4px;
 }
 
-.nav-toggle.is-active span:nth-child(1) {
-    transform: translateY(8px) rotate(45deg);
-}
-
-.nav-toggle.is-active span:nth-child(2) {
-    opacity: 0;
-}
-
-.nav-toggle.is-active span:nth-child(3) {
-    transform: translateY(-8px) rotate(-45deg);
-}
 
 .nav-menu {
     display: flex;
@@ -466,13 +468,13 @@ html {
         position: fixed;
         inset: 0;
         width: 100%;
-        padding: calc(var(--nav-height) + var(--space-xl) + env(safe-area-inset-top, 0px)) clamp(18px, 8vw, 48px) calc(var(--space-xl) + env(safe-area-inset-bottom, 0px));
+        padding: calc(var(--nav-height) + var(--space-xl) + env(safe-area-inset-top, 0px)) clamp(20px, 8vw, 56px) calc(var(--space-xl) + env(safe-area-inset-bottom, 0px));
         background: rgba(10, 10, 10, 0.96);
         backdrop-filter: blur(18px);
         flex-direction: column;
-        align-items: flex-start;
+        align-items: stretch;
         justify-content: flex-start;
-        gap: clamp(20px, 5vw, 36px);
+        gap: clamp(24px, 6vw, 44px);
         transform: translateY(-100%);
         transition: transform 0.35s ease, opacity 0.35s ease;
         pointer-events: none;
@@ -511,9 +513,49 @@ html {
         overscroll-behavior: none;
     }
 
+    .nav-toggle .nav-toggle__bars {
+        display: flex;
+    }
+
+    .nav-toggle .nav-toggle__close {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--text-color);
+        font-size: 1.4rem;
+        font-weight: 500;
+        letter-spacing: 0.1em;
+    }
+
+    body.nav-open .nav-toggle .nav-toggle__bars {
+        display: none;
+    }
+
+    body.nav-open .nav-toggle .nav-toggle__close {
+        display: flex;
+    }
+
     .nav-menu a {
-        font-size: 1.2rem;
+        font-size: clamp(1.25rem, 5vw, 1.65rem);
         font-weight: 600;
+        letter-spacing: 0.08em;
+        line-height: 1.4;
+        width: 100%;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.88);
+        padding-bottom: 12px;
+    }
+
+    .nav-menu a::after {
+        bottom: -12px;
+        height: 3px;
+    }
+
+    .nav-menu a + a {
+        margin-top: -6px;
     }
 }
 
