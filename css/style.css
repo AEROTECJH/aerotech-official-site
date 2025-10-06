@@ -93,6 +93,154 @@ body {
     overflow-x: hidden;
 }
 
+body.is-loading {
+    overflow: hidden;
+    touch-action: none;
+    overscroll-behavior: none;
+}
+
+.page-loader {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    background:
+        radial-gradient(circle at 20% 20%, rgba(0, 192, 192, 0.18), transparent 60%),
+        radial-gradient(circle at 80% 30%, rgba(51, 170, 221, 0.16), transparent 55%),
+        var(--bg-color);
+    z-index: 2000;
+    transition: opacity 0.6s ease, visibility 0.6s ease;
+    backdrop-filter: blur(6px);
+}
+
+.page-loader::after {
+    content: '';
+    position: absolute;
+    inset: 12%;
+    border-radius: 32px;
+    border: 1px solid rgba(0, 192, 192, 0.18);
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+.page-loader__inner {
+    position: relative;
+    display: grid;
+    gap: 36px;
+    align-items: center;
+    justify-items: center;
+    text-align: center;
+    max-width: min(90vw, 360px);
+}
+
+.loader-logo {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-family: var(--font-mono);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent-color);
+}
+
+.loader-logo__text {
+    font-size: clamp(2rem, 5vw, 2.8rem);
+    font-weight: 700;
+    animation: loader-glow 2.8s ease-in-out infinite;
+}
+
+.loader-logo__caption {
+    font-size: 0.72rem;
+    color: rgba(224, 224, 224, 0.7);
+    letter-spacing: 0.3em;
+}
+
+.loader-ring {
+    position: relative;
+    width: clamp(72px, 18vw, 96px);
+    height: clamp(72px, 18vw, 96px);
+}
+
+.loader-ring::before,
+.loader-ring::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+}
+
+.loader-ring::before {
+    background: conic-gradient(
+        from 0deg,
+        rgba(0, 192, 192, 0.1) 0deg,
+        rgba(0, 192, 192, 0.7) 110deg,
+        rgba(0, 192, 192, 0.1) 200deg,
+        rgba(51, 170, 221, 0.6) 260deg,
+        rgba(0, 192, 192, 0.1) 360deg
+    );
+    filter: drop-shadow(0 0 22px rgba(0, 192, 192, 0.35));
+    animation: loader-spin 1.15s linear infinite;
+}
+
+.loader-ring::after {
+    inset: 18%;
+    background: radial-gradient(circle at 30% 30%, rgba(0, 192, 192, 0.35), transparent 55%), rgba(10, 10, 10, 0.94);
+    border: 1px solid rgba(0, 192, 192, 0.16);
+}
+
+.loader-ring__segment {
+    display: none;
+}
+
+.loader-status {
+    margin: 6px 0 0;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(224, 224, 224, 0.75);
+}
+
+.page-loader--hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+@keyframes loader-spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes loader-glow {
+    0%, 100% {
+        text-shadow: 0 0 12px rgba(0, 192, 192, 0.35), 0 0 24px rgba(0, 192, 192, 0.2);
+    }
+    50% {
+        text-shadow: 0 0 24px rgba(0, 192, 192, 0.65), 0 0 48px rgba(0, 192, 192, 0.4);
+    }
+}
+
+@media (max-width: 600px) {
+    .page-loader {
+        padding: 24px;
+    }
+
+    .page-loader::after {
+        inset: 18%;
+    }
+
+    .loader-logo__caption {
+        letter-spacing: 0.24em;
+    }
+}
+
 html {
     scroll-behavior: smooth;
 }
@@ -317,22 +465,34 @@ html {
     .nav-menu {
         position: fixed;
         inset: 0;
-        padding: calc(var(--nav-height) + var(--space-xl)) var(--space-xl) var(--space-xl);
+        width: 100%;
+        padding: calc(var(--nav-height) + var(--space-xl) + env(safe-area-inset-top, 0px)) clamp(18px, 8vw, 48px) calc(var(--space-xl) + env(safe-area-inset-bottom, 0px));
         background: rgba(10, 10, 10, 0.96);
         backdrop-filter: blur(18px);
         flex-direction: column;
         align-items: flex-start;
         justify-content: flex-start;
-        gap: var(--space-xl);
+        gap: clamp(20px, 5vw, 36px);
         transform: translateY(-100%);
-        transition: transform 0.35s ease;
+        transition: transform 0.35s ease, opacity 0.35s ease;
         pointer-events: none;
         opacity: 0;
-        z-index: 900;
+        z-index: 1400;
         flex: 0 0 auto;
         overflow-y: auto;
-        overflow-x: visible;
+        overflow-x: hidden;
         -webkit-overflow-scrolling: touch;
+        scrollbar-gutter: stable both-edges;
+        height: 100vh;
+        max-height: 100vh;
+        overscroll-behavior: contain;
+    }
+
+    @supports (height: 100dvh) {
+        .nav-menu {
+            height: 100dvh;
+            max-height: 100dvh;
+        }
     }
 
     body.nav-open .nav-menu {
@@ -347,6 +507,8 @@ html {
 
     body.nav-open {
         overflow: hidden;
+        touch-action: none;
+        overscroll-behavior: none;
     }
 
     .nav-menu a {

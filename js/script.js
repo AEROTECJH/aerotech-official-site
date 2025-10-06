@@ -121,6 +121,62 @@ class HeroAnimation {
     }
 }
 
+class PageLoader {
+    constructor() {
+        this.loader = $('#page-loader');
+    this.minDisplay = 2000;
+        this.isHidden = false;
+        this.startTime = performance.now();
+
+        if (!this.loader) {
+            document.body.classList.remove('is-loading');
+            return;
+        }
+
+        this.loader.setAttribute('aria-hidden', 'false');
+        this.fallbackTimeout = setTimeout(() => this.hide(), this.minDisplay + 7000);
+        window.addEventListener('load', () => this.handleLoaded());
+
+        if (document.readyState === 'complete') {
+            this.handleLoaded();
+        }
+    }
+
+    handleLoaded() {
+        const elapsed = performance.now() - this.startTime;
+        const remaining = Math.max(0, this.minDisplay - elapsed);
+        setTimeout(() => this.hide(), remaining);
+    }
+
+    hide() {
+        if (this.isHidden) return;
+        this.isHidden = true;
+
+        if (this.fallbackTimeout) {
+            clearTimeout(this.fallbackTimeout);
+        }
+
+        document.body.classList.remove('is-loading');
+
+        if (!this.loader) {
+            return;
+        }
+
+        this.loader.setAttribute('aria-hidden', 'true');
+        this.loader.classList.add('page-loader--hidden');
+
+        const cleanup = () => {
+            if (this.loader) {
+                this.loader.remove();
+                this.loader = null;
+            }
+        };
+
+        this.loader.addEventListener('transitionend', cleanup, { once: true });
+        setTimeout(cleanup, 800);
+    }
+}
+
 // Навигация
 class Navigation {
     constructor() {
@@ -465,6 +521,9 @@ class Lightbox {
 
 // Инициализация
 document.addEventListener('DOMContentLoaded', () => {
+    // Прелоадер
+    new PageLoader();
+
     // Hero Canvas Animation
     const heroCanvas = $('#hero-canvas');
     if (heroCanvas) {
