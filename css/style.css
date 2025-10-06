@@ -3677,6 +3677,50 @@ section {
     color: rgba(0, 192, 192, 0.75);
 }
 
+.sr-volunteer-info {
+    padding: clamp(72px, 14vh, 120px) 0 clamp(60px, 12vh, 100px);
+    background: var(--bg-secondary);
+    position: relative;
+}
+
+.sr-volunteer-card {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: clamp(32px, 6vw, 48px);
+    border-radius: 26px;
+    background: var(--surface-gradient);
+    border: 1px solid var(--surface-border);
+    box-shadow: var(--surface-glow);
+    backdrop-filter: blur(var(--surface-blur));
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.sr-volunteer-card::before {
+    content: '';
+    position: absolute;
+    inset: -20%;
+    background: radial-gradient(120% 80% at 18% 0%, rgba(0, 192, 192, 0.22), transparent 65%),
+                radial-gradient(110% 70% at 80% 18%, rgba(0, 87, 255, 0.16), transparent 70%);
+    pointer-events: none;
+    opacity: 0.7;
+    z-index: -1;
+}
+
+.sr-volunteer-title {
+    font-size: clamp(2rem, 4vw, 2.6rem);
+    margin-bottom: var(--space-md);
+}
+
+.sr-volunteer-text {
+    font-size: clamp(1.05rem, 2.2vw, 1.25rem);
+    line-height: 1.8;
+    color: var(--text-secondary);
+    margin: 0 auto;
+    max-width: 640px;
+}
+
 .sr-cta {
     padding: clamp(80px, 12vh, 120px) 0 clamp(100px, 16vh, 140px);
     background: var(--bg-color);
