@@ -1085,11 +1085,7 @@ html {
     font-size: clamp(1.1rem, 2.5vw, 1.6rem);
     font-weight: 300;
     color: var(--text-secondary);
-    margin-bottom: 50px;
-    line-height: 1.6;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
+    margin-bottom: var(--space-2xl);
 }
 
 .tech-icon {
@@ -1463,7 +1459,7 @@ section {
 
 .app-icon {
     font-size: 3rem;
-    margin-bottom: 25px;
+    margin-bottom: var(--space-lg);
     display: block;
 }
 
@@ -1525,7 +1521,7 @@ section {
 .tech-title {
     font-size: 1.3rem;
     font-weight: 600;
-    margin-bottom: 15px;
+    margin-bottom: var(--space-md);
     color: var(--text-color);
 }
 
@@ -1576,7 +1572,7 @@ section {
     display: inline-block;
     background: var(--accent-color);
     color: var(--bg-color);
-    padding: 6px 15px;
+    padding: var(--space-xs) var(--space-md);
     border-radius: 20px;
     font-size: 0.85rem;
     font-weight: 600;
@@ -1589,7 +1585,7 @@ section {
 .project-title {
     font-size: 1.5rem;
     font-weight: 600;
-    margin-bottom: 15px;
+    margin-bottom: var(--space-md);
     color: var(--text-color);
 }
 
@@ -1597,13 +1593,13 @@ section {
     font-size: 1.1rem;
     line-height: 1.6;
     color: var(--text-secondary);
-    margin-bottom: 25px;
+    margin-bottom: var(--space-lg);
 }
 
 .project-progress {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: var(--space-md);
 }
 
 .progress-bar {
@@ -1753,7 +1749,7 @@ section {
 .contact-type {
     font-size: 1.1rem;
     font-weight: 500;
-    margin-bottom: 15px;
+    margin-bottom: var(--space-md);
     color: var(--text-secondary);
 }
 
@@ -1775,7 +1771,7 @@ section {
     max-width: 700px;
     margin: 0 auto;
     background: var(--bg-color);
-    padding: 50px;
+    padding: var(--space-2xl);
     border-radius: 12px;
     border: 1px solid var(--border-color);
 }
@@ -2126,7 +2122,7 @@ section {
 .k1-title {
     font-size: clamp(2.5rem, 4vw, 3.5rem);
     font-weight: 700;
-    margin-bottom: 15px;
+    margin-bottom: var(--space-md);
     color: var(--text-color);
     line-height: 1.1;
 }
@@ -2142,20 +2138,20 @@ section {
     font-size: 1.2rem;
     line-height: 1.7;
     color: var(--text-secondary);
-    margin-bottom: 50px;
+    margin-bottom: var(--space-2xl);
 }
 
 .k1-features {
     display: flex;
     flex-direction: column;
-    gap: 25px;
+    gap: var(--space-lg);
 }
 
 .feature-highlight {
     display: flex;
     align-items: flex-start;
     gap: 20px;
-    padding: 28px;
+    padding: var(--space-lg);
     background: var(--bg-secondary);
     border-radius: 14px;
     border: 1px solid var(--border-color);
@@ -2394,7 +2390,7 @@ section {
 .synergia-dialog-grid {
     display: grid;
     grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
-    gap: 50px;
+    gap: var(--space-2xl);
 }
 
 .synergia-dialog-flow ol {
@@ -2498,7 +2494,7 @@ section {
     background: rgba(10, 10, 10, 0.85);
     border-radius: 24px;
     border: 1px solid rgba(0, 192, 192, 0.35);
-    padding: 60px 50px;
+    padding: var(--space-2xl);
     box-shadow: 0 24px 80px rgba(0, 87, 255, 0.25);
 }
 
