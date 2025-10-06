@@ -1911,7 +1911,19 @@ section {
 .main-footer {
     background: var(--bg-color);
     border-top: 1px solid var(--border-color);
-    padding: 40px 0;
+    padding: 50px 0;
+    position: relative;
+}
+
+.main-footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
+    opacity: 0.3;
 }
 
 .footer-content {
@@ -1957,11 +1969,27 @@ section {
 .footer-link {
     color: var(--accent-color);
     text-decoration: none;
-    transition: opacity 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+}
+
+.footer-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--accent-color);
+    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .footer-link:hover {
-    opacity: 0.8;
+    opacity: 0.9;
+}
+
+.footer-link:hover::after {
+    width: 100%;
 }
 
 /* Платформа K1 Showcase */
@@ -2127,11 +2155,25 @@ section {
     display: flex;
     align-items: flex-start;
     gap: 20px;
-    padding: 25px;
+    padding: 28px;
     background: var(--bg-secondary);
-    border-radius: 12px;
+    border-radius: 14px;
     border: 1px solid var(--border-color);
-    transition: all 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.feature-highlight::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: linear-gradient(180deg, var(--accent-color), var(--accent-secondary));
+    opacity: 0;
+    transition: opacity 0.4s ease;
 }
 
 .feature-icon {
@@ -2141,18 +2183,23 @@ section {
 .feature-icon::before {
     content: '';
     display: block;
-    width: 12px;
-    height: 12px;
+    width: 14px;
+    height: 14px;
     background: linear-gradient(135deg, var(--accent-color), var(--accent-secondary));
     border-radius: 50%;
-    box-shadow: 0 0 20px rgba(0, 192, 192, 0.4);
+    box-shadow: 0 0 20px rgba(0, 192, 192, 0.5);
     margin-top: 6px;
 }
 
 .feature-highlight:hover {
     border-color: var(--accent-color);
-    transform: translateX(10px);
+    transform: translateX(12px);
     background: var(--bg-tertiary);
+    box-shadow: 0 6px 24px rgba(0, 192, 192, 0.1);
+}
+
+.feature-highlight:hover::before {
+    opacity: 1;
 }
 
 .feature-icon {
