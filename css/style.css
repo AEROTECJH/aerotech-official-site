@@ -91,6 +91,8 @@ body {
     color: var(--text-color);
     line-height: 1.6;
     overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 body.is-loading {
@@ -288,7 +290,7 @@ html {
     backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--border-color);
     z-index: 1000;
-    transition: all 0.3s ease;
+    transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease;
 }
 
 .nav-container {
@@ -521,7 +523,7 @@ html {
         position: relative;
         width: 100%;
         height: 100%;
-        display: flex;
+        display: none; /* полностью скрыт в мобильном меню */
         align-items: center;
         justify-content: center;
         color: var(--text-color);
@@ -535,7 +537,7 @@ html {
     }
 
     body.nav-open .nav-toggle .nav-toggle__close {
-        display: flex;
+        display: none; /* скрываем крестик в кнопке бургера */
     }
 
     .nav-menu a {
@@ -557,6 +559,29 @@ html {
     .nav-menu a + a {
         margin-top: -6px;
     }
+        /* Кнопка «Закрыть» в мобильном меню (вверху списка) */
+        .nav-menu__close {
+            position: sticky;
+            top: env(safe-area-inset-top, 0px);
+            z-index: 1;
+            margin: -8px 0 8px 0;
+            align-self: stretch;
+            text-align: center;
+            padding: 14px 18px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            background: rgba(20, 20, 20, 0.8);
+            color: var(--text-color);
+            font-family: var(--font-mono);
+            font-size: 0.95rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            cursor: pointer;
+        }
+        .nav-menu__close:focus-visible {
+            outline: 2px solid var(--accent-color);
+            outline-offset: 3px;
+        }
 }
 
 /* ------------------------------ */
@@ -1246,7 +1271,9 @@ html {
     transform: translate(-50%, -50%);
     min-width: 100%;
     min-height: 100%;
-    width: auto;
+.nav-menu__close { 
+    display: none; 
+}
     height: auto;
     object-fit: cover;
     opacity: 0.35;
@@ -1259,7 +1286,7 @@ html {
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+        display: block; 
     background: linear-gradient(
         to bottom,
         rgba(0, 0, 0, 0.7) 0%,
@@ -1382,7 +1409,7 @@ html {
     padding: 18px 40px;
     text-decoration: none;
     text-transform: uppercase;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s, background 0.4s, color 0.4s, border-color 0.4s;
     overflow: hidden;
     border-radius: 8px;
 }
@@ -1685,7 +1712,7 @@ section {
     padding: 40px 30px;
     border-radius: 16px;
     border: 1px solid var(--border-color);
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s, border-color 0.4s;
     text-align: center;
     position: relative;
     overflow: hidden;
@@ -1711,6 +1738,12 @@ section {
 
 .application-item:hover::before {
     opacity: 1;
+}
+
+/* Мобильная версия: отключаем прелоадер полностью */
+@media (max-width: 960px) {
+    .page-loader { display: none !important; }
+    body.is-loading { overflow: auto; touch-action: auto; overscroll-behavior: auto; }
 }
 
 .app-icon {
@@ -1751,7 +1784,7 @@ section {
     padding: 40px 30px;
     border-radius: 16px;
     border: 1px solid var(--border-color);
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s, border-color 0.4s;
     position: relative;
 }
 
@@ -1804,7 +1837,7 @@ section {
     border: 1px solid var(--border-color);
     margin-bottom: 30px;
     position: relative;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s, border-color 0.4s;
 }
 
 .project-item:hover {

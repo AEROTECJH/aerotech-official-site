@@ -5,7 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>АСА - Автоматизированная система ассистирования | AEROTECH</title>
 	<meta name="description" content="АСА — комплексная система ассистирования для беспилотных и пилотируемых платформ. Включает голосовое информирование, выдержку параметров полета, предотвращение столкновений и перехват управления в критических ситуациях.">
-	<meta name="robots" content="index, follow">
+	<meta name="robots" content="noindex, nofollow">
 	<meta name="theme-color" content="#0A0A0A">
 	<meta property="og:title" content="АСА - Автоматизированная система ассистирования | AEROTECH">
 	<meta property="og:description" content="Интеллектуальное ассистирование: голосовые уведомления, выдержка параметров, предотвращение столкновений и автоматический перехват управления при критических ситуациях.">
@@ -55,11 +55,15 @@
 				<span class="logo-caption">Является частью концерна ARLIST TECH</span>
 			</div>
 			<button class="nav-toggle" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="primary-navigation">
-				<span></span>
-				<span></span>
-				<span></span>
+				<span class="nav-toggle__bars">
+					<span></span>
+					<span></span>
+					<span></span>
+				</span>
+				<span class="nav-toggle__close" aria-hidden="true"></span>
 			</button>
 			<div class="nav-menu" id="primary-navigation">
+				<button type="button" class="nav-menu__close" aria-label="Закрыть меню">Закрыть</button>
 				<a href="index.html#about">О нас</a>
 				<a href="index.html#applications">Области применения</a>
 				<a href="index.html#technology">Технологии</a>

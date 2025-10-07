@@ -2,6 +2,85 @@
 const $ = (selector) => document.querySelector(selector);
 const $$ = (selector) => document.querySelectorAll(selector);
 
+// Feature flags — временные скрытия (легко откатить, поменяв true -> false)
+const FeatureFlags = {
+    hideArlistBranding: true, // скрыть подпись «Является частью концерна ARLIST TECH»
+    hidePages: {
+        arlist: true,
+        synergia: true,
+        asa: true,
+    },
+    hideCustomersMentions: true // скрыть упоминания заказчиков/инвесторов
+};
+
+function applyFeatureFlags() {
+    try {
+        // Перенаправление со скрытых страниц
+        const path = (location.pathname || '').toLowerCase();
+        if (FeatureFlags.hidePages.arlist && path.endsWith('/arlist-tech.html')) {
+            location.replace('workinprogress.html');
+            return;
+        }
+        if (FeatureFlags.hidePages.synergia && path.endsWith('/synergia.html')) {
+            location.replace('workinprogress.html');
+            return;
+        }
+        if (FeatureFlags.hidePages.asa && path.endsWith('/asa.html')) {
+            location.replace('workinprogress.html');
+            return;
+        }
+
+        // Скрытие подписи ARLIST TECH в логотипах/прелоадере и футере
+        if (FeatureFlags.hideArlistBranding) {
+            $$('.logo-caption, .loader-logo__caption').forEach(el => {
+                el.style.display = 'none';
+            });
+            $$('.arlist-signature').forEach(el => {
+                el.style.display = 'none';
+            });
+        }
+
+        // Скрытие ссылок на скрытые страницы по сайту (меню, карточки и т.п.)
+        const hideHrefParts = [];
+        if (FeatureFlags.hidePages.arlist) hideHrefParts.push('arlist-tech.html');
+        if (FeatureFlags.hidePages.synergia) hideHrefParts.push('synergia.html');
+        if (FeatureFlags.hidePages.asa) hideHrefParts.push('asa.html');
+        if (hideHrefParts.length) {
+            $$('a[href]').forEach(a => {
+                const href = (a.getAttribute('href') || '').toLowerCase();
+                if (hideHrefParts.some(part => href.includes(part))) {
+                    // Прячем ссылку; при необходимости прячем небольшой локальный wrapper, но не всё меню
+                    const wrapper = a.closest('.project-link-wrapper, li, .arlist-panel, .k1-modularity-cta') || a;
+                    a.style.display = 'none';
+                    if (wrapper && wrapper !== a) {
+                        // Если в wrapper остались видимые ссылки, не скрываем его
+                        const visibleLinks = Array.from(wrapper.querySelectorAll('a')).filter(l => l.style.display !== 'none');
+                        if (visibleLinks.length === 0) {
+                            wrapper.style.display = 'none';
+                        }
+                    }
+                }
+            });
+        }
+
+        // Скрытие упоминаний «заказчиков/инвесторов» в критериях контактов
+        if (FeatureFlags.hideCustomersMentions) {
+            const KEYWORDS = ['заказчик', 'заказчиков', 'инвестор', 'министерства обороны', 'полиции', 'государствен', 'гос'];
+            $$('.contact-criteria ul li').forEach(li => {
+                const t = (li.textContent || '').toLowerCase();
+                if (KEYWORDS.some(k => t.includes(k))) {
+                    li.style.display = 'none';
+                }
+            });
+        }
+    } catch (e) {
+        console.error('Feature flags apply error:', e);
+    }
+}
+
+// Выполним сразу для раннего редиректа/скрытий
+try { applyFeatureFlags(); } catch(e) {}
+
 // Hero Canvas Animation
 class HeroAnimation {
     constructor(canvas) {
@@ -123,17 +202,30 @@ class HeroAnimation {
 
 class PageLoader {
     constructor() {
+        // Определяем мобильную версию сразу
+        this.isMobile = window.matchMedia('(max-width: 960px)').matches;
         this.loader = $('#page-loader');
-    this.minDisplay = 2000;
+        this.minDisplay = 0; // на десктопе убираем по факту загрузки, без таймеров
         this.isHidden = false;
         this.startTime = performance.now();
 
+        // На мобильных: никакого прелоадера
+        if (this.isMobile) {
+            if (this.loader) {
+                this.loader.remove();
+                this.loader = null;
+            }
+            document.body.classList.remove('is-loading');
+            return;
+        }
+
         this.ensureLoader();
 
+        // Десктоп: включаем лоадер и ждём полной загрузки страницы
         document.body.classList.add('is-loading');
 
         this.loader.setAttribute('aria-hidden', 'false');
-        this.fallbackTimeout = setTimeout(() => this.hide(), this.minDisplay + 7000);
+        // Скрываем только после события полной загрузки окна
         window.addEventListener('load', () => this.handleLoaded());
 
         if (document.readyState === 'complete') {
@@ -189,23 +281,23 @@ class PageLoader {
     }
 
     handleLoaded() {
-        const elapsed = performance.now() - this.startTime;
-        const remaining = Math.max(0, this.minDisplay - elapsed);
-        setTimeout(() => this.hide(), remaining);
+        // Сразу скрываем после полной загрузки окна (без ожидания по времени)
+        this.hide();
     }
 
-    hide() {
+    hide(immediate = false) {
         if (this.isHidden) return;
         this.isHidden = true;
-
-        if (this.fallbackTimeout) {
-            clearTimeout(this.fallbackTimeout);
-        }
 
         document.body.classList.remove('is-loading');
 
         if (this.loader) {
             this.loader.setAttribute('aria-hidden', 'true');
+            if (immediate) {
+                this.loader.remove();
+                this.loader = null;
+                return;
+            }
             this.loader.classList.add('page-loader--hidden');
 
             const cleanup = () => {
@@ -226,8 +318,9 @@ class Navigation {
     constructor() {
         this.nav = $('.main-nav');
         this.toggle = $('.nav-toggle');
-    this.menu = $('#primary-navigation');
-    this.menuLinks = this.menu ? this.menu.querySelectorAll('a') : [];
+        this.menu = $('#primary-navigation');
+        this.menuLinks = this.menu ? this.menu.querySelectorAll('a') : [];
+        this.menuClose = this.menu ? this.menu.querySelector('.nav-menu__close') : null;
         this.navHeight = this.nav ? this.nav.offsetHeight : 80;
         this.init();
     }
@@ -283,6 +376,10 @@ class Navigation {
                 });
             });
 
+            if (this.menuClose) {
+                this.menuClose.addEventListener('click', () => this.toggleMenu(false));
+            }
+
             window.addEventListener('resize', () => {
                 if (window.innerWidth > 960) {
                     this.toggleMenu(false);
@@ -305,11 +402,16 @@ class Navigation {
             this.toggle.classList.add('is-active');
             this.toggle.setAttribute('aria-expanded', 'true');
             this.toggle.setAttribute('aria-label', 'Закрыть меню');
+            // Блокируем прокрутку только для страницы (если не открыт лайтбокс)
+            document.body.style.overflow = 'hidden';
         } else {
             document.body.classList.remove('nav-open');
             this.toggle.classList.remove('is-active');
             this.toggle.setAttribute('aria-expanded', 'false');
             this.toggle.setAttribute('aria-label', 'Открыть меню');
+            if (!document.querySelector('.lightbox-overlay.is-open')) {
+                document.body.style.overflow = '';
+            }
         }
     }
 }
@@ -405,6 +507,12 @@ class SmoothScroll {
 
     init() {
         document.addEventListener('click', (e) => {
+            // Обработка кнопки закрытия меню
+            if (e.target.matches('.nav-menu__close')) {
+                e.preventDefault();
+                this.closeMobileNav();
+                return;
+            }
             if (e.target.matches('a[href^="#"]') || e.target.closest('a[href^="#"]')) {
                 e.preventDefault();
                 const link = e.target.matches('a[href^="#"]') ? e.target : e.target.closest('a[href^="#"]');
@@ -565,6 +673,8 @@ class Lightbox {
 
 // Инициализация
 document.addEventListener('DOMContentLoaded', () => {
+    // Применяем фичефлаги до инициализации UI
+    applyFeatureFlags();
     // Прелоадер
     new PageLoader();
 

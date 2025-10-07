@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Synergia 1.0 | Интеллектуальная система управления полётом</title>
     <meta name="description" content="Synergia 1.0 — голосовой ассистент и автономный интеллектуальный центр управления БПЛА AEROTECH. Реагирует на команды, держит объект в кадре, выполняет сложные манёвры.">
-    <meta name="robots" content="index, follow">
+    <meta name="robots" content="noindex, nofollow">
         <meta name="theme-color" content="#0A0A0A">
         <meta property="og:title" content="Synergia 1.0 | Интеллектуальная система управления полётом">
     <meta property="og:description" content="Голосовой ассистент и интеллектуальный контроль БПЛА AEROTECH.">
@@ -58,11 +58,15 @@
                 <span class="logo-caption">Является частью концерна ARLIST TECH</span>
             </div>
             <button class="nav-toggle" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="primary-navigation">
-                <span></span>
-                <span></span>
-                <span></span>
+                <span class="nav-toggle__bars">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </span>
+                <span class="nav-toggle__close" aria-hidden="true"></span>
             </button>
             <div class="nav-menu" id="primary-navigation">
+                <button type="button" class="nav-menu__close" aria-label="Закрыть меню">Закрыть</button>
                 <a href="index.html#about">О нас</a>
                 <a href="index.html#applications">Области применения</a>
                 <a href="index.html#technology">Технологии</a>
