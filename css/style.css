@@ -1389,6 +1389,16 @@ html {
     font-weight: 700;
     color: var(--accent-color);
     letter-spacing: 0.15em;
+    animation: logoGlow 3s ease-in-out infinite;
+}
+
+@keyframes logoGlow {
+    0%, 100% {
+        text-shadow: 0 0 20px rgba(0, 192, 192, 0.4), 0 0 40px rgba(0, 192, 192, 0.2);
+    }
+    50% {
+        text-shadow: 0 0 30px rgba(0, 192, 192, 0.6), 0 0 60px rgba(0, 192, 192, 0.3), 0 0 80px rgba(0, 192, 192, 0.1);
+    }
 }
 
 .hero-logo .logo-caption {
@@ -1421,7 +1431,7 @@ html {
     width: 48px;
     height: 48px;
     border-radius: 14px;
-    background: rgba(0, 192, 192, 0.1);
+    background: linear-gradient(135deg, rgba(0, 192, 192, 0.1), rgba(51, 170, 221, 0.05));
     border: 1px solid rgba(0, 192, 192, 0.24);
     font-family: var(--font-mono);
     font-size: 0.85rem;
@@ -1429,6 +1439,15 @@ html {
     text-transform: uppercase;
     color: var(--accent-color);
     margin-bottom: var(--space-md);
+    transition: all var(--transition-smooth);
+    box-shadow: 0 4px 12px rgba(0, 192, 192, 0.1);
+}
+
+.tech-item:hover .tech-icon {
+    transform: scale(1.1) rotate(5deg);
+    background: linear-gradient(135deg, rgba(0, 192, 192, 0.2), rgba(51, 170, 221, 0.15));
+    border-color: var(--accent-color);
+    box-shadow: 0 6px 20px rgba(0, 192, 192, 0.3), var(--shadow-glow);
 }
 
 .hero-cta {
@@ -1622,6 +1641,18 @@ html {
 /* Секции */
 section {
     padding: clamp(80px, 16vw, 140px) 0;
+    animation: sectionFadeIn 0.8s ease-out;
+}
+
+@keyframes sectionFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .section-title {
@@ -3122,17 +3153,33 @@ section {
 }
 
 .faq-item {
-    background: var(--bg-color);
+    background: linear-gradient(135deg, var(--bg-color) 0%, rgba(10, 10, 10, 0.95) 100%);
     border: 1px solid rgba(255, 255, 255, 0.12);
     border-radius: 20px;
     padding: var(--space-xl);
     box-shadow: 0 18px 48px rgba(0,0,0,0.28);
-    transition: border-color var(--transition-base), box-shadow var(--transition-base);
+    transition: border-color var(--transition-smooth), box-shadow var(--transition-smooth), transform var(--transition-smooth);
+    position: relative;
+    overflow: hidden;
+}
+
+.faq-item::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% 0%, rgba(0, 192, 192, 0.05), transparent 60%);
+    opacity: 0;
+    transition: opacity var(--transition-smooth);
 }
 
 .faq-item[open] {
     border-color: var(--accent-color);
-    box-shadow: 0 22px 62px rgba(0, 192, 192, 0.22);
+    box-shadow: 0 22px 62px rgba(0, 192, 192, 0.25), var(--shadow-glow);
+    transform: translateY(-2px);
+}
+
+.faq-item[open]::before {
+    opacity: 1;
 }
 
 .faq-item summary {
@@ -3159,12 +3206,15 @@ section {
     position: absolute;
     right: 0;
     top: 0;
+    font-size: 1.5rem;
     color: var(--accent-color);
-    transition: transform var(--transition-base);
+    transition: transform var(--transition-smooth), text-shadow var(--transition-smooth);
+    text-shadow: 0 0 8px rgba(0, 192, 192, 0.3);
 }
 
 .faq-item[open] summary::after {
     transform: rotate(45deg);
+    text-shadow: 0 0 16px rgba(0, 192, 192, 0.6);
 }
 
 .faq-item p {
