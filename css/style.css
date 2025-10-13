@@ -458,7 +458,7 @@ html {
 
 /* Hide close button on desktop - only show on mobile */
 .nav-menu__close {
-    display: none;
+    display: none !important;
 }
 
 @media (max-width: 960px) {
@@ -566,7 +566,7 @@ html {
     }
         /* Кнопка «Закрыть» в мобильном меню (вверху списка) */
         .nav-menu__close {
-            display: block; /* Show on mobile */
+            display: block !important; /* Show on mobile */
             position: sticky;
             top: env(safe-area-inset-top, 0px);
             z-index: 1;
