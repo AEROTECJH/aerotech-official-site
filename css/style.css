@@ -1284,8 +1284,10 @@ html {
     position: relative;
     overflow: hidden;
     padding-top: 80px;
-    background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(0, 192, 192, 0.2));
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    background: radial-gradient(circle at 30% 20%, rgba(0, 192, 192, 0.15), transparent 50%),
+                radial-gradient(circle at 70% 80%, rgba(51, 170, 221, 0.12), transparent 50%),
+                linear-gradient(135deg, rgba(0, 0, 0, 0.9), rgba(10, 10, 10, 0.95));
+    box-shadow: inset 0 0 100px rgba(0, 192, 192, 0.05);
 }
 
 .hero-background {
@@ -1368,7 +1370,17 @@ html {
     align-items: center;
     gap: 10px;
     margin-bottom: 40px;
-    text-shadow: 0 0 20px rgba(0, 192, 192, 0.3);
+    text-shadow: 0 0 30px rgba(0, 192, 192, 0.4);
+    position: relative;
+}
+
+.hero-logo::after {
+    content: '';
+    position: absolute;
+    inset: -20px;
+    background: radial-gradient(circle, rgba(0, 192, 192, 0.1), transparent 70%);
+    border-radius: 50%;
+    z-index: -1;
 }
 
 .hero-logo .logo-text {
@@ -1650,7 +1662,17 @@ section {
 
 /* О нас */
 .about-section {
-    background: var(--bg-secondary);
+    background: linear-gradient(180deg, var(--bg-secondary) 0%, rgba(26, 26, 26, 0.98) 100%);
+    position: relative;
+}
+
+.about-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle at 20% 30%, rgba(0, 192, 192, 0.03) 0%, transparent 50%),
+                      radial-gradient(circle at 80% 70%, rgba(51, 170, 221, 0.03) 0%, transparent 50%);
+    pointer-events: none;
 }
 
 .about-grid {
@@ -1783,7 +1805,16 @@ section {
 
 /* Области применения */
 .applications-section {
-    background: var(--bg-color);
+    background: linear-gradient(180deg, var(--bg-color) 0%, rgba(10, 10, 10, 0.98) 100%);
+    position: relative;
+}
+
+.applications-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle at 50% 50%, rgba(0, 192, 192, 0.02) 0%, transparent 60%);
+    pointer-events: none;
 }
 
 .applications-grid {
@@ -1867,7 +1898,17 @@ section {
 
 /* Технологии */
 .technology-section {
-    background: var(--bg-secondary);
+    background: linear-gradient(180deg, var(--bg-secondary) 0%, rgba(26, 26, 26, 0.98) 100%);
+    position: relative;
+}
+
+.technology-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle at 30% 20%, rgba(0, 192, 192, 0.04) 0%, transparent 50%),
+                      radial-gradient(circle at 70% 80%, rgba(51, 170, 221, 0.04) 0%, transparent 50%);
+    pointer-events: none;
 }
 
 .tech-grid {
@@ -1936,7 +1977,16 @@ section {
 
 /* Проекты */
 .projects-section {
-    background: var(--bg-color);
+    background: linear-gradient(180deg, var(--bg-color) 0%, rgba(10, 10, 10, 0.98) 100%);
+    position: relative;
+}
+
+.projects-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle at 40% 60%, rgba(0, 192, 192, 0.03) 0%, transparent 50%);
+    pointer-events: none;
 }
 
 .projects-timeline {
@@ -1945,19 +1995,35 @@ section {
 }
 
 .project-item {
-    background: var(--bg-secondary);
+    background: linear-gradient(135deg, var(--bg-secondary) 0%, rgba(26, 26, 26, 0.95) 100%);
     padding: 40px;
-    border-radius: 16px;
+    border-radius: var(--radius-lg);
     border: 1px solid var(--border-color);
     margin-bottom: 30px;
     position: relative;
-    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s, border-color 0.4s;
+    transition: transform var(--transition-smooth), box-shadow var(--transition-smooth), border-color var(--transition-smooth);
+    overflow: hidden;
+}
+
+.project-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0, 192, 192, 0.05), transparent);
+    transition: left 0.6s ease;
 }
 
 .project-item:hover {
     border-color: var(--accent-color);
     transform: translateX(8px);
-    box-shadow: 0 8px 32px rgba(0, 192, 192, 0.1);
+    box-shadow: var(--shadow-lg), 0 0 30px rgba(0, 192, 192, 0.15);
+}
+
+.project-item:hover::before {
+    left: 100%;
 }
 
 .project-item.active {
@@ -2173,10 +2239,24 @@ section {
 .contact-form {
     max-width: 700px;
     margin: 0 auto;
-    background: var(--bg-color);
+    background: linear-gradient(135deg, var(--bg-color) 0%, rgba(10, 10, 10, 0.95) 100%);
     padding: var(--space-2xl);
-    border-radius: 12px;
-    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    border: 1px solid rgba(0, 192, 192, 0.2);
+    box-shadow: var(--shadow-lg), 0 0 40px rgba(0, 192, 192, 0.08);
+    position: relative;
+    overflow: hidden;
+}
+
+.contact-form::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(0, 192, 192, 0.05) 0%, transparent 70%);
+    pointer-events: none;
 }
 
 .form-title {
@@ -2242,9 +2322,10 @@ section {
     left: 50%;
     width: 0;
     height: 2px;
-    background: var(--accent-color);
-    transition: all 0.3s ease;
+    background: linear-gradient(90deg, var(--accent-color), var(--accent-secondary));
+    transition: all var(--transition-smooth);
     transform: translateX(-50%);
+    box-shadow: 0 0 8px rgba(0, 192, 192, 0.5);
 }
 
 .form-group input:focus ~ .input-line,
@@ -2253,26 +2334,42 @@ section {
 }
 
 .submit-btn {
-    background: transparent;
+    background: linear-gradient(135deg, transparent, rgba(0, 192, 192, 0.05));
     color: var(--accent-color);
     border: 2px solid var(--accent-color);
     font-family: var(--font-mono);
     font-size: 1rem;
     font-weight: 600;
     padding: 18px 40px;
-    border-radius: 8px;
+    border-radius: var(--radius-md);
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all var(--transition-smooth);
     text-transform: uppercase;
     letter-spacing: 0.1em;
     position: relative;
     overflow: hidden;
+    box-shadow: 0 4px 16px rgba(0, 192, 192, 0.1);
+}
+
+.submit-btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, var(--accent-color), var(--accent-secondary));
+    opacity: 0;
+    transition: opacity var(--transition-smooth);
 }
 
 .submit-btn:hover {
-    background: var(--accent-color);
+    background: linear-gradient(135deg, var(--accent-color), var(--accent-secondary));
     color: var(--bg-color);
-    box-shadow: 0 0 30px rgba(0, 192, 192, 0.3);
+    box-shadow: 0 0 40px rgba(0, 192, 192, 0.5), 0 8px 32px rgba(0, 192, 192, 0.3), var(--shadow-glow);
+    transform: translateY(-2px) scale(1.02);
+    border-color: var(--accent-secondary);
+}
+
+.submit-btn:hover::before {
+    opacity: 1;
 }
 
 .form-message {
@@ -2308,10 +2405,11 @@ section {
 
 /* Футер */
 .main-footer {
-    background: var(--bg-color);
+    background: linear-gradient(180deg, var(--bg-color) 0%, rgba(10, 10, 10, 0.98) 100%);
     border-top: 1px solid var(--border-color);
     padding: 50px 0;
     position: relative;
+    box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.3);
 }
 
 .main-footer::before {
@@ -2320,9 +2418,10 @@ section {
     top: 0;
     left: 0;
     right: 0;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
-    opacity: 0.3;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--accent-color) 20%, var(--accent-secondary) 80%, transparent);
+    opacity: 0.5;
+    box-shadow: 0 0 12px rgba(0, 192, 192, 0.3);
 }
 
 .footer-content {
@@ -2375,20 +2474,21 @@ section {
     justify-content: center;
     width: 40px;
     height: 40px;
-    background: rgba(255, 255, 255, 0.05);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(0, 192, 192, 0.02));
     border: 1px solid var(--border-color);
-    border-radius: 8px;
+    border-radius: var(--radius-md);
     color: var(--text-secondary);
     text-decoration: none;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all var(--transition-smooth);
     font-size: 20px;
 }
 
 .github-link:hover {
-    background: rgba(255, 255, 255, 0.1);
+    background: linear-gradient(135deg, rgba(0, 192, 192, 0.15), rgba(51, 170, 221, 0.1));
     border-color: var(--accent-color);
     color: var(--accent-color);
-    transform: translateY(-1px);
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 4px 16px rgba(0, 192, 192, 0.3), var(--shadow-glow);
 }
 
 .github-link svg {
