@@ -456,6 +456,11 @@ html {
     }
 }
 
+/* Hide close button on desktop - only show on mobile */
+.nav-menu__close {
+    display: none;
+}
+
 @media (max-width: 960px) {
     .nav-toggle {
         display: flex;
@@ -561,6 +566,7 @@ html {
     }
         /* Кнопка «Закрыть» в мобильном меню (вверху списка) */
         .nav-menu__close {
+            display: block; /* Show on mobile */
             position: sticky;
             top: env(safe-area-inset-top, 0px);
             z-index: 1;
@@ -1271,9 +1277,6 @@ html {
     transform: translate(-50%, -50%);
     min-width: 100%;
     min-height: 100%;
-.nav-menu__close { 
-    display: none; 
-}
     height: auto;
     object-fit: cover;
     opacity: 0.35;
