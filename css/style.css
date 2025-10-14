@@ -91,7 +91,7 @@ svg {
     --text-secondary: #a0a0a0;
     --text-muted: #666666;
     --accent-color: #00e5ff;
-    --accent-secondary: #ff00e5;
+    --accent-secondary: #0055ff;
     --accent-tertiary: #e5ff00;
     --accent-gradient: linear-gradient(90deg, var(--accent-color), var(--accent-secondary));
     --border-color: rgba(255, 255, 255, 0.1);
