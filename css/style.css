@@ -1523,31 +1523,6 @@ html {
     position: relative;
 }
 
-.hero-logo::before {
-    content: '';
-    position: absolute;
-    inset: -30px;
-    background: radial-gradient(
-        circle, 
-        rgba(0, 229, 204, 0.15), 
-        transparent 70%
-    );
-    border-radius: 50%;
-    z-index: -1;
-    animation: pulse 4s ease-in-out infinite;
-}
-
-@keyframes pulse {
-    0%, 100% {
-        opacity: 0.5;
-        transform: scale(1);
-    }
-    50% {
-        opacity: 1;
-        transform: scale(1.1);
-    }
-}
-
 .hero-logo .logo-text {
     font-family: var(--font-mono);
     font-size: clamp(2.5rem, 6vw, 4rem);
@@ -1563,16 +1538,6 @@ html {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    animation: logoGlow 3s ease-in-out infinite;
-}
-
-@keyframes logoGlow {
-    0%, 100% {
-        filter: drop-shadow(0 0 20px rgba(0, 229, 204, 0.4));
-    }
-    50% {
-        filter: drop-shadow(0 0 40px rgba(0, 229, 204, 0.6));
-    }
 }
 
 .hero-logo .logo-caption {
