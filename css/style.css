@@ -56,15 +56,27 @@
     color: #ff6464;
 }
 /* Reset и базовые стили */
-* {
+*,
+*::before,
+*::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Responsive media elements */
+/* Prevent horizontal scroll on mobile */
+html {
+    overflow-x: hidden;
+    width: 100%;
+    scroll-behavior: smooth;
+    max-width: 100vw;
+}
+
+/* Ensure all images and media fit within container */
 img,
+picture,
 video,
+canvas,
 iframe,
 svg {
     max-width: 100%;
@@ -142,7 +154,9 @@ body {
     color: var(--text-color);
     line-height: 1.65;
     overflow-x: hidden;
+    width: 100%;
     max-width: 100vw;
+    position: relative;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-size: 16px;
@@ -305,12 +319,6 @@ body.is-loading {
     }
 }
 
-html {
-    scroll-behavior: smooth;
-    overflow-x: hidden;
-    max-width: 100vw;
-}
-
 .skip-link {
     position: absolute;
     top: -40px;
@@ -348,6 +356,7 @@ html {
 
 .container--narrow {
     max-width: var(--max-width-narrow);
+    width: 100%;
 }
 
 /* Навигация */
@@ -395,6 +404,7 @@ html {
 
 .nav-container {
     max-width: var(--max-width);
+    width: 100%;
     margin: 0 auto;
     padding: 0 clamp(1rem, 4vw, 2rem);
     display: flex;
@@ -576,6 +586,7 @@ html {
         position: fixed;
         inset: 0;
         width: 100%;
+        max-width: 100vw;
         padding: calc(var(--nav-height) + var(--space-xl) + env(safe-area-inset-top, 0px)) clamp(20px, 8vw, 56px) calc(var(--space-xl) + env(safe-area-inset-bottom, 0px));
         background: rgba(10, 10, 10, 0.96);
         backdrop-filter: blur(18px);
@@ -619,6 +630,9 @@ html {
         overflow: hidden;
         touch-action: none;
         overscroll-behavior: none;
+        position: fixed;
+        width: 100%;
+        max-width: 100vw;
     }
 
     .nav-toggle .nav-toggle__bars {
@@ -652,12 +666,15 @@ html {
         letter-spacing: 0.08em;
         line-height: 1.4;
         width: 100%;
+        max-width: 100%;
         text-transform: uppercase;
         color: rgba(255, 255, 255, 0.88);
         padding: 14px 0;
         min-height: 44px;
         display: flex;
         align-items: center;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
     }
 
     .nav-menu a::after {
@@ -1815,6 +1832,7 @@ html {
 
     .hero-content {
         padding: 0 16px;
+        max-width: 100%;
     }
 
     .hero-title {
@@ -1832,6 +1850,8 @@ html {
         flex-direction: column;
         align-items: stretch;
         gap: 16px;
+        width: 100%;
+        max-width: 100%;
     }
 
     .hero-cta a {
@@ -1851,6 +1871,7 @@ html {
     .tech-grid {
         grid-template-columns: 1fr;
         gap: 24px;
+        width: 100%;
     }
 
     .application-item,
@@ -1860,6 +1881,7 @@ html {
 
     .about-grid {
         gap: var(--space-xl);
+        grid-template-columns: 1fr;
     }
 
     .team-card {
@@ -1879,6 +1901,9 @@ html {
 section {
     padding: clamp(80px, 16vw, 140px) 0;
     animation: sectionFadeIn 0.8s ease-out;
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
 }
 
 @keyframes sectionFadeIn {
@@ -3606,10 +3631,12 @@ section {
     .join-list {
         flex-direction: column;
         align-items: stretch;
+        width: 100%;
     }
 
     .join-list li {
         text-align: center;
+        width: 100%;
     }
     
     .contact-criteria {
@@ -3636,11 +3663,32 @@ section {
     .contact-cta-actions {
         flex-direction: column;
         gap: 14px;
+        width: 100%;
     }
     
     .contact-cta-actions a {
         width: 100%;
         min-height: 48px;
+    }
+    
+    /* Ensure all flex containers don't overflow */
+    .hero-cta,
+    .sr-cta-actions,
+    .sgp-cta-actions,
+    .synergia-cta-actions,
+    .join-actions {
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    /* Ensure all cards fit properly */
+    div[class*="-card"],
+    div[class*="-panel"],
+    .maintenance-card,
+    .join-card,
+    .contact-cta-card {
+        max-width: 100%;
+        box-sizing: border-box;
     }
 }
 
@@ -3988,6 +4036,16 @@ section {
     .sgp-card {
         padding: var(--space-lg);
     }
+    
+    /* Ensure SGP orbit doesn't overflow */
+    .sgp-orbit {
+        max-width: calc(100vw - 40px);
+    }
+    
+    .sgp-hero-visual {
+        padding: 0 20px;
+        overflow: hidden;
+    }
 }
 
 /* --- Generic buttons --- */
@@ -4181,6 +4239,14 @@ section {
     .gallery-img { aspect-ratio: 4/3; } 
     .gallery-grid { gap: 20px; }
     
+    /* Prevent horizontal overflow on very small screens */
+    body,
+    html {
+        max-width: 100vw;
+        overflow-x: hidden;
+        width: 100%;
+    }
+    
     /* Extra small screen improvements */
     .section-title {
         font-size: clamp(2rem, 7vw, 2.5rem);
@@ -4207,6 +4273,7 @@ section {
     .container {
         padding-left: 16px;
         padding-right: 16px;
+        max-width: 100%;
     }
     
     .application-item,
@@ -4234,6 +4301,91 @@ section {
     
     .join-actions .btn-large {
         min-width: 100%;
+    }
+    
+    /* Ensure all grid layouts fit on mobile - force single column */
+    .applications-grid,
+    .tech-grid,
+    .gallery-grid,
+    .faq-grid,
+    .projects-timeline,
+    .arlist-hero-panels,
+    .arlist-highlight-grid,
+    .arlist-focus-grid,
+    .arlist-synergy-grid,
+    .sr-products-grid,
+    .sgp-overview-grid,
+    .sgp-capabilities-grid,
+    .sgp-architecture-grid,
+    .synergia-architecture-grid,
+    .k1-stat-grid,
+    .k1-specs-grid,
+    .k1-modularity-grid {
+        grid-template-columns: 1fr !important;
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    /* Prevent text overflow */
+    h1, h2, h3, h4, h5, h6,
+    p, li, span, a {
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        hyphens: auto;
+    }
+    
+    /* Ensure hero sections don't overflow */
+    .hero-section,
+    .sr-hero,
+    .arlist-hero,
+    .sgp-hero,
+    .k1-page-hero {
+        width: 100%;
+        max-width: 100vw;
+        overflow-x: hidden;
+    }
+    
+    /* Fix any cards that might overflow */
+    .arlist-panel,
+    .arlist-focus-card,
+    .arlist-highlight-card,
+    .sr-product-card,
+    .sr-integration-card,
+    .sgp-card,
+    .synergia-card,
+    .k1-stat-card {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+    
+    /* Ensure all sections and wrappers don't overflow */
+    section,
+    main,
+    header,
+    footer,
+    .hero-section,
+    .hero-background,
+    .hero-content {
+        max-width: 100vw;
+        overflow-x: hidden;
+    }
+    
+    /* Prevent any absolutely positioned elements from causing overflow */
+    *[class*="overlay"],
+    *[class*="background"],
+    *[class*="hero-"] {
+        max-width: 100vw;
+    }
+    
+    /* Force all containers to fit */
+    .container,
+    .nav-container,
+    .hero-content,
+    .section-title,
+    .section-intro {
+        box-sizing: border-box;
+        max-width: 100%;
     }
 }
 
@@ -4899,11 +5051,21 @@ section {
     .sr-orbit {
         width: 220px;
         height: 220px;
+        max-width: calc(100vw - 40px);
+        max-height: calc(100vw - 40px);
     }
 
     .sr-orbit-node {
         font-size: 0.7rem;
         padding: 8px 12px;
+        white-space: nowrap;
+    }
+    
+    /* Ensure orbit container doesn't overflow */
+    .sr-hero-highlight {
+        max-width: 100%;
+        overflow: hidden;
+        padding: 0 20px;
     }
 }
 
