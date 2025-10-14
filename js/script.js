@@ -97,7 +97,7 @@ class HeroAnimation {
         this.resize();
         this.createParticles();
         this.animate();
-
+        
         window.addEventListener('resize', () => this.resize());
         this.canvas.addEventListener('mousemove', (e) => {
             const rect = this.canvas.getBoundingClientRect();
@@ -125,7 +125,7 @@ class HeroAnimation {
     createParticles() {
         this.particles = [];
         const numParticles = Math.floor((this.width * this.height) / 15000);
-
+        
         for (let i = 0; i < numParticles; i++) {
             this.particles.push({
                 x: Math.random() * this.width,
@@ -143,23 +143,23 @@ class HeroAnimation {
             return;
         }
         this.ctx.clearRect(0, 0, this.width, this.height);
-
+        
         // Update particles
         this.particles.forEach(particle => {
             particle.x += particle.vx;
             particle.y += particle.vy;
-
+            
             // Wrap around edges
             if (particle.x < 0) particle.x = this.width;
             if (particle.x > this.width) particle.x = 0;
             if (particle.y < 0) particle.y = this.height;
             if (particle.y > this.height) particle.y = 0;
-
+            
             // Mouse interaction
             const dx = this.mouse.x - particle.x;
             const dy = this.mouse.y - particle.y;
             const distance = Math.sqrt(dx * dx + dy * dy);
-
+            
             if (distance < 100) {
                 const force = (100 - distance) / 100;
                 particle.x -= (dx / distance) * force * 0.5;
@@ -170,13 +170,13 @@ class HeroAnimation {
         // Draw connections
         this.ctx.strokeStyle = 'rgba(0, 192, 192, 0.1)';
         this.ctx.lineWidth = 1;
-
+        
         for (let i = 0; i < this.particles.length; i++) {
             for (let j = i + 1; j < this.particles.length; j++) {
                 const dx = this.particles[i].x - this.particles[j].x;
                 const dy = this.particles[i].y - this.particles[j].y;
                 const distance = Math.sqrt(dx * dx + dy * dy);
-
+                
                 if (distance < 150) {
                     const opacity = (150 - distance) / 150 * 0.1;
                     this.ctx.strokeStyle = `rgba(0, 192, 192, ${opacity})`;
@@ -331,19 +331,19 @@ class Navigation {
         window.addEventListener('scroll', () => {
             if (document.body.classList.contains('nav-open')) return;
             const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-
+            
             if (scrollTop > lastScrollTop && scrollTop > 150) {
                 this.nav.style.transform = 'translateY(-100%)';
             } else {
                 this.nav.style.transform = 'translateY(0)';
             }
-
+            
             lastScrollTop = scrollTop;
         });
 
         // Активная ссылка при скролле
     const sections = $$('section[id]');
-    const navLinks = $$('.nav-menu a[href^="#"]');
+    const navLinks = $$('.nav-menu a');
 
         window.addEventListener('scroll', () => {
             let current = '';
@@ -437,7 +437,7 @@ class ContactForm {
             input.addEventListener('focus', () => {
                 input.parentElement.classList.add('focused');
             });
-
+            
             input.addEventListener('blur', () => {
                 if (!input.value) {
                     input.parentElement.classList.remove('focused');
@@ -472,15 +472,15 @@ class ContactForm {
             // Имитация отправки
             this.showMessage('Отправка сообщения...', 'info');
             await new Promise(resolve => setTimeout(resolve, 2000));
-
+            
             this.showMessage('Сообщение успешно отправлено! Мы свяжемся с вами в ближайшее время.', 'success');
             this.form.reset();
-
+            
             // Сброс состояния полей
             this.inputs.forEach(input => {
                 input.parentElement.classList.remove('focused');
             });
-
+            
         } catch (error) {
             this.showMessage('Произошла ошибка при отправке сообщения. Попробуйте еще раз.', 'error');
         }
@@ -489,7 +489,7 @@ class ContactForm {
     showMessage(text, type) {
         this.message.textContent = text;
         this.message.className = `form-message ${type}`;
-
+        
         if (type !== 'info') {
             setTimeout(() => {
                 this.message.className = 'form-message';
@@ -518,12 +518,12 @@ class SmoothScroll {
                 const link = e.target.matches('a[href^="#"]') ? e.target : e.target.closest('a[href^="#"]');
                 const targetId = link.getAttribute('href');
                 const targetElement = document.querySelector(targetId);
-
+                
                 if (targetElement) {
                     this.closeMobileNav();
                     const navHeight = $('.main-nav').offsetHeight;
                     const targetPosition = targetElement.offsetTop - navHeight - 20;
-
+                    
                     window.scrollTo({
                         top: targetPosition,
                         behavior: 'smooth'
@@ -552,8 +552,8 @@ class ScrollAnimations {
     }
 
     init() {
-    const animatedElements = $$('.feature-highlight, .contact-item, .team-card, .gallery-item, .tech-item, .faq-item, .project-item, .synergia-card, .synergia-card-compact, .arlist-panel, .arlist-focus-card, .arlist-highlight-card, .arlist-synergy-step, .arlist-contact-card, .advantage-card');
-
+    const animatedElements = $$('.feature-highlight, .contact-item, .team-card, .gallery-item, .tech-item, .faq-item, .project-item, .synergia-card, .synergia-card-compact, .arlist-panel, .arlist-focus-card, .arlist-highlight-card, .arlist-synergy-step, .arlist-contact-card');
+        
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -683,16 +683,16 @@ document.addEventListener('DOMContentLoaded', () => {
     if (heroCanvas) {
         new HeroAnimation(heroCanvas);
     }
-
+    
     // Навигация
     new Navigation();
-
+    
     // Плавная прокрутка
     new SmoothScroll();
-
+    
     // Анимации при скролле
     new ScrollAnimations();
-
+    
     // Sticky CTA наблюдатель
     new StickyObserver();
 
