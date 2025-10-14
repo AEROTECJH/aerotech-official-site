@@ -62,6 +62,21 @@
     box-sizing: border-box;
 }
 
+/* Responsive media elements */
+img,
+video,
+iframe,
+svg {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+img,
+video {
+    object-fit: cover;
+}
+
 :root {
     /* Modern color palette with better contrast */
     --bg-color: #050914;
@@ -127,6 +142,7 @@ body {
     color: var(--text-color);
     line-height: 1.65;
     overflow-x: hidden;
+    max-width: 100vw;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-size: 16px;
@@ -291,6 +307,8 @@ body.is-loading {
 
 html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
+    max-width: 100vw;
 }
 
 .skip-link {
@@ -322,8 +340,10 @@ html {
 
 .container {
     max-width: var(--max-width);
+    width: 100%;
     margin: 0 auto;
     padding: 0 clamp(1rem, 5vw, 3rem);
+    box-sizing: border-box;
 }
 
 .container--narrow {
@@ -833,7 +853,7 @@ html {
 .arlist-highlight-grid {
     margin-top: clamp(36px, 6vw, 64px);
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
     gap: 18px;
 }
 
@@ -860,7 +880,7 @@ html {
 
 .arlist-focus-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
     gap: 20px;
 }
 
@@ -903,7 +923,7 @@ html {
 
 .arlist-synergy-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
     gap: 18px;
 }
 
@@ -971,7 +991,7 @@ html {
     }
 
     .arlist-hero-panels {
-        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
     }
 
     .arlist-overview-grid {
@@ -1128,7 +1148,7 @@ html {
 
 .maintenance-status-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr));
     gap: 18px;
 }
 
@@ -2079,7 +2099,7 @@ section {
 
 .applications-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
     gap: var(--space-xl);
     max-width: var(--max-width);
     margin: 0 auto;
@@ -2182,7 +2202,7 @@ section {
 
 .tech-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
     gap: var(--space-xl);
     max-width: var(--max-width);
     margin: 0 auto;
@@ -2431,7 +2451,7 @@ section {
 
 .contact-info {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
     gap: 40px;
     margin-bottom: 60px;
     max-width: 700px;
@@ -3223,7 +3243,7 @@ section {
 
 .synergia-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
     gap: 32px;
 }
 
@@ -3330,7 +3350,7 @@ section {
 
 .synergia-architecture-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
     gap: 28px;
 }
 
@@ -3440,7 +3460,7 @@ section {
 
 .faq-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
     gap: var(--space-xl);
     max-width: 1200px;
     margin: 0 auto;
@@ -3705,7 +3725,7 @@ section {
 
 .sgp-hero-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
     gap: clamp(32px, 6vw, 60px);
     align-items: center;
 }
@@ -3824,7 +3844,7 @@ section {
 
 .sgp-overview-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
     gap: clamp(32px, 6vw, 60px);
     align-items: stretch;
 }
@@ -3865,7 +3885,7 @@ section {
 
 .sgp-capabilities-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
     gap: clamp(24px, 4vw, 36px);
 }
 
@@ -3911,7 +3931,7 @@ section {
 
 .sgp-architecture-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
     gap: clamp(24px, 4vw, 36px);
 }
 
@@ -4048,10 +4068,10 @@ section {
 
 .gallery-grid { 
     display: grid; 
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); 
     gap: var(--space-xl); 
     max-width: var(--max-width); 
-    margin: 0 auto; 
+    margin: 0 auto;
 }
 
 .gallery-item { 
@@ -4282,7 +4302,7 @@ section {
     position: relative;
     z-index: 2;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
     gap: var(--space-2xl);
     align-items: center;
 }
@@ -4357,7 +4377,7 @@ section {
 
 .k1-stat-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
     gap: var(--space-lg);
 }
 
@@ -4397,7 +4417,7 @@ section {
 
 .k1-modularity-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
     gap: var(--space-2xl);
     align-items: center;
 }
@@ -4428,7 +4448,7 @@ section {
 
 .k1-specs-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
     gap: var(--space-xl);
 }
 
@@ -4691,7 +4711,7 @@ section {
 
 .sr-products-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
     gap: clamp(24px, 4vw, 36px);
 }
 
@@ -4884,5 +4904,65 @@ section {
     .sr-orbit-node {
         font-size: 0.7rem;
         padding: 8px 12px;
+    }
+}
+
+/* Additional mobile optimizations to prevent horizontal overflow */
+@media (max-width: 480px) {
+    /* Ensure all sections respect viewport */
+    section,
+    .container,
+    .hero-section,
+    .about-section,
+    .applications-section,
+    .tech-section,
+    .contact-section {
+        width: 100%;
+        max-width: 100vw;
+        overflow-x: hidden;
+    }
+    
+    /* Reduce padding on very small screens */
+    .container {
+        padding: 0 clamp(0.75rem, 4vw, 1rem);
+    }
+    
+    /* Ensure grids stack properly */
+    [class*="-grid"],
+    [class*="grid"] {
+        grid-template-columns: 1fr !important;
+    }
+    
+    /* Prevent flex items from overflowing */
+    [class*="flex"],
+    .hero-cta,
+    .nav-menu ul {
+        flex-wrap: wrap;
+        width: 100%;
+    }
+    
+    /* Ensure images and videos are constrained */
+    img,
+    video,
+    iframe {
+        max-width: 100%;
+        width: 100%;
+        height: auto;
+    }
+    
+    /* Fix button groups on mobile */
+    .hero-cta,
+    .k1-sticky-actions,
+    .sr-cta-actions {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .hero-cta a,
+    .k1-sticky-actions a,
+    .sr-cta-actions a {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
     }
 }
