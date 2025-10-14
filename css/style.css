@@ -3672,6 +3672,16 @@ section {
         width: 100%;
         max-width: 100%;
     }
+    
+    /* Ensure all cards fit properly */
+    div[class*="-card"],
+    div[class*="-panel"],
+    .maintenance-card,
+    .join-card,
+    .contact-cta-card {
+        max-width: 100%;
+        box-sizing: border-box;
+    }
 }
 
 /* --- Synergia teaser on index --- */
@@ -4017,6 +4027,16 @@ section {
 
     .sgp-card {
         padding: var(--space-lg);
+    }
+    
+    /* Ensure SGP orbit doesn't overflow */
+    .sgp-orbit {
+        max-width: calc(100vw - 40px);
+    }
+    
+    .sgp-hero-visual {
+        padding: 0 20px;
+        overflow: hidden;
     }
 }
 
@@ -4993,10 +5013,20 @@ section {
     .sr-orbit {
         width: 220px;
         height: 220px;
+        max-width: calc(100vw - 40px);
+        max-height: calc(100vw - 40px);
     }
 
     .sr-orbit-node {
         font-size: 0.7rem;
         padding: 8px 12px;
+        white-space: nowrap;
+    }
+    
+    /* Ensure orbit container doesn't overflow */
+    .sr-hero-highlight {
+        max-width: 100%;
+        overflow: hidden;
+        padding: 0 20px;
     }
 }
