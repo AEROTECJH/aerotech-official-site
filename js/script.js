@@ -130,8 +130,8 @@ class HeroAnimation {
             this.particles.push({
                 x: Math.random() * this.width,
                 y: Math.random() * this.height,
-                vx: (Math.random() - 0.5) * 0.5,
-                vy: (Math.random() - 0.5) * 0.5,
+                vx: (Math.random() - 0.5) * 0.3,
+                vy: (Math.random() - 0.5) * 0.3,
                 size: Math.random() * 2 + 1
             });
         }
@@ -162,8 +162,8 @@ class HeroAnimation {
 
             if (distance < 100) {
                 const force = (100 - distance) / 100;
-                particle.x -= (dx / distance) * force * 0.5;
-                particle.y -= (dy / distance) * force * 0.5;
+                particle.x -= (dx / distance) * force * 0.3;
+                particle.y -= (dy / distance) * force * 0.3;
             }
         });
 
@@ -566,7 +566,7 @@ class ScrollAnimations {
         animatedElements.forEach(element => {
             element.style.opacity = '0';
             element.style.transform = 'translateY(30px)';
-            element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            element.style.transition = 'opacity 1s ease, transform 1s ease';
             observer.observe(element);
         });
     }
