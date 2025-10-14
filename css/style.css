@@ -1741,43 +1741,146 @@ body.is-loading {
         box-sizing: border-box;
     }
     
-    .k1-content {
-        grid-template-columns: 1fr;
-        gap: 40px;
+    /* K1 Showcase Mobile Redesign */
+    .k1-showcase-section {
+        padding: 60px 0;
+        background: var(--bg-secondary);
     }
     
-    .k1-showcase-section {
-        padding: 80px 0;
+    .k1-content {
+        grid-template-columns: 1fr;
+        gap: 0;
+        max-width: 100%;
+    }
+    
+    /* Mobile-first image styling */
+    .k1-image-container {
+        border-radius: 0;
+        border: none;
+        border-bottom: 1px solid rgba(0, 192, 192, 0.2);
+        margin: 0 -20px;
     }
     
     .k1-image {
-        height: 300px;
-        object-fit: contain;
+        height: 280px;
+        object-fit: cover;
+        object-position: center;
         background: var(--bg-color);
     }
     
-    .k1-description {
-        padding-left: 0;
+    /* Always show overlay on mobile */
+    .k1-image-overlay {
+        transform: translateY(0);
+        background: linear-gradient(transparent, rgba(10, 10, 10, 0.95));
+        padding: 24px 20px 20px;
     }
     
-    .k1-sticky-actions {
+    .k1-specs {
         flex-direction: column;
-        gap: 12px;
+        gap: 16px;
     }
     
-    .k1-sticky-actions a {
-        width: 100%;
-        justify-content: center;
-        min-height: 48px;
+    .spec-item {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 12px;
+        align-items: baseline;
+    }
+    
+    .spec-label {
+        font-size: 0.75rem;
+    }
+    
+    .spec-value {
+        font-size: 0.9rem;
+        text-align: right;
+    }
+    
+    /* Description section */
+    .k1-description {
+        padding: var(--space-xl) 0 0;
+    }
+    
+    .k1-subtitle {
+        font-size: 1.1rem;
+        margin-bottom: 20px;
+    }
+    
+    .k1-text {
+        font-size: 1.05rem;
+        line-height: 1.65;
+        margin-bottom: var(--space-lg);
+    }
+    
+    /* Sticky CTA redesign for mobile */
+    .k1-sticky {
+        margin: var(--space-lg) 0;
+        position: sticky;
+        top: calc(var(--nav-height) + 10px);
+        z-index: 10;
     }
     
     .k1-sticky-body {
-        padding: 20px 18px;
+        padding: 18px 16px;
+        border-radius: 12px;
+        background: linear-gradient(135deg, rgba(0, 192, 192, 0.15), rgba(0, 87, 255, 0.18));
+        border: 1px solid rgba(0, 192, 192, 0.4);
+        box-shadow: 0 8px 24px rgba(0, 87, 255, 0.25);
     }
     
     .k1-sticky-label {
-        font-size: 0.85rem;
+        font-size: 0.8rem;
         text-align: center;
+        line-height: 1.4;
+        margin-bottom: 4px;
+    }
+    
+    .k1-sticky-actions {
+        flex-direction: row;
+        gap: 10px;
+        justify-content: center;
+    }
+    
+    .k1-sticky-actions a {
+        flex: 1;
+        justify-content: center;
+        min-height: 44px;
+        font-size: 0.9rem;
+        padding: 12px 16px;
+        text-align: center;
+    }
+    
+    /* Feature cards mobile optimization */
+    .k1-features {
+        gap: var(--space-md);
+        margin-top: var(--space-lg);
+    }
+    
+    .feature-highlight {
+        padding: var(--space-md);
+        gap: 16px;
+        border-radius: 12px;
+        background: var(--bg-color);
+    }
+    
+    .feature-highlight:hover {
+        transform: translateX(0);
+    }
+    
+    .feature-icon::before {
+        width: 12px;
+        height: 12px;
+        margin-top: 4px;
+    }
+    
+    .feature-content h4 {
+        font-size: 1rem;
+        margin-bottom: 6px;
+    }
+    
+    .feature-content p {
+        font-size: 0.9rem;
+        line-height: 1.5;
     }
 }
 
