@@ -686,20 +686,25 @@ html {
             position: sticky;
             top: env(safe-area-inset-top, 0px);
             z-index: 1;
-            margin: -8px 0 12px 0;
+            margin: -8px 0 16px 0;
             align-self: stretch;
             text-align: center;
-            padding: 16px 18px;
-            min-height: 48px;
+            padding: 16px 20px;
+            min-height: 52px;
             border-radius: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            background: rgba(20, 20, 20, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            background: rgba(20, 20, 20, 0.85);
             color: var(--text-color);
             font-family: var(--font-mono);
             font-size: 0.95rem;
             letter-spacing: 0.18em;
             text-transform: uppercase;
             cursor: pointer;
+            transition: all var(--transition-base);
+        }
+        .nav-menu__close:hover {
+            background: rgba(30, 30, 30, 0.9);
+            border-color: rgba(0, 192, 192, 0.3);
         }
         .nav-menu__close:focus-visible {
             outline: 2px solid var(--accent-color);
@@ -1014,29 +1019,49 @@ html {
 @media (max-width: 640px) {
     .arlist-hero {
         padding-top: 120px;
+        padding-bottom: clamp(60px, 10vw, 100px);
     }
 
     .arlist-hero .hero-title {
         font-size: clamp(2.2rem, 8vw, 3rem);
+        line-height: 1.15;
     }
 
     .arlist-panel {
-        padding: 22px;
+        padding: 24px 20px;
+        box-sizing: border-box;
+    }
+    
+    .arlist-focus-card,
+    .arlist-highlight-card {
+        padding: 24px 20px;
+        box-sizing: border-box;
     }
 
     .arlist-contact-card {
         flex-direction: column;
         align-items: flex-start;
+        padding: 24px 20px;
     }
 
     .arlist-contact-actions {
         width: 100%;
+        gap: 12px;
     }
 
     .arlist-contact-actions .btn-gradient,
     .arlist-contact-actions .secondary-link {
         width: 100%;
         text-align: center;
+        min-height: 52px;
+        padding: 16px 24px;
+    }
+    
+    /* Better grid layouts on ARLIST page */
+    .arlist-hero-panels,
+    .arlist-highlight-grid,
+    .arlist-focus-grid {
+        gap: 20px;
     }
 }
 
@@ -1781,7 +1806,7 @@ html {
 
 @media (max-width: 720px) {
     .hero-content {
-        padding: 0 var(--space-md);
+        padding: 0 20px;
     }
 
     .hero-value ul {
@@ -1791,7 +1816,8 @@ html {
     .hero-value li {
         font-size: 0.95rem;
         line-height: 1.6;
-        padding: 14px 18px;
+        padding: 16px 20px;
+        box-sizing: border-box;
     }
     
     .k1-sticky-actions {
@@ -1802,7 +1828,7 @@ html {
     .k1-sticky-actions a {
         width: 100%;
         justify-content: center;
-        min-height: 44px;
+        min-height: 48px;
     }
     
     .k1-sticky-body {
@@ -1826,7 +1852,7 @@ html {
     }
 
     .hero-content {
-        padding: 0 16px;
+        padding: 0 20px;
         max-width: 100%;
     }
 
@@ -1853,7 +1879,7 @@ html {
         width: 100%;
         justify-content: center;
         text-align: center;
-        min-height: 48px;
+        min-height: 52px;
         padding: 16px 24px;
         font-size: 1rem;
     }
@@ -1867,11 +1893,14 @@ html {
         grid-template-columns: 1fr;
         gap: 24px;
         width: 100%;
+        max-width: 100%;
     }
 
     .application-item,
     .tech-item {
         padding: 28px 22px;
+        width: 100%;
+        box-sizing: border-box;
     }
 
     .about-grid {
@@ -1881,14 +1910,21 @@ html {
 
     .team-card {
         padding: 28px 22px;
+        width: 100%;
+        box-sizing: border-box;
     }
 
     .projects-timeline {
         padding: 0 12px;
+        width: 100%;
+        max-width: 100%;
+        grid-template-columns: 1fr;
     }
 
     .project-item {
         padding: 28px 22px;
+        width: 100%;
+        box-sizing: border-box;
     }
 }
 
@@ -4232,7 +4268,10 @@ section {
 }
 @media (max-width: 480px) { 
     .gallery-img { aspect-ratio: 4/3; } 
-    .gallery-grid { gap: 20px; }
+    .gallery-grid { 
+        gap: 20px;
+        grid-template-columns: 1fr;
+    }
     
     /* Prevent horizontal overflow on very small screens */
     body,
@@ -4244,21 +4283,27 @@ section {
     
     /* Extra small screen improvements */
     .section-title {
-        font-size: clamp(2rem, 7vw, 2.5rem);
+        font-size: clamp(1.9rem, 7vw, 2.5rem);
         line-height: 1.15;
+        padding-left: 16px;
+        padding-right: 16px;
     }
     
     .section-intro {
         font-size: 0.95rem;
         line-height: 1.7;
+        padding-left: 16px;
+        padding-right: 16px;
     }
     
     .hero-title {
         font-size: clamp(1.85rem, 7.5vw, 2.3rem);
+        line-height: 1.15;
     }
     
     .hero-subtitle {
         font-size: 0.95rem;
+        line-height: 1.65;
     }
     
     .nav-container {
@@ -4276,14 +4321,19 @@ section {
     .project-item,
     .team-card {
         padding: 24px 18px;
+        margin-left: 0;
+        margin-right: 0;
     }
     
     .contact-criteria {
         padding: 20px 16px;
+        margin-left: 0;
+        margin-right: 0;
     }
     
     .contact-criteria ul li {
         font-size: 0.95rem;
+        line-height: 1.6;
     }
     
     .hero-cta a,
@@ -4291,11 +4341,14 @@ section {
     .btn-gradient,
     .btn-outline {
         font-size: 0.95rem;
-        padding: 14px 20px;
+        padding: 16px 22px;
+        min-height: 52px;
+        box-sizing: border-box;
     }
     
     .join-actions .btn-large {
         min-width: 100%;
+        width: 100%;
     }
     
     /* Ensure all grid layouts fit on mobile - force single column */
@@ -4319,6 +4372,7 @@ section {
         grid-template-columns: 1fr !important;
         width: 100%;
         max-width: 100%;
+        gap: clamp(20px, 5vw, 24px);
     }
     
     /* Prevent text overflow */
@@ -4338,6 +4392,8 @@ section {
         width: 100%;
         max-width: 100vw;
         overflow-x: hidden;
+        padding-left: 0;
+        padding-right: 0;
     }
     
     /* Fix any cards that might overflow */
@@ -4352,6 +4408,8 @@ section {
         width: 100%;
         max-width: 100%;
         box-sizing: border-box;
+        margin-left: 0;
+        margin-right: 0;
     }
     
     /* Ensure all sections and wrappers don't overflow */
@@ -4364,6 +4422,7 @@ section {
     .hero-content {
         max-width: 100vw;
         overflow-x: hidden;
+        box-sizing: border-box;
     }
     
     /* Prevent any absolutely positioned elements from causing overflow */
@@ -4381,6 +4440,30 @@ section {
     .section-intro {
         box-sizing: border-box;
         max-width: 100%;
+    }
+    
+    /* Better spacing for lists */
+    .about-pillars li,
+    .hero-value li {
+        padding: 14px 16px;
+        font-size: 0.9rem;
+    }
+    
+    /* Improve button groups */
+    .hero-cta,
+    .join-actions,
+    .sr-cta-actions,
+    .contact-cta-actions {
+        flex-direction: column;
+        gap: 12px;
+        width: 100%;
+    }
+    
+    .hero-cta > *,
+    .join-actions > *,
+    .sr-cta-actions > *,
+    .contact-cta-actions > * {
+        width: 100%;
     }
 }
 
@@ -4641,11 +4724,39 @@ section {
         width: 100%;
         border-radius: var(--radius-md);
         margin-top: var(--space-md);
+        padding: 16px 20px;
+        box-sizing: border-box;
     }
 
     .k1-hero-facts li {
         flex-direction: column;
         align-items: flex-start;
+        font-size: 0.9rem;
+        padding: 14px 18px;
+    }
+    
+    .k1-stat-card,
+    .k1-modularity-card {
+        padding: 24px 20px;
+        box-sizing: border-box;
+    }
+    
+    /* Better grid spacing on K1 page */
+    .k1-stat-grid,
+    .k1-specs-grid,
+    .k1-modularity-grid {
+        gap: 20px;
+    }
+    
+    /* Improve K1 hero on mobile */
+    .k1-page-hero {
+        padding-top: calc(var(--nav-height) + 40px);
+        padding-bottom: clamp(60px, 10vw, 100px);
+    }
+    
+    .k1-hero-grid {
+        gap: var(--space-xl);
+        grid-template-columns: 1fr;
     }
 }
 
@@ -5044,22 +5155,40 @@ section {
 
 @media (max-width: 640px) {
     .sr-orbit {
-        width: 220px;
-        height: 220px;
-        max-width: calc(100vw - 40px);
-        max-height: calc(100vw - 40px);
+        width: 240px;
+        height: 240px;
+        max-width: calc(100vw - 60px);
+        max-height: calc(100vw - 60px);
     }
 
     .sr-orbit-node {
         font-size: 0.7rem;
-        padding: 8px 12px;
+        padding: 8px 14px;
         white-space: nowrap;
+    }
+    
+    .sr-orbit-core {
+        font-size: 0.75rem;
     }
     
     /* Ensure orbit container doesn't overflow */
     .sr-hero-highlight {
         max-width: 100%;
         overflow: hidden;
-        padding: 0 20px;
+        padding: 20px;
+        box-sizing: border-box;
+    }
+    
+    /* Better spacing for SR sections on mobile */
+    .sr-products-grid,
+    .sr-integration-grid {
+        gap: 24px;
+        grid-template-columns: 1fr;
+    }
+    
+    .sr-product-card,
+    .sr-integration-card {
+        padding: 24px 20px;
+        box-sizing: border-box;
     }
 }
