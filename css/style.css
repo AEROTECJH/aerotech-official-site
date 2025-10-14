@@ -4090,8 +4090,17 @@ section {
     box-shadow: 0 8px 28px rgba(0,87,255,0.22);
     font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
     transition: transform .2s ease, box-shadow .2s ease, opacity .2s ease;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
 }
-.btn-gradient:hover { transform: translateY(-2px); box-shadow: 0 12px 36px rgba(0,87,255,0.28); }
+.btn-gradient:hover { 
+    transform: translateY(-2px); 
+    box-shadow: 0 12px 36px rgba(0,87,255,0.28); 
+}
+.btn-gradient:active {
+    transform: translateY(0);
+    box-shadow: 0 6px 20px rgba(0,87,255,0.2);
+}
 .btn-outline {
     display: inline-flex; align-items: center; justify-content: center;
     padding: 16px 24px; border-radius: var(--radius-md);
@@ -4104,6 +4113,8 @@ section {
     box-shadow: 0 2px 8px rgba(0, 192, 192, 0.1);
     position: relative;
     overflow: hidden;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .btn-outline::before {
@@ -4325,6 +4336,20 @@ section {
         margin-right: 0;
     }
     
+    /* Simplify card interactions on touch devices */
+    .application-item,
+    .tech-item,
+    .gallery-item,
+    .project-item {
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    
+    .application-item:active,
+    .tech-item:active,
+    .gallery-item:active {
+        transform: scale(0.98);
+    }
+    
     .contact-criteria {
         padding: 20px 16px;
         margin-left: 0;
@@ -4464,6 +4489,17 @@ section {
     .sr-cta-actions > *,
     .contact-cta-actions > * {
         width: 100%;
+    }
+    
+    /* Improve touch feedback for interactive elements */
+    a, button, .btn-gradient, .btn-outline, .gallery-trigger {
+        -webkit-tap-highlight-color: rgba(0, 192, 192, 0.2);
+    }
+    
+    /* Better mobile navigation */
+    .nav-menu a {
+        padding: 16px 0;
+        min-height: 52px;
     }
 }
 
