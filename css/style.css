@@ -4911,6 +4911,89 @@ section {
     line-height: 1.6;
 }
 
+/* K1 Specs Table */
+.k1-specs-table-wrapper {
+    overflow-x: auto;
+    margin-top: var(--space-xl);
+    border-radius: 18px;
+    background: var(--bg-color);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 16px 60px rgba(0, 0, 0, 0.24);
+}
+
+.k1-specs-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+}
+
+.k1-specs-table thead {
+    background: rgba(0, 192, 192, 0.08);
+    border-bottom: 2px solid rgba(0, 192, 192, 0.3);
+}
+
+.k1-specs-table th {
+    padding: var(--space-md) var(--space-sm);
+    text-align: left;
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.75rem;
+    color: var(--accent-color);
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.k1-specs-table th.spec-category {
+    color: var(--text-color);
+    font-size: 0.8rem;
+}
+
+.k1-specs-table tbody tr {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    transition: background-color 0.2s ease;
+}
+
+.k1-specs-table tbody tr:hover {
+    background: rgba(0, 192, 192, 0.03);
+}
+
+.k1-specs-table td {
+    padding: var(--space-sm) var(--space-sm);
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+.k1-specs-table td.spec-label {
+    font-family: var(--font-mono);
+    color: var(--text-color);
+    font-weight: 500;
+    font-size: 0.85rem;
+    min-width: 200px;
+}
+
+.k1-specs-table tr.spec-group-header td {
+    padding: var(--space-md) var(--space-sm);
+    background: rgba(0, 87, 255, 0.08);
+    color: var(--accent-color);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 0.75rem;
+    border-top: 2px solid rgba(0, 87, 255, 0.2);
+    border-bottom: 1px solid rgba(0, 87, 255, 0.2);
+}
+
+.k1-specs-table tr.spec-group-header:first-child td {
+    border-top: none;
+}
+
+.k1-specs-footer {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-sm);
+}
+
 .k1-gallery-section {
     background: var(--bg-color);
 }
@@ -4963,6 +5046,31 @@ section {
     .k1-hero-grid {
         gap: var(--space-xl);
         grid-template-columns: 1fr;
+    }
+    
+    /* K1 Specs Table Mobile */
+    .k1-specs-table {
+        font-size: 0.85rem;
+    }
+    
+    .k1-specs-table th,
+    .k1-specs-table td {
+        padding: var(--space-xs) 8px;
+        font-size: 0.8rem;
+    }
+    
+    .k1-specs-table th {
+        font-size: 0.7rem;
+    }
+    
+    .k1-specs-table td.spec-label {
+        font-size: 0.75rem;
+        min-width: 150px;
+    }
+    
+    .k1-specs-table tr.spec-group-header td {
+        font-size: 0.7rem;
+        padding: var(--space-sm) 8px;
     }
 }
 

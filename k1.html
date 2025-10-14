@@ -178,30 +178,165 @@
 
     <section id="k1-specs" class="k1-specs-section">
             <div class="container">
-                <h2 class="section-title">Технические характеристики.</h2>
-                <div class="k1-specs-grid">
-                    <dl>
-                        <dt>Габариты</dt>
-                        <dd>Диагональ 1000 м, высота 380 мм, складное шасси для транспортировки</dd>
-                        <dt>Масса</dt>
-                        <dd>4 кг без полезной нагрузки, 7 кг в максимальной конфигурации</dd>
-                        <dt>Питание</dt>
-                        <dd>Литий-ионные кассеты 10-20V с горячей заменой</dd>
-                        <dt>Управление</dt>
-                        <dd>Системы автоматического исполнения планов полетов AEROTECH, поддержка MAVLink, голосовые подсказки и система предупреждения столкновений и асистирования пилотирования бвс
-                    </dl>
-                    <dl>
-                    
-                        <dt>Полезная нагрузка</dt>
-                        <dd>Крепления quick-swap, до 3 подключенных модулей с шиной питания и сигнальными кабелями на каждом 5/12/24V</dd>
-                        <dt>Навигация</dt>
-                        <dd>Приемник GPS/ГЛОНАСС + инерциальная система</dd>
-                        <dt>Безопасность</dt>
-                        <dd>Автоматическая система перехвата управления у пилота при выходе на запредельные значения или близости объектов, система FAIL-SAFE, система голосового информирования</dd>
-                        <dd>
-                            <a href="asa.html" class="btn-outline btn-specs">ПОДРОБНЕЕ</a>
-                        </dd>
-                    </dl>
+                <h2 class="section-title">Технические характеристики платформы K1.</h2>
+                <p class="section-intro" style="text-align: center; max-width: 900px; margin: 0 auto var(--space-xl);">Характеристики для четырех ключевых модификаций платформы K1: двух мультикоптеров (K-Серия) и двух VTOL-систем (S-Серия).</p>
+                
+                <div class="k1-specs-table-wrapper">
+                    <table class="k1-specs-table">
+                        <thead>
+                            <tr>
+                                <th class="spec-category">Характеристика</th>
+                                <th>K1 "Endurance"</th>
+                                <th>K1 "Apex"</th>
+                                <th>S1 "Endurance" VTOL</th>
+                                <th>S1 "Sentinel" VTOL</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="spec-group-header">
+                                <td colspan="5"><strong>Летно-технические характеристики (ЛТХ)</strong></td>
+                            </tr>
+                            <tr>
+                                <td class="spec-label">Макс. время полета</td>
+                                <td>~ 25-35 мин (с Li-Ion)</td>
+                                <td>~ 5-8 мин (агрессивно)</td>
+                                <td>~ 70-90 мин</td>
+                                <td>~ 60-80 мин</td>
+                            </tr>
+                            <tr>
+                                <td class="spec-label">Крейсерская скорость</td>
+                                <td>60 км/ч</td>
+                                <td>90 км/ч</td>
+                                <td>100 км/ч</td>
+                                <td>95 км/ч</td>
+                            </tr>
+                            <tr>
+                                <td class="spec-label">Максимальная скорость</td>
+                                <td>120 км/ч</td>
+                                <td>180+ км/ч</td>
+                                <td>140 км/ч</td>
+                                <td>135 км/ч</td>
+                            </tr>
+                            <tr>
+                                <td class="spec-label">Дальность радиосвязи</td>
+                                <td>> 10 км (ELRS)</td>
+                                <td>> 10 км (ELRS)</td>
+                                <td>> 50 км (ELRS)</td>
+                                <td>> 50 км (+ 4G/5G)</td>
+                            </tr>
+                            <tr>
+                                <td class="spec-label">Макс. взлетный вес</td>
+                                <td>2.5 кг</td>
+                                <td>1.8 кг</td>
+                                <td>5.5 кг</td>
+                                <td>6.0 кг</td>
+                            </tr>
+                            <tr>
+                                <td class="spec-label">Макс. перегрузка (расч.)</td>
+                                <td>20 G</td>
+                                <td>25 G</td>
+                                <td>10 G</td>
+                                <td>10 G</td>
+                            </tr>
+                            
+                            <tr class="spec-group-header">
+                                <td colspan="5"><strong>Физические характеристики</strong></td>
+                            </tr>
+                            <tr>
+                                <td class="spec-label">Габариты (ДхШ)</td>
+                                <td>~700х550 мм</td>
+                                <td>~600х400 мм</td>
+                                <td>~1300х990 мм</td>
+                                <td>~1300х990 мм</td>
+                            </tr>
+                            <tr>
+                                <td class="spec-label">Тип платформы</td>
+                                <td>Мультикоптер (Трикоптер)</td>
+                                <td>Мультикоптер (Трикоптер)</td>
+                                <td>Гибридный VTOL (Tri-plane)</td>
+                                <td>Гибридный VTOL (Tri-plane)</td>
+                            </tr>
+                            <tr>
+                                <td class="spec-label">Материал рамы</td>
+                                <td>Инженерный композит</td>
+                                <td>Облегченный композит</td>
+                                <td>Инженерный композит</td>
+                                <td>Инженерный композит</td>
+                            </tr>
+                            
+                            <tr class="spec-group-header">
+                                <td colspan="5"><strong>Система управления (Авионика)</strong></td>
+                            </tr>
+                            <tr>
+                                <td class="spec-label">Прошивка</td>
+                                <td>AEROTECH OS (Betaflight)</td>
+                                <td>AEROTECH OS (Betaflight) с VAM</td>
+                                <td>AEROTECH OS (ArduPilot)</td>
+                                <td>AEROTECH OS (ArduPilot) с ILAS</td>
+                            </tr>
+                            <tr>
+                                <td class="spec-label">Полетный контроллер</td>
+                                <td>Matek F722</td>
+                                <td>Matek F722-HD</td>
+                                <td>Matek H743-WING V3</td>
+                                <td>Matek H743-WING V3</td>
+                            </tr>
+                            <tr>
+                                <td class="spec-label">Бортовой компьютер</td>
+                                <td>Нет</td>
+                                <td>Нет</td>
+                                <td>Нет</td>
+                                <td>Raspberry Pi 5</td>
+                            </tr>
+                            
+                            <tr class="spec-group-header">
+                                <td colspan="5"><strong>FPV-система</strong></td>
+                            </tr>
+                            <tr>
+                                <td class="spec-label">Видеосистема</td>
+                                <td>Аналоговая, 1.2W VTX</td>
+                                <td>Цифровая HD (DJI O3 / Walksnail)</td>
+                                <td>Цифровая HD (DJI O3 / Walksnail)</td>
+                                <td>Цифровая HD (DJI O3 / Walksnail)</td>
+                            </tr>
+                            
+                            <tr class="spec-group-header">
+                                <td colspan="5"><strong>Навигация и безопасность</strong></td>
+                            </tr>
+                            <tr>
+                                <td class="spec-label">GPS-модуль</td>
+                                <td>Matek M10Q-5883</td>
+                                <td>Matek M10Q-5883</td>
+                                <td>Matek M10Q-5883</td>
+                                <td>Двойной, с резервированием</td>
+                            </tr>
+                            <tr>
+                                <td class="spec-label">Датчик возд. скорости</td>
+                                <td>Нет</td>
+                                <td>Нет</td>
+                                <td>✓ (Стандартно)</td>
+                                <td>✓ (Стандартно)</td>
+                            </tr>
+                            <tr>
+                                <td class="spec-label">Протокол «Вектор» (No-GPS)</td>
+                                <td>(Опция)</td>
+                                <td>(Опция)</td>
+                                <td>✓ (Стандартно)</td>
+                                <td>✓ (Стандартно)</td>
+                            </tr>
+                            <tr>
+                                <td class="spec-label">Система облета (ILAS)</td>
+                                <td>Нет</td>
+                                <td>Нет</td>
+                                <td>Нет</td>
+                                <td>✓ (360° LiDAR + Vision)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="k1-specs-footer" style="margin-top: var(--space-xl); text-align: center;">
+                    <a href="asa.html" class="btn-outline btn-specs">Узнать больше о системах безопасности</a>
                 </div>
             </div>
         </section>
