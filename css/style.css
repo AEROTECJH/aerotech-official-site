@@ -224,7 +224,6 @@ body.is-loading {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    animation: loader-glow 4s ease-in-out infinite;
 }
 
 .loader-logo__caption {
@@ -294,15 +293,6 @@ body.is-loading {
     }
     to {
         transform: rotate(360deg);
-    }
-}
-
-@keyframes loader-glow {
-    0%, 100% {
-        filter: drop-shadow(0 0 20px rgba(0, 229, 204, 0.4));
-    }
-    50% {
-        filter: drop-shadow(0 0 40px rgba(0, 229, 204, 0.7));
     }
 }
 
@@ -435,7 +425,6 @@ body.is-loading {
 
 .nav-logo:hover .logo-text {
     color: var(--accent-secondary);
-    text-shadow: var(--shadow-glow);
 }
 
 .logo-caption {
@@ -1543,16 +1532,6 @@ body.is-loading {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    animation: logoGlow 5s ease-in-out infinite;
-}
-
-@keyframes logoGlow {
-    0%, 100% {
-        filter: drop-shadow(0 0 20px rgba(0, 229, 204, 0.4));
-    }
-    50% {
-        filter: drop-shadow(0 0 40px rgba(0, 229, 204, 0.6));
-    }
 }
 
 .hero-logo .logo-caption {
