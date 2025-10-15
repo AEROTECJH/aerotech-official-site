@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARLIST TECH | Концерн</title>
+    <meta name="description" content="ARLIST TECH — инженерный концерн, объединяющий AEROTECH, ARLIST AI и ARLIST CIVIL UAV MANUFACTURE.">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#0A0A0A">
+    <meta property="og:title" content="ARLIST TECH | Концерн">
+    <meta property="og:description" content="Концерн ARLIST TECH объединяет разработки в области авиационных технологий и искусственного интеллекта.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://arlist.tech/ArlistTech.html">
+    <meta property="og:site_name" content="ARLIST TECH">
+    <meta property="og:image" content="https://arlist.tech/images/k1-drone-MAINVIEW.jpg">
+    <meta property="og:locale" content="ru_RU">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="ARLIST TECH | Концерн">
+    <meta name="twitter:description" content="Концерн ARLIST TECH объединяет разработки в области авиационных технологий и искусственного интеллекта.">
+    <meta name="twitter:image" content="https://arlist.tech/images/k1-drone-MAINVIEW.jpg">
+    <link rel="canonical" href="https://arlist.tech/ArlistTech.html">
+    <link rel="alternate" href="https://arlist.tech/ArlistTech.html" hreflang="ru-RU">
+    <link rel="alternate" href="https://arlist.tech/ArlistTech.html" hreflang="x-default">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Orbitron:wght@400;500;600;700;900&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "ARLIST TECH",
+        "url": "https://arlist.tech/ArlistTech.html",
+        "logo": "https://arlist.tech/favicon.ico",
+        "member": [
+            {
+                "@type": "Organization",
+                "name": "AEROTECH",
+                "url": "https://arlist.tech/"
+            }
+        ]
+    }
+    </script>
+    <style>
+        .arlist-tech-logo {
+            font-family: 'Orbitron', 'IBM Plex Mono', monospace;
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            background: linear-gradient(135deg, #00c0c0 0%, #00ffff 50%, #00c0c0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-align: center;
+            margin: 2rem 0;
+            position: relative;
+            animation: glow 3s ease-in-out infinite;
+        }
+
+        @keyframes glow {
+            0%, 100% {
+                filter: drop-shadow(0 0 20px rgba(0, 255, 255, 0.3));
+            }
+            50% {
+                filter: drop-shadow(0 0 30px rgba(0, 255, 255, 0.6));
+            }
+        }
+
+        .arlist-tech-hero {
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: var(--space-xl) var(--space-md);
+        }
+
+        .arlist-tech-subtitle {
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            color: var(--text-secondary);
+            margin-bottom: var(--space-xl);
+            text-align: center;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .arlist-entities {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-lg);
+            padding: var(--space-xl) 0;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .arlist-entity-card {
+            background: rgba(0, 192, 192, 0.05);
+            border: 1px solid rgba(0, 192, 192, 0.2);
+            border-radius: 12px;
+            padding: var(--space-lg);
+            transition: all 0.3s ease;
+        }
+
+        .arlist-entity-card:hover {
+            border-color: rgba(0, 192, 192, 0.5);
+            background: rgba(0, 192, 192, 0.08);
+            transform: translateY(-5px);
+        }
+
+        .arlist-entity-title {
+            font-family: 'Orbitron', 'IBM Plex Mono', monospace;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--color-primary);
+            margin-bottom: var(--space-md);
+        }
+
+        .arlist-entity-description {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .arlist-section-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            color: var(--text-primary);
+            text-align: center;
+            margin-bottom: var(--space-xl);
+        }
+    </style>
+</head>
+<body>
+    <nav class="main-nav" role="navigation" aria-label="Главная навигация">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="logo-text">AEROTECH</span>
+                <span class="logo-caption">Является частью концерна ARLIST TECH</span>
+            </div>
+            <button class="nav-toggle" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="primary-navigation">
+                <span class="nav-toggle__bars">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </span>
+                <span class="nav-toggle__close" aria-hidden="true"></span>
+            </button>
+            <div class="nav-menu" id="primary-navigation">
+                <button type="button" class="nav-menu__close" aria-label="Закрыть меню">Закрыть</button>
+                <a href="index.html#about">О нас</a>
+                <a href="index.html#applications">Области применения</a>
+                <a href="index.html#technology">Технологии</a>
+                <a href="ArlistTech.html" class="active">ARLIST TECH</a>
+                <a href="k1.html">Платформа K1</a>
+                <a href="synergia.html">Synergia 1.0</a>
+                <a href="sr.html">SR</a>
+                <a href="index.html#gallery">Галерея</a>
+                <a href="index.html#faq">FAQ</a>
+                <a href="index.html#contact">Контакты</a>
+            </div>
+        </div>
+    </nav>
+
+    <main id="main-content">
+        <section class="hero-section arlist-tech-hero" aria-label="ARLIST TECH">
+            <div class="hero-background" aria-hidden="true">
+                <canvas id="hero-canvas" class="hero-canvas" aria-hidden="true"></canvas>
+            </div>
+            <div class="container">
+                <h1 class="arlist-tech-logo">Arlist Tech</h1>
+                <p class="arlist-tech-subtitle">
+                    Инженерный концерн, объединяющий передовые разработки в области авиационных технологий, искусственного интеллекта и беспилотных систем
+                </p>
+            </div>
+        </section>
+
+        <section class="arlist-overview">
+            <div class="container">
+                <h2 class="arlist-section-title">Структура концерна</h2>
+                <p class="section-intro" style="text-align: center; max-width: 900px; margin: 0 auto var(--space-xl);">
+                    ARLIST TECH представляет собой экосистему инженерных компаний, работающих в тесной синергии для создания инновационных решений в области авиации и искусственного интеллекта.
+                </p>
+
+                <div class="arlist-entities">
+                    <article class="arlist-entity-card">
+                        <h3 class="arlist-entity-title">AEROTECH</h3>
+                        <p class="arlist-entity-description">
+                            Разработка и производство беспилотных авиационных платформ для критически важных задач. 
+                            Флагманская платформа K1 — модульный БПЛА с точностью позиционирования до 1 см, автономностью 
+                            до 2 часов и возможностью быстрой смены полезных нагрузок. Собственное производство композитных 
+                            деталей на 3D-принтерах, аэродинамическое моделирование и полевые испытания.
+                        </p>
+                    </article>
+
+                    <article class="arlist-entity-card">
+                        <h3 class="arlist-entity-title">ARLIST AI</h3>
+                        <p class="arlist-entity-description">
+                            Разработка систем искусственного интеллекта для авиационных и наземных применений. 
+                            Компьютерное зрение для распознавания объектов в реальном времени, системы предиктивного 
+                            управления полётом, голосовые ассистенты и интеллектуальная обработка телеметрии. 
+                            Создание нейросетевых моделей для автономной навигации и принятия решений в сложных условиях.
+                        </p>
+                    </article>
+
+                    <article class="arlist-entity-card">
+                        <h3 class="arlist-entity-title">ARLIST CIVIL UAV MANUFACTURE</h3>
+                        <p class="arlist-entity-description">
+                            Производственное подразделение, специализирующееся на выпуске гражданских беспилотных систем. 
+                            Разработка БПЛА для коммерческой логистики, медицинской доставки, инспекции инфраструктуры 
+                            и сельскохозяйственного мониторинга. Полный цикл производства от проектирования до 
+                            сертификации и послепродажного обслуживания.
+                        </p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="arlist-synergy" style="padding: var(--space-xl) 0; background: rgba(0, 192, 192, 0.03);">
+            <div class="container">
+                <h2 class="arlist-section-title">Синергия компаний</h2>
+                <div class="arlist-overview-grid">
+                    <div class="about-content" style="max-width: 1000px; margin: 0 auto;">
+                        <p class="about-text" style="text-align: center; margin-bottom: var(--space-md);">
+                            Компании концерна работают как единая экосистема, обмениваясь технологиями, экспертизой и ресурсами. 
+                            ARLIST AI разрабатывает интеллектуальные системы управления, которые интегрируются в платформы AEROTECH. 
+                            ARLIST CIVIL UAV MANUFACTURE использует наработки обеих компаний для создания коммерческих продуктов.
+                        </p>
+                        <p class="about-text" style="text-align: center;">
+                            Такая структура позволяет быстро внедрять инновации, сокращать время разработки и обеспечивать 
+                            высокое качество продукции на всех этапах — от исследований до серийного производства.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="arlist-contact" style="padding: var(--space-xl) 0;">
+            <div class="container">
+                <div class="arlist-contact-card" style="text-align: center; max-width: 800px; margin: 0 auto;">
+                    <h2>Сотрудничество с концерном</h2>
+                    <p style="margin: var(--space-md) 0;">
+                        Заинтересованы в сотрудничестве с ARLIST TECH? Мы открыты для партнёрства, 
+                        совместных проектов и обсуждения инвестиционных возможностей.
+                    </p>
+                    <div class="arlist-contact-actions" style="margin-top: var(--space-lg);">
+                        <a href="https://forms.yandex.ru/u/68e14d2084227c8bc2c7d282/?page=1" target="_blank" rel="noopener noreferrer" class="btn-gradient btn-large">Связаться с нами</a>
+                        <a href="index.html" class="btn-outline btn-large" style="margin-left: var(--space-md);">Вернуться на главную</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span class="logo-text">AEROTECH</span>
+                    <span class="logo-caption">Является частью концерна ARLIST TECH</span>
+                </div>
+                <div class="footer-text">
+                    © 2025 ARLIST TECH. Все права защищены.
+                    <a href="privacy.html" class="footer-link">Политика конфиденциальности</a>
+                </div>
+                <div class="footer-social">
+                    <a href="https://github.com/AEROTECJH/aerotech-official-site" target="_blank" rel="noopener noreferrer" class="github-link" aria-label="Наш репозиторий на GitHub">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 0C5.374 0 0 5.373 0 12 0 17.302 3.438 21.8 8.207 23.387c.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            <div class="arlist-signature">ARLIST TECH</div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
