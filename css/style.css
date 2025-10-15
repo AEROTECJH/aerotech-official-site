@@ -1806,17 +1806,33 @@ body.is-loading {
     /* Description section */
     .k1-description {
         padding: var(--space-xl) 0 0;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+    
+    .section-title {
+        font-size: clamp(1.6rem, 6vw, 2.2rem);
+        margin-bottom: var(--space-lg);
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        hyphens: auto;
+        text-align: left;
     }
     
     .k1-subtitle {
         font-size: 1.1rem;
-        margin-bottom: 20px;
+        margin-bottom: 16px;
+        line-height: 1.4;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
     }
     
     .k1-text {
         font-size: 1.05rem;
         line-height: 1.65;
         margin-bottom: var(--space-lg);
+        word-wrap: break-word;
+        overflow-wrap: break-word;
     }
     
     /* Sticky CTA redesign for mobile */
@@ -1835,11 +1851,21 @@ body.is-loading {
         box-shadow: 0 8px 24px rgba(0, 87, 255, 0.25);
     }
     
+    .k1-sticky-body p {
+        font-size: 0.9rem;
+        line-height: 1.5;
+        margin-bottom: 12px;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+    }
+    
     .k1-sticky-label {
         font-size: 0.8rem;
         text-align: center;
         line-height: 1.4;
         margin-bottom: 4px;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
     }
     
     .k1-sticky-actions {
@@ -5158,6 +5184,23 @@ section {
     .k1-hero-grid {
         gap: var(--space-xl);
         grid-template-columns: 1fr;
+    }
+    
+    .hero-title,
+    .hero-subtitle {
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        hyphens: auto;
+    }
+    
+    .hero-title {
+        font-size: clamp(1.75rem, 6vw, 2.5rem);
+        line-height: 1.25;
+    }
+    
+    .hero-subtitle {
+        font-size: clamp(1rem, 4vw, 1.2rem);
+        line-height: 1.6;
     }
     
     /* K1 Specs Table Mobile */
