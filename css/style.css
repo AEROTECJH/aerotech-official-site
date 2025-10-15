@@ -1751,57 +1751,47 @@ body.is-loading {
     /* K1 Showcase Mobile Redesign */
     .k1-showcase-section {
         padding: 60px 0;
-        background: var(--bg-secondary);
+        min-height: 500px;
+    }
+    
+    .k1-showcase-section::before {
+        opacity: 0.2;
     }
     
     .k1-content {
         grid-template-columns: 1fr;
         gap: 0;
         max-width: 100%;
-        overflow: hidden;
     }
     
     /* Mobile-first image styling */
     .k1-image-container {
-        border-radius: 0;
-        border: none;
-        border-bottom: 1px solid rgba(0, 192, 192, 0.2);
-        margin: 0 -20px;
+        display: none;
     }
     
     .k1-image {
-        height: 280px;
-        object-fit: cover;
-        object-position: center;
-        background: var(--bg-color);
+        /* No longer needed */
     }
     
     /* Always show overlay on mobile */
     .k1-image-overlay {
-        transform: translateY(0);
-        background: linear-gradient(transparent, rgba(10, 10, 10, 0.95));
-        padding: 24px 20px 20px;
+        /* No longer needed */
     }
     
     .k1-specs {
-        flex-direction: column;
-        gap: 16px;
+        /* No longer needed */
     }
     
     .spec-item {
-        display: grid;
-        grid-template-columns: auto 1fr;
-        gap: 12px;
-        align-items: baseline;
+        /* No longer needed */
     }
     
     .spec-label {
-        font-size: 0.75rem;
+        /* No longer needed */
     }
     
     .spec-value {
-        font-size: 0.9rem;
-        text-align: right;
+        /* No longer needed */
     }
     
     /* Description section */
@@ -1809,6 +1799,7 @@ body.is-loading {
         padding: var(--space-xl) 0 0;
         padding-left: 0 !important;
         padding-right: 0 !important;
+        max-width: 100%;
     }
     
     .section-title {
@@ -3094,6 +3085,7 @@ section {
     background: var(--bg-color);
     padding: 150px 0;
     position: relative;
+    min-height: 700px;
 }
 
 .k1-showcase-section::before {
@@ -3103,14 +3095,30 @@ section {
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(135deg, transparent 0%, rgba(0, 192, 192, 0.03) 50%, transparent 100%);
+    background-image: url('../images/k1-drone-MAINVIEW.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.15;
+    z-index: 1;
+}
+
+.k1-showcase-section::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, rgba(10, 10, 10, 0.95) 0%, rgba(10, 10, 10, 0.85) 50%, rgba(10, 10, 10, 0.7) 100%);
+    z-index: 1;
 }
 
 .k1-content {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    align-items: center;
+    grid-template-columns: 1fr;
+    gap: 0;
+    align-items: flex-start;
     max-width: 1400px;
     margin: 0 auto;
     position: relative;
@@ -3118,75 +3126,49 @@ section {
 }
 
 .k1-image-container {
-    position: relative;
-    overflow: hidden;
-    border-radius: 20px;
-    background: var(--bg-secondary);
-    border: 1px solid var(--border-color);
-    transition: all 0.3s ease;
+    display: none;
 }
 
 .k1-image-container:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 20px 60px rgba(0, 192, 192, 0.1);
-    border-color: var(--accent-color);
+    /* No longer needed - image is now a background */
 }
 
 .k1-image {
-    width: 100%;
-    height: 400px;
-    object-fit: cover;
-    object-position: center;
-    transition: transform 0.5s ease;
+    /* No longer needed - image is now a background */
 }
 
 .k1-image-container:hover .k1-image {
-    transform: scale(1.05);
+    /* No longer needed - image is now a background */
 }
 
 .k1-image-overlay {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: linear-gradient(transparent, rgba(10, 10, 10, 0.9));
-    padding: 30px;
-    transform: translateY(100%);
-    transition: transform 0.5s ease;
+    /* No longer needed - image is now a background */
 }
 
 .k1-image-container:hover .k1-image-overlay {
-    transform: translateY(0);
+    /* No longer needed - image is now a background */
 }
 
 .k1-specs {
-    display: flex;
-    gap: 30px;
+    /* No longer needed - overlay removed */
 }
 
 .spec-item {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
+    /* No longer needed - overlay removed */
 }
 
 .spec-label {
-    font-family: var(--font-mono);
-    font-size: 0.8rem;
-    color: var(--text-secondary);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
+    /* No longer needed - overlay removed */
 }
 
 .spec-value {
-    font-family: var(--font-mono);
-    font-size: 1rem;
-    color: var(--accent-color);
-    font-weight: 600;
+    /* No longer needed - overlay removed */
 }
 
 .k1-description {
-    padding-left: 20px;
+    padding-left: 0;
+    max-width: 800px;
+    text-align: left;
 }
 
 
