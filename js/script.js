@@ -4,11 +4,9 @@ const $$ = (selector) => document.querySelectorAll(selector);
 
 // Feature flags — временные скрытия (легко откатить, поменяв true -> false)
 const FeatureFlags = {
-    hideArlistBranding: true, // скрыть подпись «Является частью концерна ARLIST TECH»
+    hideArlistBranding: false, // НЕ скрываем подпись «Является частью концерна ARLIST TECH»
     hidePages: {
-        arlist: true,
         synergia: true,
-        asa: true,
     },
     hideCustomersMentions: true // скрыть упоминания заказчиков/инвесторов
 };
@@ -17,15 +15,7 @@ function applyFeatureFlags() {
     try {
         // Перенаправление со скрытых страниц
         const path = (location.pathname || '').toLowerCase();
-        if (FeatureFlags.hidePages.arlist && path.endsWith('/arlist-tech.html')) {
-            location.replace('workinprogress.html');
-            return;
-        }
         if (FeatureFlags.hidePages.synergia && path.endsWith('/synergia.html')) {
-            location.replace('workinprogress.html');
-            return;
-        }
-        if (FeatureFlags.hidePages.asa && path.endsWith('/asa.html')) {
             location.replace('workinprogress.html');
             return;
         }
@@ -42,9 +32,7 @@ function applyFeatureFlags() {
 
         // Скрытие ссылок на скрытые страницы по сайту (меню, карточки и т.п.)
         const hideHrefParts = [];
-        if (FeatureFlags.hidePages.arlist) hideHrefParts.push('arlist-tech.html');
         if (FeatureFlags.hidePages.synergia) hideHrefParts.push('synergia.html');
-        if (FeatureFlags.hidePages.asa) hideHrefParts.push('asa.html');
         if (hideHrefParts.length) {
             $$('a[href]').forEach(a => {
                 const href = (a.getAttribute('href') || '').toLowerCase();
@@ -257,7 +245,7 @@ class PageLoader {
 
         const logoCaption = document.createElement('span');
         logoCaption.className = 'loader-logo__caption';
-        logoCaption.textContent = 'Является частью концерна ARLIST TECH';
+        logoCaption.textContent = 'Концерн arlist tech';
 
         const ring = document.createElement('div');
         ring.className = 'loader-ring';
