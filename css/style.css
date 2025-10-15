@@ -1758,6 +1758,7 @@ body.is-loading {
         grid-template-columns: 1fr;
         gap: 0;
         max-width: 100%;
+        overflow: hidden;
     }
     
     /* Mobile-first image styling */
