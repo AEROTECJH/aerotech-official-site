@@ -118,6 +118,7 @@ video {
     --space-2xl: 3rem;
     --space-3xl: 4rem;
     --space-4xl: 6rem;
+    --space-xxl: 8rem;
     
     /* Layout */
     --nav-height: 72px;
@@ -143,6 +144,12 @@ video {
     --shadow-xl: 0 20px 60px rgba(0, 0, 0, 0.7);
     --shadow-glow: 0 0 30px rgba(0, 229, 204, 0.3);
     --shadow-glow-secondary: 0 0 30px rgba(0, 180, 255, 0.3);
+    
+    /* Surface properties */
+    --surface-gradient: linear-gradient(135deg, rgba(10, 10, 10, 0.95), rgba(26, 26, 26, 0.95));
+    --surface-border: rgba(0, 192, 192, 0.2);
+    --surface-glow: 0 20px 60px rgba(0, 192, 192, 0.15);
+    --surface-blur: 10px;
 }
 
 body {
