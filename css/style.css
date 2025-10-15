@@ -150,6 +150,18 @@ video {
     --surface-border: rgba(0, 192, 192, 0.2);
     --surface-glow: 0 20px 60px rgba(0, 192, 192, 0.15);
     --surface-blur: 10px;
+    
+    /* Glassmorphism properties */
+    --glass-bg: rgba(26, 26, 26, 0.4);
+    --glass-border: rgba(255, 255, 255, 0.18);
+    --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.37);
+    --glass-blur: 16px;
+    --glass-highlight: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+    
+    /* Liquid glass properties */
+    --liquid-glow-1: rgba(0, 229, 204, 0.4);
+    --liquid-glow-2: rgba(0, 180, 255, 0.4);
+    --liquid-glow-3: rgba(0, 87, 255, 0.3);
 }
 
 body {
@@ -253,6 +265,123 @@ body.is-loading {
     to {
         transform: rotate(360deg);
     }
+}
+
+/* Glassmorphism and Liquid Glass Effects */
+@keyframes liquid-shimmer {
+    0%, 100% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+@keyframes liquid-glow-rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes liquid-pulse {
+    0%, 100% {
+        opacity: 0.5;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.05);
+    }
+}
+
+/* Glassmorphism utility class */
+.glass-effect {
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
+    position: relative;
+}
+
+.glass-effect::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: var(--glass-highlight);
+    opacity: 0.8;
+    pointer-events: none;
+}
+
+/* Liquid glass border effect */
+.liquid-glass-border {
+    position: relative;
+    isolation: isolate;
+}
+
+.liquid-glass-border::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: inherit;
+    padding: 2px;
+    background: linear-gradient(
+        135deg,
+        var(--liquid-glow-1),
+        var(--liquid-glow-2),
+        var(--liquid-glow-3),
+        var(--liquid-glow-1)
+    );
+    background-size: 300% 300%;
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity var(--transition-smooth);
+    animation: liquid-shimmer 8s ease-in-out infinite;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.liquid-glass-border:hover::before {
+    opacity: 1;
+}
+
+/* Liquid glass glow effect */
+.liquid-glow {
+    position: relative;
+}
+
+.liquid-glow::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(
+        circle,
+        var(--liquid-glow-1) 0%,
+        var(--liquid-glow-2) 40%,
+        transparent 70%
+    );
+    opacity: 0;
+    transform: translate(-50%, -50%);
+    filter: blur(30px);
+    transition: opacity var(--transition-smooth);
+    pointer-events: none;
+    z-index: -1;
+    animation: liquid-pulse 4s ease-in-out infinite;
+}
+
+.liquid-glow:hover::after {
+    opacity: 0.6;
 }
 
 @media (max-width: 600px) {
@@ -2123,11 +2252,13 @@ section {
 }
 
 .team-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border-color);
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
     border-radius: var(--radius-xl);
     padding: var(--space-xl);
-    box-shadow: var(--shadow-md);
+    box-shadow: var(--glass-shadow);
     display: grid;
     gap: var(--space-lg);
     position: relative;
@@ -2138,19 +2269,31 @@ section {
 .team-card::before {
     content: '';
     position: absolute;
-    top: -50%;
-    right: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle, rgba(0, 229, 204, 0.1) 0%, transparent 70%);
+    inset: -2px;
+    border-radius: inherit;
+    padding: 2px;
+    background: linear-gradient(
+        135deg,
+        var(--liquid-glow-1),
+        var(--liquid-glow-2),
+        var(--liquid-glow-3),
+        var(--liquid-glow-1)
+    );
+    background-size: 300% 300%;
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
     opacity: 0;
     transition: opacity var(--transition-smooth);
+    animation: liquid-shimmer 8s ease-in-out infinite;
+    pointer-events: none;
+    z-index: -1;
 }
 
 .team-card:hover {
     transform: translateY(-8px);
-    box-shadow: var(--shadow-lg), var(--shadow-glow);
-    border-color: rgba(0, 229, 204, 0.3);
+    box-shadow: var(--shadow-lg), var(--shadow-glow), 0 0 60px rgba(0, 229, 204, 0.2);
+    border-color: rgba(0, 229, 204, 0.4);
 }
 
 .team-card:hover::before {
@@ -2226,11 +2369,13 @@ section {
 }
 
 .advantage-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border-color);
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
     border-radius: var(--radius-lg);
     padding: var(--space-xl);
-    box-shadow: var(--shadow-sm);
+    box-shadow: var(--glass-shadow);
     display: grid;
     gap: var(--space-md);
     position: relative;
@@ -2248,16 +2393,45 @@ section {
     background: var(--accent-gradient);
     transition: height var(--transition-smooth);
     border-radius: 0 2px 2px 0;
+    z-index: 1;
+}
+
+.advantage-card::after {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: inherit;
+    padding: 2px;
+    background: linear-gradient(
+        135deg,
+        var(--liquid-glow-1),
+        var(--liquid-glow-2),
+        var(--liquid-glow-3),
+        var(--liquid-glow-1)
+    );
+    background-size: 300% 300%;
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity var(--transition-smooth);
+    animation: liquid-shimmer 8s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 0;
 }
 
 .advantage-card:hover {
     transform: translateY(-8px);
-    box-shadow: var(--shadow-lg), 0 12px 40px rgba(0, 229, 204, 0.15);
-    border-color: rgba(0, 229, 204, 0.3);
+    box-shadow: var(--shadow-lg), 0 12px 40px rgba(0, 229, 204, 0.25), 0 0 60px rgba(0, 229, 204, 0.15);
+    border-color: rgba(0, 229, 204, 0.4);
 }
 
 .advantage-card:hover::before {
     height: 100%;
+}
+
+.advantage-card:hover::after {
+    opacity: 1;
 }
 
 .advantage-card h3 {
@@ -2308,16 +2482,17 @@ section {
 }
 
 .application-item {
-    background: var(--bg-card);
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
     padding: var(--space-2xl) var(--space-xl);
     border-radius: var(--radius-lg);
-    border: 1px solid var(--border-color);
+    border: 1px solid var(--glass-border);
     transition: all var(--transition-smooth);
     text-align: left;
     position: relative;
     overflow: hidden;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    box-shadow: var(--glass-shadow);
 }
 
 .application-item::before {
@@ -2333,25 +2508,37 @@ section {
     );
     opacity: 0;
     transition: opacity var(--transition-smooth);
+    z-index: 1;
 }
 
 .application-item::after {
     content: '';
     position: absolute;
-    inset: 0;
+    inset: -2px;
     border-radius: inherit;
-    background: radial-gradient(circle at 0% 0%, 
-        rgba(0, 229, 204, 0.08), 
-        transparent 70%
+    padding: 2px;
+    background: linear-gradient(
+        135deg,
+        var(--liquid-glow-1),
+        var(--liquid-glow-2),
+        var(--liquid-glow-3),
+        var(--liquid-glow-1)
     );
+    background-size: 300% 300%;
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
     opacity: 0;
     transition: opacity var(--transition-smooth);
+    animation: liquid-shimmer 8s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 0;
 }
 
 .application-item:hover {
     transform: translateY(-8px) translateX(4px);
-    border-color: rgba(0, 229, 204, 0.4);
-    box-shadow: var(--shadow-lg), var(--shadow-glow);
+    border-color: rgba(0, 229, 204, 0.5);
+    box-shadow: var(--shadow-lg), var(--shadow-glow), 0 0 60px rgba(0, 229, 204, 0.2);
 }
 
 .application-item:hover::before,
@@ -2416,13 +2603,16 @@ section {
 }
 
 .tech-item {
-    background: var(--bg-card);
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
     padding: var(--space-2xl);
     border-radius: var(--radius-lg);
-    border: 1px solid var(--border-color);
+    border: 1px solid var(--glass-border);
     transition: all var(--transition-smooth);
     position: relative;
     overflow: hidden;
+    box-shadow: var(--glass-shadow);
 }
 
 .tech-item::before {
@@ -2433,33 +2623,42 @@ section {
     width: 100px;
     height: 100px;
     background: radial-gradient(circle, 
-        rgba(0, 229, 204, 0.1), 
+        rgba(0, 229, 204, 0.15), 
         transparent 70%
     );
     opacity: 0;
     transition: opacity var(--transition-smooth);
+    z-index: 0;
 }
 
 .tech-item::after {
     content: '';
     position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 3px;
-    background: linear-gradient(90deg, 
-        var(--accent-color), 
-        var(--accent-secondary)
+    inset: -2px;
+    border-radius: inherit;
+    padding: 2px;
+    background: linear-gradient(
+        90deg,
+        var(--liquid-glow-1),
+        var(--liquid-glow-2),
+        var(--liquid-glow-3),
+        var(--liquid-glow-1)
     );
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform var(--transition-smooth);
+    background-size: 300% 300%;
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity var(--transition-smooth);
+    animation: liquid-shimmer 8s ease-in-out infinite;
+    pointer-events: none;
+    z-index: -1;
 }
 
 .tech-item:hover {
-    border-color: rgba(0, 229, 204, 0.4);
+    border-color: rgba(0, 229, 204, 0.5);
     transform: translateY(-8px);
-    box-shadow: var(--shadow-lg), var(--shadow-glow);
+    box-shadow: var(--shadow-lg), var(--shadow-glow), 0 0 60px rgba(0, 229, 204, 0.2);
 }
 
 .tech-item:hover::before {
@@ -2467,7 +2666,7 @@ section {
 }
 
 .tech-item:hover::after {
-    transform: scaleX(1);
+    opacity: 1;
 }
 
 .tech-highlight {
@@ -2521,35 +2720,51 @@ section {
 }
 
 .project-item {
-    background: linear-gradient(135deg, var(--bg-secondary) 0%, rgba(26, 26, 26, 0.95) 100%);
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
     padding: 40px;
     border-radius: var(--radius-lg);
-    border: 1px solid var(--border-color);
+    border: 1px solid var(--glass-border);
     margin-bottom: 30px;
     position: relative;
     transition: transform var(--transition-smooth), box-shadow var(--transition-smooth), border-color var(--transition-smooth);
     overflow: hidden;
+    box-shadow: var(--glass-shadow);
 }
 
 .project-item::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(0, 192, 192, 0.05), transparent);
-    transition: left 1s ease;
+    inset: -2px;
+    border-radius: inherit;
+    padding: 2px;
+    background: linear-gradient(
+        90deg,
+        var(--liquid-glow-1),
+        var(--liquid-glow-2),
+        var(--liquid-glow-3),
+        var(--liquid-glow-1)
+    );
+    background-size: 300% 300%;
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity var(--transition-smooth);
+    animation: liquid-shimmer 8s ease-in-out infinite;
+    pointer-events: none;
+    z-index: -1;
 }
 
 .project-item:hover {
     border-color: var(--accent-color);
     transform: translateX(8px);
-    box-shadow: var(--shadow-lg), 0 0 30px rgba(0, 192, 192, 0.15);
+    box-shadow: var(--shadow-lg), 0 0 60px rgba(0, 192, 192, 0.25);
 }
 
 .project-item:hover::before {
-    left: 100%;
+    opacity: 1;
 }
 
 .project-item.active {
@@ -4311,30 +4526,42 @@ section {
     position: relative; 
     border-radius: var(--radius-lg); 
     overflow: hidden; 
-    border: 1px solid var(--border-color); 
-    box-shadow: var(--shadow-md); 
+    border: 1px solid var(--glass-border); 
+    box-shadow: var(--glass-shadow); 
     transition: all var(--transition-smooth); 
-    background: var(--bg-card);
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
 }
 
 .gallery-item:hover { 
     transform: translateY(-10px); 
     border-color: rgba(0, 229, 204, 0.5); 
-    box-shadow: var(--shadow-lg), var(--shadow-glow); 
+    box-shadow: var(--shadow-lg), var(--shadow-glow), 0 0 60px rgba(0, 229, 204, 0.2); 
 }
 
 .gallery-item::before { 
     content: ''; 
     position: absolute; 
-    inset: 0; 
-    background: radial-gradient(circle at top left, 
-        rgba(0, 229, 204, 0.15), 
-        transparent 60%
-    ); 
-    pointer-events: none; 
-    opacity: 0; 
-    transition: opacity var(--transition-smooth); 
-    z-index: 1;
+    inset: -2px;
+    border-radius: inherit;
+    padding: 2px;
+    background: linear-gradient(
+        135deg,
+        var(--liquid-glow-1),
+        var(--liquid-glow-2),
+        var(--liquid-glow-3),
+        var(--liquid-glow-1)
+    );
+    background-size: 300% 300%;
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity var(--transition-smooth);
+    animation: liquid-shimmer 8s ease-in-out infinite;
+    pointer-events: none;
+    z-index: -1;
 }
 
 .gallery-item:hover::before { 
