@@ -3,7 +3,169 @@
  * Handles documentation loading, navigation, and search
  */
 
-document.addEventListener('DOMContentLoaded', function() {
+// Password protection configuration
+const WIKI_CONFIG = {
+    // SHA-256 hash of the password "ANKARSAT71T33"
+    passwordHash: 'cb6fa42313897d0327f02c18b1067ed0a31234618cc166ddce09ce83acc64957',
+    sessionKey: 'wiki_authenticated'
+};
+
+/**
+ * Hash a string using SHA-256
+ */
+async function sha256(message) {
+    const msgBuffer = new TextEncoder().encode(message);
+    const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+    const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+    return hashHex;
+}
+
+/**
+ * Check if user is authenticated
+ */
+function isAuthenticated() {
+    return sessionStorage.getItem(WIKI_CONFIG.sessionKey) === 'true';
+}
+
+/**
+ * Show password prompt
+ */
+function showPasswordPrompt() {
+    // Create modal overlay
+    const overlay = document.createElement('div');
+    overlay.id = 'wiki-password-overlay';
+    overlay.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(10, 10, 10, 0.95);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 10000;
+    `;
+    
+    // Create modal content
+    const modal = document.createElement('div');
+    modal.style.cssText = `
+        background: #1a1a1a;
+        border: 1px solid #333;
+        border-radius: 8px;
+        padding: 40px;
+        max-width: 450px;
+        width: 90%;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    `;
+    
+    modal.innerHTML = `
+        <h2 style="color: #fff; margin: 0 0 10px 0; font-size: 24px; font-family: 'Montserrat', sans-serif;">Доступ к Wiki</h2>
+        <p style="color: #999; margin: 0 0 30px 0; font-size: 14px;">Для доступа к базе знаний требуется пароль</p>
+        <form id="wiki-password-form">
+            <input 
+                type="password" 
+                id="wiki-password-input" 
+                placeholder="Введите пароль" 
+                style="
+                    width: 100%;
+                    padding: 12px;
+                    background: #0a0a0a;
+                    border: 1px solid #333;
+                    border-radius: 4px;
+                    color: #fff;
+                    font-size: 16px;
+                    font-family: 'IBM Plex Mono', monospace;
+                    margin-bottom: 20px;
+                    box-sizing: border-box;
+                "
+                autocomplete="off"
+                required
+            />
+            <div id="wiki-password-error" style="color: #ff4444; font-size: 14px; margin-bottom: 15px; display: none;"></div>
+            <button 
+                type="submit" 
+                style="
+                    width: 100%;
+                    padding: 12px;
+                    background: linear-gradient(135deg, #4a90e2, #357abd);
+                    border: none;
+                    border-radius: 4px;
+                    color: #fff;
+                    font-size: 16px;
+                    font-weight: 600;
+                    cursor: pointer;
+                    font-family: 'Montserrat', sans-serif;
+                    transition: all 0.3s ease;
+                "
+                onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 5px 15px rgba(74, 144, 226, 0.4)';"
+                onmouseout="this.style.transform=''; this.style.boxShadow='';"
+            >
+                Войти
+            </button>
+        </form>
+    `;
+    
+    overlay.appendChild(modal);
+    document.body.appendChild(overlay);
+    
+    // Focus input
+    const input = document.getElementById('wiki-password-input');
+    setTimeout(() => input.focus(), 100);
+    
+    // Handle form submission
+    const form = document.getElementById('wiki-password-form');
+    const errorDiv = document.getElementById('wiki-password-error');
+    
+    form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        const password = input.value;
+        const hash = await sha256(password);
+        
+        if (hash === WIKI_CONFIG.passwordHash) {
+            // Correct password
+            sessionStorage.setItem(WIKI_CONFIG.sessionKey, 'true');
+            overlay.remove();
+            initializeWiki();
+        } else {
+            // Wrong password
+            errorDiv.textContent = 'Неверный пароль. Попробуйте еще раз.';
+            errorDiv.style.display = 'block';
+            input.value = '';
+            input.focus();
+            
+            // Shake animation
+            modal.style.animation = 'shake 0.5s';
+            setTimeout(() => {
+                modal.style.animation = '';
+            }, 500);
+        }
+    });
+    
+    // Add shake animation
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            75% { transform: translateX(10px); }
+        }
+    `;
+    document.head.appendChild(style);
+}
+
+/**
+ * Initialize wiki functionality
+ */
+function initializeWiki() {
+    // Show wiki content
+    const wikiContent = document.querySelector('.wiki-main');
+    if (wikiContent) {
+        wikiContent.style.display = 'block';
+    }
+    
     // Initialize navigation
     initNavigation();
     
@@ -21,6 +183,64 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Load default document if specified in URL
     loadFromURL();
+    
+    // Add logout functionality
+    addLogoutButton();
+}
+
+/**
+ * Add logout button to wiki
+ */
+function addLogoutButton() {
+    const heroSection = document.querySelector('.wiki-hero .container');
+    if (!heroSection) return;
+    
+    const logoutBtn = document.createElement('button');
+    logoutBtn.id = 'wiki-logout-btn';
+    logoutBtn.textContent = 'Выйти';
+    logoutBtn.style.cssText = `
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        padding: 8px 16px;
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 4px;
+        color: #fff;
+        font-size: 14px;
+        cursor: pointer;
+        font-family: 'Montserrat', sans-serif;
+        transition: all 0.3s ease;
+    `;
+    
+    logoutBtn.addEventListener('mouseenter', function() {
+        this.style.background = 'rgba(255, 255, 255, 0.15)';
+        this.style.borderColor = 'rgba(255, 255, 255, 0.3)';
+    });
+    
+    logoutBtn.addEventListener('mouseleave', function() {
+        this.style.background = 'rgba(255, 255, 255, 0.1)';
+        this.style.borderColor = 'rgba(255, 255, 255, 0.2)';
+    });
+    
+    logoutBtn.addEventListener('click', function() {
+        if (confirm('Вы уверены, что хотите выйти?')) {
+            sessionStorage.removeItem(WIKI_CONFIG.sessionKey);
+            location.reload();
+        }
+    });
+    
+    heroSection.style.position = 'relative';
+    heroSection.appendChild(logoutBtn);
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Check if user is authenticated
+    if (isAuthenticated()) {
+        initializeWiki();
+    } else {
+        showPasswordPrompt();
+    }
 });
 
 /**
