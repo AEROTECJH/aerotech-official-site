@@ -1,0 +1,245 @@
+/* Article Page Styles */
+.article-page-main {
+    min-height: 100vh;
+    background: var(--bg-primary);
+    padding-top: 100px;
+    padding-bottom: 60px;
+}
+
+.article-back {
+    margin-bottom: 2rem;
+}
+
+.back-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background: transparent;
+    color: var(--text-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.back-button:hover {
+    background: rgba(74, 158, 255, 0.1);
+    border-color: var(--accent-primary);
+    color: var(--accent-primary);
+    transform: translateX(-3px);
+}
+
+.back-button svg {
+    transition: transform 0.3s ease;
+}
+
+.back-button:hover svg {
+    transform: translateX(-3px);
+}
+
+.article-page-content {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 3rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* Markdown Styling */
+.article-page-content h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+.article-page-content h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.article-page-content h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+}
+
+.article-page-content h4 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.article-page-content p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--text-secondary);
+    margin-bottom: 1.25rem;
+}
+
+.article-page-content strong {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.article-page-content em {
+    font-style: italic;
+    color: var(--text-secondary);
+}
+
+.article-page-content ul,
+.article-page-content ol {
+    margin: 1.5rem 0;
+    padding-left: 2rem;
+    color: var(--text-secondary);
+}
+
+.article-page-content li {
+    margin-bottom: 0.75rem;
+    line-height: 1.6;
+}
+
+.article-page-content code {
+    font-family: 'IBM Plex Mono', monospace;
+    background: rgba(74, 158, 255, 0.1);
+    color: var(--accent-primary);
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.9em;
+}
+
+.article-page-content pre {
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    overflow-x: auto;
+}
+
+.article-page-content pre code {
+    background: transparent;
+    padding: 0;
+    color: var(--text-secondary);
+    display: block;
+    white-space: pre;
+}
+
+.article-page-content blockquote {
+    border-left: 4px solid var(--accent-primary);
+    padding-left: 1.5rem;
+    margin: 1.5rem 0;
+    color: var(--text-secondary);
+    font-style: italic;
+}
+
+.article-page-content a {
+    color: var(--accent-primary);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.article-page-content a:hover {
+    border-bottom-color: var(--accent-primary);
+}
+
+.article-page-content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin: 1.5rem 0;
+}
+
+.article-page-content hr {
+    border: none;
+    border-top: 1px solid var(--border-color);
+    margin: 2.5rem 0;
+}
+
+.article-page-content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+}
+
+.article-page-content th,
+.article-page-content td {
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--border-color);
+    text-align: left;
+}
+
+.article-page-content th {
+    background: rgba(74, 158, 255, 0.1);
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.article-page-content td {
+    color: var(--text-secondary);
+}
+
+/* Loading state */
+.article-page-content.loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 300px;
+    color: var(--text-secondary);
+}
+
+.article-page-content.loading::after {
+    content: 'Загрузка...';
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 1rem;
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .article-page-content {
+        padding: 2rem;
+    }
+
+    .article-page-content h1 {
+        font-size: 2rem;
+    }
+
+    .article-page-content h2 {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .article-page-main {
+        padding-top: 80px;
+    }
+
+    .article-page-content {
+        padding: 1.5rem;
+    }
+
+    .article-page-content h1 {
+        font-size: 1.75rem;
+    }
+}
