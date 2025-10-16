@@ -213,7 +213,8 @@ async function loadDocument(docPath) {
         const markdown = await response.text();
         
         // Parse markdown to HTML (using the markdown parser from blog)
-        const html = window.parseMarkdown ? window.parseMarkdown(markdown) : markdown;
+        const parseMarkdown = window.MarkdownParser ? window.MarkdownParser.parseMarkdown : null;
+        const html = parseMarkdown ? parseMarkdown(markdown) : markdown.replace(/\n/g, '<br>');
         
         // Extract title from first heading or use default
         const titleMatch = markdown.match(/^#\s+(.+)$/m);
