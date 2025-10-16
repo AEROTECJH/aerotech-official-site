@@ -1,0 +1,528 @@
+/* Wiki Styles */
+
+/* Hero Section */
+.wiki-hero {
+    background: linear-gradient(135deg, #0A0A0A 0%, #1a1a1a 100%);
+    padding: 120px 0 80px;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.wiki-hero-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 3rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 20px;
+    letter-spacing: 0.05em;
+}
+
+.wiki-hero-subtitle {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 40px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Search */
+.wiki-search {
+    max-width: 600px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.wiki-search-input {
+    width: 100%;
+    padding: 16px 50px 16px 20px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    color: #ffffff;
+    transition: all 0.3s ease;
+}
+
+.wiki-search-input:focus {
+    outline: none;
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.wiki-search-input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.wiki-search-icon {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(255, 255, 255, 0.5);
+    pointer-events: none;
+}
+
+/* Main Content Layout */
+.wiki-content-wrapper {
+    padding: 60px 0;
+    background: #0A0A0A;
+}
+
+.wiki-layout {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 60px;
+    align-items: start;
+}
+
+/* Sidebar */
+.wiki-sidebar {
+    position: sticky;
+    top: 100px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 24px;
+}
+
+.wiki-sidebar-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 20px;
+}
+
+/* Navigation */
+.wiki-nav-section {
+    margin-bottom: 24px;
+}
+
+.wiki-nav-section:last-child {
+    margin-bottom: 0;
+}
+
+.wiki-nav-section-title {
+    margin: 0 0 12px 0;
+}
+
+.wiki-nav-toggle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 8px 0;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.9);
+    cursor: pointer;
+    text-align: left;
+    transition: color 0.2s ease;
+}
+
+.wiki-nav-toggle:hover {
+    color: #ffffff;
+}
+
+.wiki-nav-toggle svg {
+    transition: transform 0.2s ease;
+}
+
+.wiki-nav-toggle[aria-expanded="false"] svg {
+    transform: rotate(-90deg);
+}
+
+.wiki-nav-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.wiki-nav-list li {
+    margin-bottom: 8px;
+}
+
+.wiki-nav-list li:last-child {
+    margin-bottom: 0;
+}
+
+.wiki-nav-list a {
+    display: block;
+    padding: 8px 12px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+.wiki-nav-list a:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: #ffffff;
+}
+
+.wiki-nav-list a.active {
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    font-weight: 500;
+}
+
+/* Main Content */
+.wiki-main-content {
+    min-height: 400px;
+}
+
+.wiki-welcome h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 20px;
+}
+
+.wiki-welcome p {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.6;
+    margin-bottom: 40px;
+}
+
+/* Wiki Cards */
+.wiki-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 24px;
+    margin-bottom: 40px;
+}
+
+.wiki-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 24px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.wiki-card:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-4px);
+}
+
+.wiki-card-icon {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 16px;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.wiki-card h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 12px;
+}
+
+.wiki-card p {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.6);
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* Info Box */
+.wiki-info-box {
+    background: rgba(255, 255, 255, 0.02);
+    border-left: 3px solid rgba(255, 255, 255, 0.3);
+    padding: 24px;
+    border-radius: 8px;
+    margin-bottom: 32px;
+}
+
+.wiki-info-box h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 16px;
+}
+
+.wiki-info-box ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.wiki-info-box li {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.8;
+    padding-left: 24px;
+    position: relative;
+}
+
+.wiki-info-box li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.wiki-info-box strong {
+    color: #ffffff;
+}
+
+/* Contributing Section */
+.wiki-contributing {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 24px;
+}
+
+.wiki-contributing h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 12px;
+}
+
+.wiki-contributing p {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.6;
+    margin: 0;
+}
+
+.wiki-contributing a {
+    color: #ffffff;
+    text-decoration: underline;
+    transition: opacity 0.2s ease;
+}
+
+.wiki-contributing a:hover {
+    opacity: 0.8;
+}
+
+/* Article Content Styles */
+.wiki-article {
+    max-width: 800px;
+}
+
+.wiki-article h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 16px;
+}
+
+.wiki-article h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin-top: 48px;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.wiki-article h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin-top: 32px;
+    margin-bottom: 16px;
+}
+
+.wiki-article h4 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.9);
+    margin-top: 24px;
+    margin-bottom: 12px;
+}
+
+.wiki-article p {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+.wiki-article ul,
+.wiki-article ol {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.8;
+    margin-bottom: 20px;
+    padding-left: 28px;
+}
+
+.wiki-article li {
+    margin-bottom: 8px;
+}
+
+.wiki-article code {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    padding: 2px 6px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.9em;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.wiki-article pre {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 16px;
+    overflow-x: auto;
+    margin-bottom: 20px;
+}
+
+.wiki-article pre code {
+    background: none;
+    border: none;
+    padding: 0;
+}
+
+.wiki-article blockquote {
+    border-left: 3px solid rgba(255, 255, 255, 0.3);
+    padding-left: 20px;
+    margin: 20px 0;
+    color: rgba(255, 255, 255, 0.6);
+    font-style: italic;
+}
+
+.wiki-article a {
+    color: #ffffff;
+    text-decoration: underline;
+    transition: opacity 0.2s ease;
+}
+
+.wiki-article a:hover {
+    opacity: 0.8;
+}
+
+.wiki-article img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin: 20px 0;
+}
+
+.wiki-article table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.95rem;
+}
+
+.wiki-article table th,
+.wiki-article table td {
+    padding: 12px;
+    text-align: left;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.wiki-article table th {
+    background: rgba(255, 255, 255, 0.05);
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.wiki-article table td {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* Breadcrumbs */
+.wiki-breadcrumbs {
+    margin-bottom: 24px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.9rem;
+}
+
+.wiki-breadcrumbs a {
+    color: rgba(255, 255, 255, 0.6);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.wiki-breadcrumbs a:hover {
+    color: #ffffff;
+}
+
+.wiki-breadcrumbs span {
+    color: rgba(255, 255, 255, 0.4);
+    margin: 0 8px;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .wiki-layout {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .wiki-sidebar {
+        position: static;
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .wiki-hero {
+        padding: 80px 0 60px;
+    }
+
+    .wiki-hero-title {
+        font-size: 2rem;
+    }
+
+    .wiki-hero-subtitle {
+        font-size: 1rem;
+    }
+
+    .wiki-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .wiki-article h1 {
+        font-size: 2rem;
+    }
+
+    .wiki-article h2 {
+        font-size: 1.6rem;
+    }
+
+    .wiki-article h3 {
+        font-size: 1.3rem;
+    }
+}
+
+/* Navigation Section Toggle State */
+.wiki-nav-section[aria-expanded="false"] .wiki-nav-list {
+    display: none;
+}
