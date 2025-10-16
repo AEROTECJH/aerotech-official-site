@@ -61,6 +61,27 @@
             </div>
         </section>
 
+        <!-- Фильтры и поиск -->
+        <section class="blog-filters-section">
+            <div class="container">
+                <div class="blog-filters">
+                    <div class="search-box">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9 17C13.4183 17 17 13.4183 17 9C17 4.58172 13.4183 1 9 1C4.58172 1 1 4.58172 1 9C1 13.4183 4.58172 17 9 17Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M19 19L14.65 14.65" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <input type="text" id="search-input" placeholder="Поиск по статьям..." aria-label="Поиск статей">
+                    </div>
+                    <div class="category-filters" id="category-filters">
+                        <button class="category-filter active" data-category="all">Все</button>
+                        <button class="category-filter" data-category="Разработка">Разработка</button>
+                        <button class="category-filter" data-category="Технологии">Технологии</button>
+                        <button class="category-filter" data-category="Компания">Компания</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Список новостей -->
         <section class="blog-news-section">
             <div class="container">
@@ -77,7 +98,16 @@
                             Публикация контента стала еще удобнее!
                         </p>
                         <div class="news-footer">
-                            <span class="news-author">Команда AEROTECH</span>
+                            <div class="news-meta">
+                                <span class="news-author">Команда AEROTECH</span>
+                                <span class="news-read-time" data-article="enhanced-features-demo">
+                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/>
+                                        <path d="M8 4V8L11 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                                    </svg>
+                                    <span class="read-time-text">~5 мин</span>
+                                </span>
+                            </div>
                             <button class="news-read-more" aria-label="Читать статью полностью">
                                 Читать далее
                                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -99,7 +129,16 @@
                             Прогресс разработки увеличился с 20% до 35%.
                         </p>
                         <div class="news-footer">
-                            <span class="news-author">Владимир Летуновский</span>
+                            <div class="news-meta">
+                                <span class="news-author">Владимир Летуновский</span>
+                                <span class="news-read-time" data-article="k1-development-update">
+                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/>
+                                        <path d="M8 4V8L11 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                                    </svg>
+                                    <span class="read-time-text">~4 мин</span>
+                                </span>
+                            </div>
                             <button class="news-read-more" aria-label="Читать статью полностью">
                                 Читать далее
                                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -121,7 +160,16 @@
                             Собственные принтеры и уникальные материалы.
                         </p>
                         <div class="news-footer">
-                            <span class="news-author">Команда R&D AEROTECH</span>
+                            <div class="news-meta">
+                                <span class="news-author">Команда R&D AEROTECH</span>
+                                <span class="news-read-time" data-article="3d-printing-innovations">
+                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/>
+                                        <path d="M8 4V8L11 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                                    </svg>
+                                    <span class="read-time-text">~3 мин</span>
+                                </span>
+                            </div>
                             <button class="news-read-more" aria-label="Читать статью полностью">
                                 Читать далее
                                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -143,7 +191,16 @@
                             а инженерное совершенство для критически важных задач.
                         </p>
                         <div class="news-footer">
-                            <span class="news-author">Владимир Летуновский</span>
+                            <div class="news-meta">
+                                <span class="news-author">Владимир Летуновский</span>
+                                <span class="news-read-time" data-article="aerotech-vision-2025">
+                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/>
+                                        <path d="M8 4V8L11 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                                    </svg>
+                                    <span class="read-time-text">~6 мин</span>
+                                </span>
+                            </div>
                             <button class="news-read-more" aria-label="Читать статью полностью">
                                 Читать далее
                                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -162,6 +219,24 @@
         <div class="article-modal-overlay" id="modal-overlay"></div>
         <div class="article-modal-content">
             <div class="article-modal-header">
+                <div class="article-share-buttons" id="share-buttons">
+                    <button class="share-button" id="share-copy" aria-label="Скопировать ссылку" title="Скопировать ссылку">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M13.5 10.5L17.5 6.5C18.881 5.119 18.881 2.881 17.5 1.5C16.119 0.119 13.881 0.119 12.5 1.5L8.5 5.5M6.5 9.5L2.5 13.5C1.119 14.881 1.119 17.119 2.5 18.5C3.881 19.881 6.119 19.881 7.5 18.5L11.5 14.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M7.5 12.5L12.5 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                    <button class="share-button" id="share-telegram" aria-label="Поделиться в Telegram" title="Поделиться в Telegram">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M18.75 1.25L8.75 11.25M18.75 1.25L12.5 18.75L8.75 11.25M18.75 1.25L1.25 7.5L8.75 11.25" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                    <button class="share-button" id="share-twitter" aria-label="Поделиться в Twitter" title="Поделиться в Twitter">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M19 2.01C18.24 2.69 17.38 3.25 16.47 3.68C15.83 2.96 14.94 2.51 13.97 2.41C13 2.31 12.02 2.57 11.23 3.15C10.44 3.73 9.89 4.59 9.7 5.56C9.51 6.53 9.69 7.54 10.2 8.38C8.56 8.3 6.96 7.85 5.52 7.06C4.08 6.27 2.84 5.17 1.88 3.84C1.33 4.77 1.14 5.88 1.35 6.95C1.56 8.02 2.16 8.98 3.04 9.63C2.4 9.61 1.78 9.44 1.22 9.14V9.19C1.22 10.24 1.59 11.26 2.27 12.06C2.95 12.86 3.89 13.39 4.92 13.57C4.33 13.73 3.71 13.76 3.11 13.65C3.41 14.57 4 15.37 4.79 15.94C5.58 16.51 6.53 16.82 7.51 16.84C5.93 18.08 3.98 18.75 2 18.75C1.66 18.75 1.33 18.73 1 18.69C3.03 19.99 5.4 20.68 7.82 20.68C14.74 20.68 18.52 14.77 18.52 9.65C18.52 9.47 18.52 9.29 18.51 9.11C19.27 8.56 19.94 7.87 20.49 7.08" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </div>
                 <button class="article-modal-close" id="modal-close" aria-label="Закрыть статью">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
