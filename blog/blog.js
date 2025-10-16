@@ -11,14 +11,111 @@
     const modalClose = document.getElementById('modal-close');
     const articleContent = document.getElementById('article-content');
     const newsCards = document.querySelectorAll('.news-card');
+    const searchInput = document.getElementById('blog-search-input');
+    const searchClear = document.getElementById('search-clear');
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const newsList = document.getElementById('news-list');
+    const shareTwitterBtn = document.getElementById('share-twitter');
+    const shareTelegramBtn = document.getElementById('share-telegram');
+    const shareCopyBtn = document.getElementById('share-copy');
+
+    // Current filter state
+    let currentCategory = 'all';
+    let currentSearchTerm = '';
+    let currentArticleName = '';
 
     // Check if device is mobile
     function isMobile() {
         return window.innerWidth <= 768;
     }
 
+    // Filter and search articles
+    function filterArticles() {
+        let visibleCount = 0;
+        
+        newsCards.forEach(card => {
+            const cardCategory = card.dataset.category || '';
+            const cardTitle = card.querySelector('.news-title')?.textContent.toLowerCase() || '';
+            const cardExcerpt = card.querySelector('.news-excerpt')?.textContent.toLowerCase() || '';
+            const cardAuthor = card.querySelector('.news-author')?.textContent.toLowerCase() || '';
+            
+            const matchesCategory = currentCategory === 'all' || cardCategory === currentCategory;
+            const matchesSearch = !currentSearchTerm || 
+                cardTitle.includes(currentSearchTerm) || 
+                cardExcerpt.includes(currentSearchTerm) ||
+                cardAuthor.includes(currentSearchTerm);
+            
+            if (matchesCategory && matchesSearch) {
+                card.classList.remove('hidden');
+                visibleCount++;
+            } else {
+                card.classList.add('hidden');
+            }
+        });
+        
+        // Show/hide no results message
+        const existingNoResults = newsList.querySelector('.no-results');
+        if (existingNoResults) {
+            existingNoResults.remove();
+        }
+        
+        if (visibleCount === 0) {
+            const noResults = document.createElement('div');
+            noResults.className = 'no-results';
+            noResults.innerHTML = `
+                <h3>Ничего не найдено</h3>
+                <p>Попробуйте изменить критерии поиска или выбрать другую категорию.</p>
+            `;
+            newsList.appendChild(noResults);
+        }
+    }
+
+    // Search functionality
+    if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+            currentSearchTerm = e.target.value.toLowerCase().trim();
+            
+            // Show/hide clear button
+            if (searchClear) {
+                searchClear.style.display = currentSearchTerm ? 'flex' : 'none';
+            }
+            
+            filterArticles();
+        });
+    }
+
+    // Clear search
+    if (searchClear) {
+        searchClear.addEventListener('click', () => {
+            if (searchInput) {
+                searchInput.value = '';
+                currentSearchTerm = '';
+                searchClear.style.display = 'none';
+                filterArticles();
+                searchInput.focus();
+            }
+        });
+    }
+
+    // Filter functionality
+    filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            // Update active state
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+            
+            // Update current category
+            currentCategory = button.dataset.category || 'all';
+            
+            // Filter articles
+            filterArticles();
+        });
+    });
+
     // Open article modal or navigate to article page
     function openArticle(articleName) {
+        currentArticleName = articleName;
+        
         // On mobile, navigate to article page
         if (isMobile()) {
             window.location.href = `article.html?article=${articleName}`;
@@ -67,6 +164,55 @@
                     </div>
                 `;
             });
+    }
+
+    // Share functionality
+    function shareArticle(platform) {
+        const url = window.location.origin + window.location.pathname;
+        const articleUrl = currentArticleName ? `${url}?article=${currentArticleName}` : url;
+        const title = document.querySelector('.news-title')?.textContent || 'Блог AEROTECH';
+        
+        switch(platform) {
+            case 'twitter':
+                window.open(`https://twitter.com/intent/tweet?url=${encodeURIComponent(articleUrl)}&text=${encodeURIComponent(title)}`, '_blank', 'width=600,height=400');
+                break;
+            case 'telegram':
+                window.open(`https://t.me/share/url?url=${encodeURIComponent(articleUrl)}&text=${encodeURIComponent(title)}`, '_blank', 'width=600,height=400');
+                break;
+            case 'copy':
+                navigator.clipboard.writeText(articleUrl).then(() => {
+                    // Visual feedback
+                    if (shareCopyBtn) {
+                        shareCopyBtn.classList.add('copied');
+                        const originalHTML = shareCopyBtn.innerHTML;
+                        shareCopyBtn.innerHTML = `
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        `;
+                        setTimeout(() => {
+                            shareCopyBtn.classList.remove('copied');
+                            shareCopyBtn.innerHTML = originalHTML;
+                        }, 2000);
+                    }
+                }).catch(err => {
+                    console.error('Failed to copy link:', err);
+                });
+                break;
+        }
+    }
+
+    // Share button listeners
+    if (shareTwitterBtn) {
+        shareTwitterBtn.addEventListener('click', () => shareArticle('twitter'));
+    }
+    
+    if (shareTelegramBtn) {
+        shareTelegramBtn.addEventListener('click', () => shareArticle('telegram'));
+    }
+    
+    if (shareCopyBtn) {
+        shareCopyBtn.addEventListener('click', () => shareArticle('copy'));
     }
 
     // Close article modal
