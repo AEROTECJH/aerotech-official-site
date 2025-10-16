@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wiki — AEROTECH</title>
+    <meta name="description" content="Документация и база знаний AEROTECH — техническая информация, руководства, спецификации беспилотных платформ.">
+    <meta name="keywords" content="AEROTECH, wiki, документация, руководства, технические спецификации, БПЛА">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#0A0A0A">
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="wiki.css">
+</head>
+<body>
+    <!-- Навигация -->
+    <nav class="main-nav" role="navigation" aria-label="Главная навигация">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="../index.html" style="text-decoration: none; color: inherit;">
+                    <span class="logo-text">AEROTECH</span>
+                    <span class="logo-caption">Концерн arlist tech</span>
+                </a>
+            </div>
+            <button class="nav-toggle" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="primary-navigation">
+                <span class="nav-toggle__bars">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </span>
+                <span class="nav-toggle__close" aria-hidden="true"></span>
+            </button>
+            <div class="nav-menu" id="primary-navigation">
+                <button type="button" class="nav-menu__close" aria-label="Закрыть меню">Закрыть</button>
+                <a href="../index.html#about">О нас</a>
+                <a href="../index.html#advantages">Наши преимущества</a>
+                <a href="../index.html#applications">Области применения</a>
+                <a href="../index.html#technology">Технологии</a>
+                <a href="../ArlistTech.html">ARLIST TECH</a>
+                <a href="../k1.html">Платформа K1</a>
+                <a href="../synergia.html">Synergia 1.0</a>
+                <a href="../sr.html">SR</a>
+                <a href="../index.html#gallery">Галерея</a>
+                <a href="../blog/blog.html">Блог</a>
+                <a href="index.html" class="active">Wiki</a>
+                <a href="../index.html#faq">FAQ</a>
+                <a href="../index.html#contact">Контакты</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Главный контент -->
+    <main id="main-content" class="wiki-main">
+        <!-- Hero секция wiki -->
+        <section class="wiki-hero">
+            <div class="container">
+                <h1 class="wiki-hero-title">WIKI ДОКУМЕНТАЦИЯ</h1>
+                <p class="wiki-hero-subtitle">База знаний и техническая документация платформ AEROTECH</p>
+                
+                <!-- Поиск -->
+                <div class="wiki-search">
+                    <input type="search" id="wiki-search-input" placeholder="Поиск по документации..." aria-label="Поиск по документации">
+                    <svg class="wiki-search-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M9 17A8 8 0 1 0 9 1a8 8 0 0 0 0 16zM19 19l-4.35-4.35" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+            </div>
+        </section>
+
+        <!-- Основной контент с сайдбаром -->
+        <div class="wiki-content-wrapper">
+            <div class="container">
+                <div class="wiki-layout">
+                    <!-- Сайдбар с навигацией -->
+                    <aside class="wiki-sidebar">
+                        <h2 class="wiki-sidebar-title">Разделы</h2>
+                        <nav class="wiki-nav" aria-label="Навигация по документации">
+                            <div class="wiki-nav-section">
+                                <h3 class="wiki-nav-section-title">
+                                    <button class="wiki-nav-toggle" aria-expanded="true">
+                                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M3 5L6 8L9 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                        Начало работы
+                                    </button>
+                                </h3>
+                                <ul class="wiki-nav-list">
+                                    <li><a href="pages/getting-started.html">Введение</a></li>
+                                    <li><a href="pages/quick-start.html">Быстрый старт</a></li>
+                                    <li><a href="pages/installation.html">Установка и настройка</a></li>
+                                </ul>
+                            </div>
+
+                            <div class="wiki-nav-section">
+                                <h3 class="wiki-nav-section-title">
+                                    <button class="wiki-nav-toggle" aria-expanded="true">
+                                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M3 5L6 8L9 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                        Платформы
+                                    </button>
+                                </h3>
+                                <ul class="wiki-nav-list">
+                                    <li><a href="pages/k1-overview.html">K1 - Обзор</a></li>
+                                    <li><a href="pages/k1-specifications.html">K1 - Технические характеристики</a></li>
+                                    <li><a href="pages/synergia-overview.html">Synergia 1.0 - Обзор</a></li>
+                                    <li><a href="pages/sr-overview.html">SR - Обзор</a></li>
+                                </ul>
+                            </div>
+
+                            <div class="wiki-nav-section">
+                                <h3 class="wiki-nav-section-title">
+                                    <button class="wiki-nav-toggle" aria-expanded="true">
+                                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M3 5L6 8L9 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                        Технологии
+                                    </button>
+                                </h3>
+                                <ul class="wiki-nav-list">
+                                    <li><a href="pages/3d-printing.html">3D печать</a></li>
+                                    <li><a href="pages/composite-materials.html">Композитные материалы</a></li>
+                                    <li><a href="pages/aerodynamics.html">Аэродинамика</a></li>
+                                </ul>
+                            </div>
+
+                            <div class="wiki-nav-section">
+                                <h3 class="wiki-nav-section-title">
+                                    <button class="wiki-nav-toggle" aria-expanded="true">
+                                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M3 5L6 8L9 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                        Разработка
+                                    </button>
+                                </h3>
+                                <ul class="wiki-nav-list">
+                                    <li><a href="pages/api-reference.html">API Reference</a></li>
+                                    <li><a href="pages/development-guide.html">Руководство разработчика</a></li>
+                                    <li><a href="pages/contributing.html">Участие в проекте</a></li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </aside>
+
+                    <!-- Основной контент -->
+                    <article class="wiki-main-content">
+                        <div class="wiki-welcome">
+                            <h2>Добро пожаловать в Wiki AEROTECH</h2>
+                            <p>Здесь вы найдете полную техническую документацию, руководства и справочные материалы по нашим беспилотным платформам и технологиям.</p>
+                            
+                            <div class="wiki-cards">
+                                <a href="pages/getting-started.html" class="wiki-card">
+                                    <div class="wiki-card-icon">
+                                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </div>
+                                    <h3>Начало работы</h3>
+                                    <p>Узнайте, как начать работу с платформами AEROTECH</p>
+                                </a>
+
+                                <a href="pages/k1-overview.html" class="wiki-card">
+                                    <div class="wiki-card-icon">
+                                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </div>
+                                    <h3>Платформа K1</h3>
+                                    <p>Техническая документация платформы K1</p>
+                                </a>
+
+                                <a href="pages/3d-printing.html" class="wiki-card">
+                                    <div class="wiki-card-icon">
+                                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </div>
+                                    <h3>Технологии</h3>
+                                    <p>3D печать, композиты и инновационные материалы</p>
+                                </a>
+
+                                <a href="pages/api-reference.html" class="wiki-card">
+                                    <div class="wiki-card-icon">
+                                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M16 18l2-2-2-2M8 6l-2 2 2 2M13 3l-2 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </div>
+                                    <h3>Для разработчиков</h3>
+                                    <p>API, SDK и руководства для разработчиков</p>
+                                </a>
+                            </div>
+
+                            <div class="wiki-info-box">
+                                <h3>Как пользоваться документацией</h3>
+                                <ul>
+                                    <li>Используйте <strong>поиск</strong> для быстрого нахождения нужной информации</li>
+                                    <li>Навигируйте по разделам в <strong>боковой панели</strong></li>
+                                    <li>Все статьи доступны в формате <strong>Markdown</strong> для удобного чтения</li>
+                                    <li>Документация постоянно обновляется и дополняется</li>
+                                </ul>
+                            </div>
+
+                            <div class="wiki-contributing">
+                                <h3>Участие в документации</h3>
+                                <p>Нашли ошибку или хотите дополнить документацию? Создайте pull request на <a href="https://github.com/AEROTECJH/aerotech-official-site" target="_blank" rel="noopener">GitHub</a>.</p>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Футер -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>AEROTECH</h3>
+                    <p>Инновационные беспилотные платформы для критически важных задач</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Навигация</h4>
+                    <ul>
+                        <li><a href="../index.html">Главная</a></li>
+                        <li><a href="../blog/blog.html">Блог</a></li>
+                        <li><a href="index.html">Wiki</a></li>
+                        <li><a href="../index.html#contact">Контакты</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Информация</h4>
+                    <ul>
+                        <li><a href="../privacy.html">Политика конфиденциальности</a></li>
+                        <li><a href="https://github.com/AEROTECJH/aerotech-official-site" target="_blank" rel="noopener">GitHub</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 AEROTECH. Концерн ARLIST TECH. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/script.js"></script>
+    <script src="wiki.js"></script>
+</body>
+</html>
