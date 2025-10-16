@@ -7,6 +7,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize navigation
     initNavigation();
     
+    // Initialize mobile sidebar toggle
+    initMobileSidebarToggle();
+    
     // Initialize category toggles
     initCategoryToggles();
     
@@ -51,6 +54,53 @@ function initNavigation() {
             navToggle.setAttribute('aria-expanded', 'false');
             document.body.style.overflow = '';
         }
+    });
+}
+
+/**
+ * Initialize mobile sidebar toggle
+ */
+function initMobileSidebarToggle() {
+    const sidebar = document.getElementById('wiki-sidebar');
+    if (!sidebar) return;
+    
+    // Create toggle button
+    const toggleBtn = document.createElement('button');
+    toggleBtn.className = 'wiki-sidebar-toggle';
+    toggleBtn.textContent = 'Категории документации';
+    toggleBtn.setAttribute('type', 'button');
+    toggleBtn.setAttribute('aria-label', 'Показать/скрыть категории');
+    toggleBtn.setAttribute('aria-expanded', 'false');
+    toggleBtn.setAttribute('aria-controls', 'wiki-sidebar');
+    
+    // Insert button before sidebar
+    sidebar.parentNode.insertBefore(toggleBtn, sidebar);
+    
+    // Toggle functionality
+    toggleBtn.addEventListener('click', function() {
+        const isActive = sidebar.classList.contains('active');
+        
+        if (isActive) {
+            sidebar.classList.remove('active');
+            this.classList.remove('active');
+            this.setAttribute('aria-expanded', 'false');
+        } else {
+            sidebar.classList.add('active');
+            this.classList.add('active');
+            this.setAttribute('aria-expanded', 'true');
+        }
+    });
+    
+    // Close sidebar when clicking on a document link (mobile only)
+    const docLinks = document.querySelectorAll('.wiki-doc-link');
+    docLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            if (window.innerWidth <= 768) {
+                sidebar.classList.remove('active');
+                toggleBtn.classList.remove('active');
+                toggleBtn.setAttribute('aria-expanded', 'false');
+            }
+        });
     });
 }
 
