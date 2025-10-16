@@ -65,6 +65,28 @@
         <section class="blog-news-section">
             <div class="container">
                 <div class="blog-news-grid" id="news-list">
+                    <!-- Новость о новых возможностях -->
+                    <article class="news-card" data-article="enhanced-features-demo">
+                        <div class="news-card-header">
+                            <span class="news-category">Технологии</span>
+                            <time class="news-date" datetime="2025-10-16">16 октября 2025</time>
+                        </div>
+                        <h2 class="news-title">Демонстрация новых возможностей блога</h2>
+                        <p class="news-excerpt">
+                            Теперь блог поддерживает встраивание видео, HTML-разметку и расширенное оформление статей. 
+                            Публикация контента стала еще удобнее!
+                        </p>
+                        <div class="news-footer">
+                            <span class="news-author">Команда AEROTECH</span>
+                            <button class="news-read-more" aria-label="Читать статью полностью">
+                                Читать далее
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </article>
+
                     <!-- Новость 1 -->
                     <article class="news-card" data-article="k1-development-update">
                         <div class="news-card-header">
@@ -177,6 +199,7 @@
     </footer>
 
     <script src="../js/script.js"></script>
+    <script src="markdown-parser.js"></script>
     <script src="blog.js"></script>
 </body>
 </html>
