@@ -88,6 +88,11 @@
     padding: 3rem 0;
 }
 
+.wiki-content-section .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
 .wiki-layout {
     display: grid;
     grid-template-columns: 280px 1fr;
