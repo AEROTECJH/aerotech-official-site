@@ -2,44 +2,38 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://arlist.tech/</loc>
-    <lastmod>2025-10-06</lastmod>
+    <lastmod>2025-10-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://arlist.tech/privacy.html</loc>
-    <lastmod>2025-10-06</lastmod>
+    <lastmod>2025-10-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <!-- In-page anchors are not listed per sitemap protocol; search engines will crawl sections -->
   <url>
     <loc>https://arlist.tech/synergia.html</loc>
-    <lastmod>2025-10-06</lastmod>
+    <lastmod>2025-10-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://arlist.tech/k1.html</loc>
-    <lastmod>2025-10-06</lastmod>
+    <lastmod>2025-10-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://arlist.tech/asa.html</loc>
-    <lastmod>2025-10-06</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>https://arlist.tech/sr.html</loc>
-    <lastmod>2025-10-06</lastmod>
+    <lastmod>2025-10-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://arlist.tech/arlist-tech.html</loc>
-    <lastmod>2025-10-06</lastmod>
+    <loc>https://arlist.tech/ArlistTech.html</loc>
+    <lastmod>2025-10-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
