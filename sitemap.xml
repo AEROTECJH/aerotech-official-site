@@ -44,6 +44,18 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://arlist.tech/blog/k1-development-update.html</loc>
+    <lastmod>2025-10-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://arlist.tech/blog/enhanced-features-demo.html</loc>
+    <lastmod>2025-10-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://arlist.tech/blog/article.html</loc>
     <lastmod>2025-10-26</lastmod>
     <changefreq>weekly</changefreq>
