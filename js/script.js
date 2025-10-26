@@ -563,8 +563,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // Плавная прокрутка
     new SmoothScroll();
 
-    // Анимации при скролле
-    new ScrollAnimations();
+    // Анимации при скролле - DISABLED to remove loading animations
+    // new ScrollAnimations();
 
     // Sticky CTA наблюдатель
     new StickyObserver();
