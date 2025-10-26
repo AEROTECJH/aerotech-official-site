@@ -474,23 +474,61 @@ class ScrollAnimations {
     }
 
     init() {
-    const animatedElements = $$('.feature-highlight, .contact-item, .team-card, .gallery-item, .tech-item, .faq-item, .project-item, .synergia-card, .synergia-card-compact, .arlist-panel, .arlist-focus-card, .arlist-highlight-card, .arlist-synergy-step, .arlist-contact-card, .advantage-card');
-
+        // Since we're using CSS animations, we only need to observe and add classes
+        const sections = $$('section');
+        
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
+                    entry.target.classList.add('is-visible');
+                    // Add stagger animation to children
+                    const children = entry.target.querySelectorAll('.advantage-card, .application-item, .tech-item, .gallery-item, .faq-item');
+                    children.forEach((child, index) => {
+                        setTimeout(() => {
+                            child.classList.add('is-visible');
+                        }, index * 100);
+                    });
                 }
             });
-        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+        }, { 
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
 
-        animatedElements.forEach(element => {
-            element.style.opacity = '0';
-            element.style.transform = 'translateY(30px)';
-            element.style.transition = 'opacity 0.6s cubic-bezier(0.4, 0.0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0.0, 0.2, 1)';
-            element.style.willChange = 'transform, opacity';
-            observer.observe(element);
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+
+        // Add parallax effect to hero section
+        this.addParallaxEffect();
+    }
+
+    addParallaxEffect() {
+        const hero = $('#hero');
+        if (!hero) return;
+
+        let ticking = false;
+        
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    const scrolled = window.pageYOffset;
+                    const heroContent = hero.querySelector('.hero-content');
+                    const heroBackground = hero.querySelector('.hero-background');
+                    
+                    if (heroContent && scrolled < window.innerHeight) {
+                        heroContent.style.transform = `translateY(${scrolled * 0.5}px)`;
+                        heroContent.style.opacity = 1 - (scrolled / window.innerHeight);
+                    }
+                    
+                    if (heroBackground && scrolled < window.innerHeight) {
+                        heroBackground.style.transform = `translateY(${scrolled * 0.3}px)`;
+                    }
+                    
+                    ticking = false;
+                });
+                ticking = true;
+            }
         });
     }
 }
@@ -594,6 +632,67 @@ class Lightbox {
     }
 }
 
+// Ripple effect for buttons
+class RippleEffect {
+    constructor() {
+        this.buttons = $$('.cta-button, .btn-gradient, .btn-outline');
+        this.init();
+    }
+
+    init() {
+        this.buttons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                const ripple = document.createElement('span');
+                const rect = button.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
+
+                ripple.style.width = ripple.style.height = size + 'px';
+                ripple.style.left = x + 'px';
+                ripple.style.top = y + 'px';
+                ripple.classList.add('ripple');
+
+                button.appendChild(ripple);
+
+                setTimeout(() => {
+                    ripple.remove();
+                }, 600);
+            });
+        });
+    }
+}
+
+// Smooth hover animations for cards
+class CardAnimations {
+    constructor() {
+        this.cards = $$('.advantage-card, .application-item, .tech-item, .gallery-item');
+        this.init();
+    }
+
+    init() {
+        this.cards.forEach(card => {
+            card.addEventListener('mouseenter', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+            });
+
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+            });
+        });
+    }
+}
+
 // Инициализация
 document.addEventListener('DOMContentLoaded', () => {
     // Применяем фичефлаги до инициализации UI
@@ -614,6 +713,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Анимации при скролле
     new ScrollAnimations();
+
+    // Ripple эффект для кнопок
+    new RippleEffect();
+
+    // Анимации карточек
+    new CardAnimations();
 
     // Sticky CTA наблюдатель
     new StickyObserver();
