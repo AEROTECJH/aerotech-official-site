@@ -127,7 +127,7 @@ class DroneComparator {
                 <div class="comparison-table-container" style="display: none;">
                     <div class="comparison-actions">
                         <button class="btn-outline btn-small comparison-reset">Начать заново</button>
-                        <button class="btn-gradient btn-small comparison-export">Экспорт в PDF</button>
+                        <button class="btn-gradient btn-small comparison-export">Распечатать</button>
                     </div>
                     <div class="comparison-table"></div>
                 </div>
@@ -144,7 +144,7 @@ class DroneComparator {
         return `
             <div class="comparison-model-card" data-model-id="${model.id}">
                 <div class="comparison-model-image">
-                    <img src="${model.image}" alt="${model.fullName}" onerror="this.src='/images/placeholder.jpg'">
+                    <img src="${model.image}" alt="${model.fullName}" data-fallback="true">
                 </div>
                 <div class="comparison-model-info">
                     <h3>${model.name}</h3>
@@ -186,7 +186,19 @@ class DroneComparator {
         
         // Export button
         tool.querySelector('.comparison-export').addEventListener('click', () => {
-            this.exportToPDF();
+            this.printComparison();
+        });
+        
+        // Setup image error handling
+        this.setupImageErrorHandling(tool);
+    }
+
+    setupImageErrorHandling(container) {
+        container.querySelectorAll('img[data-fallback]').forEach(img => {
+            img.addEventListener('error', () => {
+                img.src = '/images/placeholder.jpg';
+                img.removeAttribute('data-fallback');
+            });
         });
     }
 
@@ -246,6 +258,9 @@ class DroneComparator {
         container.style.display = 'block';
         table.innerHTML = this.renderComparisonTable();
         
+        // Setup image error handling for table images
+        this.setupImageErrorHandling(table);
+        
         // Scroll to table
         container.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
@@ -295,7 +310,7 @@ class DroneComparator {
             html += `
                 <th class="model-column">
                     <div class="model-header">
-                        <img src="${model.image}" alt="${model.name}" onerror="this.src='/images/placeholder.jpg'">
+                        <img src="${model.image}" alt="${model.name}" data-fallback="true">
                         <h4>${model.fullName}</h4>
                         <span class="model-category">${model.category}</span>
                     </div>
@@ -395,13 +410,13 @@ class DroneComparator {
         }
     }
 
-    exportToPDF() {
-        // This would generate a PDF - for now, we'll create a printable version
+    printComparison() {
+        // Print the comparison table
         window.print();
         
-        // Track export
+        // Track print
         if (window.AerotechAnalytics) {
-            window.AerotechAnalytics.track('comparison_exported', {
+            window.AerotechAnalytics.track('comparison_printed', {
                 models: this.selectedModels
             });
         }
