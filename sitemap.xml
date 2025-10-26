@@ -2,38 +2,74 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://arlist.tech/</loc>
-    <lastmod>2025-10-18</lastmod>
+    <lastmod>2025-10-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://arlist.tech/privacy.html</loc>
-    <lastmod>2025-10-18</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2025-10-26</lastmod>
+    <changefreq>quarterly</changefreq>
+    <priority>0.5</priority>
   </url>
   <!-- In-page anchors are not listed per sitemap protocol; search engines will crawl sections -->
   <url>
     <loc>https://arlist.tech/synergia.html</loc>
-    <lastmod>2025-10-18</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2025-10-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://arlist.tech/k1.html</loc>
-    <lastmod>2025-10-18</lastmod>
+    <lastmod>2025-10-26</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://arlist.tech/sr.html</loc>
-    <lastmod>2025-10-18</lastmod>
-    <changefreq>weekly</changefreq>
+    <lastmod>2025-10-26</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://arlist.tech/ArlistTech.html</loc>
-    <lastmod>2025-10-18</lastmod>
+    <lastmod>2025-10-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://arlist.tech/blog/blog.html</loc>
+    <lastmod>2025-10-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://arlist.tech/blog/article.html</loc>
+    <lastmod>2025-10-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://arlist.tech/blog/article.html?article=k1-development-update</loc>
+    <lastmod>2025-10-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://arlist.tech/blog/article.html?article=enhanced-features-demo</loc>
+    <lastmod>2025-10-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://arlist.tech/blog/article.html?article=3d-printing-innovations</loc>
+    <lastmod>2025-10-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://arlist.tech/blog/article.html?article=aerotech-vision-2025</loc>
+    <lastmod>2025-10-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>

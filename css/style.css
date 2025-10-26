@@ -3263,49 +3263,6 @@ section {
     font-size: clamp(0.85rem, 1.5vw, 0.95rem);
 }
 
-.footer-social {
-    display: flex;
-    align-items: center;
-    gap: var(--space-md);
-}
-
-.github-link {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 48px;
-    height: 48px;
-    background: var(--bg-card);
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-md);
-    color: var(--text-secondary);
-    text-decoration: none;
-    transition: all var(--transition-smooth);
-    font-size: 20px;
-}
-
-.github-link:hover {
-    background: linear-gradient(135deg, 
-        rgba(0, 229, 204, 0.1), 
-        rgba(0, 180, 255, 0.1)
-    );
-    border-color: var(--accent-color);
-    color: var(--accent-color);
-    transform: translateY(-4px) scale(1.1);
-    box-shadow: var(--shadow-glow);
-}
-
-.github-link svg {
-    width: 22px;
-    height: 22px;
-    fill: currentColor;
-    transition: transform var(--transition-smooth);
-}
-
-.github-link:hover svg {
-    transform: rotate(360deg);
-}
-
 .arlist-signature {
     margin-top: var(--space-2xl);
     text-align: center;

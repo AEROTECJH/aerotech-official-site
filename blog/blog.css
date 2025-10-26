@@ -409,42 +409,10 @@ body {
     border-bottom: 1px solid var(--border-color);
     padding: 1.5rem 2rem;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
     gap: 1rem;
     z-index: 10;
-}
-
-.article-share-buttons {
-    display: flex;
-    gap: 0.5rem;
-    align-items: center;
-}
-
-.share-btn {
-    background: transparent;
-    border: 1px solid var(--border-color);
-    color: var(--text-secondary);
-    width: 40px;
-    height: 40px;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.share-btn:hover {
-    background: rgba(74, 158, 255, 0.1);
-    border-color: var(--accent-primary);
-    color: var(--accent-primary);
-}
-
-.share-btn.copied {
-    background: rgba(74, 158, 255, 0.2);
-    border-color: var(--accent-primary);
-    color: var(--accent-primary);
 }
 
 .article-modal-close {

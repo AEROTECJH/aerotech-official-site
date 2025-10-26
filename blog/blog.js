@@ -15,9 +15,7 @@
     const searchClear = document.getElementById('search-clear');
     const filterButtons = document.querySelectorAll('.filter-btn');
     const newsList = document.getElementById('news-list');
-    const shareTwitterBtn = document.getElementById('share-twitter');
-    const shareTelegramBtn = document.getElementById('share-telegram');
-    const shareCopyBtn = document.getElementById('share-copy');
+
 
     // Current filter state
     let currentCategory = 'all';
@@ -164,55 +162,6 @@
                     </div>
                 `;
             });
-    }
-
-    // Share functionality
-    function shareArticle(platform) {
-        const url = window.location.origin + window.location.pathname;
-        const articleUrl = currentArticleName ? `${url}?article=${currentArticleName}` : url;
-        const title = document.querySelector('.news-title')?.textContent || 'Блог AEROTECH';
-        
-        switch(platform) {
-            case 'twitter':
-                window.open(`https://twitter.com/intent/tweet?url=${encodeURIComponent(articleUrl)}&text=${encodeURIComponent(title)}`, '_blank', 'width=600,height=400');
-                break;
-            case 'telegram':
-                window.open(`https://t.me/share/url?url=${encodeURIComponent(articleUrl)}&text=${encodeURIComponent(title)}`, '_blank', 'width=600,height=400');
-                break;
-            case 'copy':
-                navigator.clipboard.writeText(articleUrl).then(() => {
-                    // Visual feedback
-                    if (shareCopyBtn) {
-                        shareCopyBtn.classList.add('copied');
-                        const originalHTML = shareCopyBtn.innerHTML;
-                        shareCopyBtn.innerHTML = `
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        `;
-                        setTimeout(() => {
-                            shareCopyBtn.classList.remove('copied');
-                            shareCopyBtn.innerHTML = originalHTML;
-                        }, 2000);
-                    }
-                }).catch(err => {
-                    console.error('Failed to copy link:', err);
-                });
-                break;
-        }
-    }
-
-    // Share button listeners
-    if (shareTwitterBtn) {
-        shareTwitterBtn.addEventListener('click', () => shareArticle('twitter'));
-    }
-    
-    if (shareTelegramBtn) {
-        shareTelegramBtn.addEventListener('click', () => shareArticle('telegram'));
-    }
-    
-    if (shareCopyBtn) {
-        shareCopyBtn.addEventListener('click', () => shareArticle('copy'));
     }
 
     // Close article modal

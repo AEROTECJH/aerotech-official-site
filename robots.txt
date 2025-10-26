@@ -1,4 +1,10 @@
 User-agent: *
 Allow: /
+
+# Контент-служебные файлы, которые не нужно индексировать
+Disallow: /blog/articles/
+Disallow: /test-changes.txt
+Disallow: /workinprogress.html
+
 Host: arlist.tech
 Sitemap: https://arlist.tech/sitemap.xml
