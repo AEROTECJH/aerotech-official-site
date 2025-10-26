@@ -20,9 +20,9 @@ function applyFeatureFlags() {
             return;
         }
 
-        // Скрытие подписи ARLIST TECH в логотипах/прелоадере и футере
+        // Скрытие подписи ARLIST TECH в логотипах и футере
         if (FeatureFlags.hideArlistBranding) {
-            $$('.logo-caption, .loader-logo__caption').forEach(el => {
+            $$('.logo-caption').forEach(el => {
                 el.style.display = 'none';
             });
             $$('.arlist-signature').forEach(el => {
@@ -185,119 +185,6 @@ class HeroAnimation {
         });
 
         requestAnimationFrame(() => this.animate());
-    }
-}
-
-class PageLoader {
-    constructor() {
-        // Определяем мобильную версию сразу
-        this.isMobile = window.matchMedia('(max-width: 960px)').matches;
-        this.loader = $('#page-loader');
-        this.minDisplay = 0; // на десктопе убираем по факту загрузки, без таймеров
-        this.isHidden = false;
-        this.startTime = performance.now();
-
-        // На мобильных: никакого прелоадера
-        if (this.isMobile) {
-            if (this.loader) {
-                this.loader.remove();
-                this.loader = null;
-            }
-            document.body.classList.remove('is-loading');
-            return;
-        }
-
-        this.ensureLoader();
-
-        // Десктоп: включаем лоадер и ждём полной загрузки страницы
-        document.body.classList.add('is-loading');
-
-        this.loader.setAttribute('aria-hidden', 'false');
-        // Скрываем только после события полной загрузки окна
-        window.addEventListener('load', () => this.handleLoaded());
-
-        if (document.readyState === 'complete') {
-            this.handleLoaded();
-        }
-    }
-
-    ensureLoader() {
-        if (this.loader) {
-            return;
-        }
-
-        const loader = document.createElement('div');
-        loader.className = 'page-loader';
-        loader.id = 'page-loader';
-        loader.setAttribute('role', 'status');
-        loader.setAttribute('aria-live', 'polite');
-
-        const inner = document.createElement('div');
-        inner.className = 'page-loader__inner';
-
-        const logo = document.createElement('div');
-        logo.className = 'loader-logo';
-        logo.setAttribute('aria-label', 'AEROTECH');
-
-        const logoText = document.createElement('span');
-        logoText.className = 'loader-logo__text';
-        logoText.textContent = 'AEROTECH';
-
-        const logoCaption = document.createElement('span');
-        logoCaption.className = 'loader-logo__caption';
-        logoCaption.textContent = 'Концерн arlist tech';
-
-        const ring = document.createElement('div');
-        ring.className = 'loader-ring';
-        ring.setAttribute('aria-hidden', 'true');
-
-        const status = document.createElement('p');
-        status.className = 'loader-status';
-        status.setAttribute('role', 'presentation');
-        status.textContent = 'Загрузка…';
-
-        logo.appendChild(logoText);
-        logo.appendChild(logoCaption);
-
-        inner.appendChild(logo);
-        inner.appendChild(ring);
-        inner.appendChild(status);
-        loader.appendChild(inner);
-
-        document.body.prepend(loader);
-        this.loader = loader;
-    }
-
-    handleLoaded() {
-        // Сразу скрываем после полной загрузки окна (без ожидания по времени)
-        this.hide();
-    }
-
-    hide(immediate = false) {
-        if (this.isHidden) return;
-        this.isHidden = true;
-
-        document.body.classList.remove('is-loading');
-
-        if (this.loader) {
-            this.loader.setAttribute('aria-hidden', 'true');
-            if (immediate) {
-                this.loader.remove();
-                this.loader = null;
-                return;
-            }
-            this.loader.classList.add('page-loader--hidden');
-
-            const cleanup = () => {
-                if (this.loader) {
-                    this.loader.remove();
-                    this.loader = null;
-                }
-            };
-
-            this.loader.addEventListener('transitionend', cleanup, { once: true });
-            setTimeout(cleanup, 800);
-        }
     }
 }
 
@@ -663,8 +550,6 @@ class Lightbox {
 document.addEventListener('DOMContentLoaded', () => {
     // Применяем фичефлаги до инициализации UI
     applyFeatureFlags();
-    // Прелоадер
-    new PageLoader();
 
     // Hero Canvas Animation
     const heroCanvas = $('#hero-canvas');
