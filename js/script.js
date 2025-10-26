@@ -143,30 +143,34 @@ class HeroAnimation {
             if (particle.y < 0) particle.y = this.height;
             if (particle.y > this.height) particle.y = 0;
 
-            // Mouse interaction
+            // Mouse interaction - simplified for performance
             const dx = this.mouse.x - particle.x;
             const dy = this.mouse.y - particle.y;
-            const distance = Math.sqrt(dx * dx + dy * dy);
+            const distanceSquared = dx * dx + dy * dy;
 
-            if (distance < 100) {
+            if (distanceSquared < 10000) { // 100 * 100
+                const distance = Math.sqrt(distanceSquared);
                 const force = (100 - distance) / 100;
                 particle.x -= (dx / distance) * force * 0.3;
                 particle.y -= (dy / distance) * force * 0.3;
             }
         });
 
-        // Draw connections
+        // Draw connections - optimized
         this.ctx.strokeStyle = 'rgba(0, 192, 192, 0.1)';
         this.ctx.lineWidth = 1;
+
+        const maxDistance = 150;
+        const maxDistanceSquared = maxDistance * maxDistance;
 
         for (let i = 0; i < this.particles.length; i++) {
             for (let j = i + 1; j < this.particles.length; j++) {
                 const dx = this.particles[i].x - this.particles[j].x;
                 const dy = this.particles[i].y - this.particles[j].y;
-                const distance = Math.sqrt(dx * dx + dy * dy);
+                const distanceSquared = dx * dx + dy * dy;
 
-                if (distance < 150) {
-                    const opacity = (150 - distance) / 150 * 0.1;
+                if (distanceSquared < maxDistanceSquared) {
+                    const opacity = (1 - distanceSquared / maxDistanceSquared) * 0.1;
                     this.ctx.strokeStyle = `rgba(0, 192, 192, ${opacity})`;
                     this.ctx.beginPath();
                     this.ctx.moveTo(this.particles[i].x, this.particles[i].y);
@@ -203,9 +207,11 @@ class Navigation {
     }
 
     init() {
-        // Скрытие/показ навигации при скролле
+        // Скрытие/показ навигации при скролле - с throttling
         let lastScrollTop = 0;
-        window.addEventListener('scroll', () => {
+        let ticking = false;
+
+        const handleScroll = () => {
             if (document.body.classList.contains('nav-open')) return;
             const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
@@ -216,13 +222,24 @@ class Navigation {
             }
 
             lastScrollTop = scrollTop;
-        });
+            ticking = false;
+        };
 
-        // Активная ссылка при скролле
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    handleScroll();
+                });
+                ticking = true;
+            }
+        }, { passive: true });
+
+        // Активная ссылка при скролле - с throttling
     const sections = $$('section[id]');
     const navLinks = $$('.nav-menu a[href^="#"]');
 
-        window.addEventListener('scroll', () => {
+        let activeCheckTicking = false;
+        const checkActiveLink = () => {
             let current = '';
             sections.forEach(section => {
                 const sectionTop = section.getBoundingClientRect().top;
@@ -239,7 +256,17 @@ class Navigation {
                     link.classList.add('active');
                 }
             });
-        });
+            activeCheckTicking = false;
+        };
+
+        window.addEventListener('scroll', () => {
+            if (!activeCheckTicking) {
+                window.requestAnimationFrame(() => {
+                    checkActiveLink();
+                });
+                activeCheckTicking = true;
+            }
+        }, { passive: true });
 
         if (this.toggle && this.menu) {
             this.toggle.addEventListener('click', () => {
@@ -401,10 +428,28 @@ class SmoothScroll {
                     const navHeight = $('.main-nav').offsetHeight;
                     const targetPosition = targetElement.offsetTop - navHeight - 20;
 
-                    window.scrollTo({
-                        top: targetPosition,
-                        behavior: 'smooth'
-                    });
+                    // Use smooth scroll with better performance
+                    const startPosition = window.pageYOffset;
+                    const distance = targetPosition - startPosition;
+                    const duration = 600; // Reduced from default for snappier feel
+                    let start = null;
+
+                    const easeInOutCubic = t => t < 0.5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1;
+
+                    const step = (timestamp) => {
+                        if (!start) start = timestamp;
+                        const progress = timestamp - start;
+                        const percentage = Math.min(progress / duration, 1);
+                        const easing = easeInOutCubic(percentage);
+                        
+                        window.scrollTo(0, startPosition + distance * easing);
+                        
+                        if (progress < duration) {
+                            window.requestAnimationFrame(step);
+                        }
+                    };
+
+                    window.requestAnimationFrame(step);
                 }
             }
         });
@@ -438,12 +483,13 @@ class ScrollAnimations {
                     entry.target.style.transform = 'translateY(0)';
                 }
             });
-        }, { threshold: 0.1 });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
         animatedElements.forEach(element => {
             element.style.opacity = '0';
             element.style.transform = 'translateY(30px)';
-            element.style.transition = 'opacity 1s ease, transform 1s ease';
+            element.style.transition = 'opacity 0.6s cubic-bezier(0.4, 0.0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0.0, 0.2, 1)';
+            element.style.willChange = 'transform, opacity';
             observer.observe(element);
         });
     }
