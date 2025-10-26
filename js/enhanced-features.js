@@ -36,6 +36,14 @@
         social: {
             enabled: true,
             floatingButtons: true
+        },
+        newsletter: {
+            enabled: true,
+            popup: true
+        },
+        formValidation: {
+            enabled: true,
+            realtime: true
         }
     };
     
@@ -132,6 +140,16 @@
         // 7. Social sharing
         if (config.social.enabled && window.AerotechSocial) {
             console.log('[AEROTECH] Social sharing initialized');
+        }
+        
+        // 8. Newsletter system
+        if (config.newsletter.enabled && window.AerotechNewsletter) {
+            console.log('[AEROTECH] Newsletter system initialized');
+        }
+        
+        // 9. Form validation
+        if (config.formValidation.enabled && window.AerotechFormValidator) {
+            console.log('[AEROTECH] Form validation initialized');
         }
     }
     
@@ -242,6 +260,8 @@
         getPerformance: () => window.AerotechPerformance,
         getLazyLoad: () => window.AerotechLazyLoad,
         getSocial: () => window.AerotechSocial,
+        getNewsletter: () => window.AerotechNewsletter,
+        getFormValidator: () => window.AerotechFormValidator,
         
         // Utility methods
         track: (event, data) => {
@@ -287,6 +307,6 @@
     // Log initialization
     console.log('%c🚁 AEROTECH Enhanced Platform v2.0.0', 
         'color: #00c0c0; font-size: 16px; font-weight: bold;');
-    console.log('%cNew features: Analytics, PWA, Search, i18n, Performance Monitoring, Lazy Load, Social Share', 
+    console.log('%cNew features: Analytics, PWA, Search, i18n, Performance, LazyLoad, Social, Newsletter, Form Validation', 
         'color: #b0b0b0; font-size: 12px;');
 })();
