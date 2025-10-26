@@ -14,7 +14,16 @@ class AnalyticsManager {
     }
 
     generateSessionId() {
-        return 'session_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+        // Use crypto.getRandomValues for secure random session ID
+        const timestamp = Date.now().toString(36);
+        const randomValues = new Uint32Array(2);
+        if (window.crypto && window.crypto.getRandomValues) {
+            window.crypto.getRandomValues(randomValues);
+            const randomPart = randomValues[0].toString(36) + randomValues[1].toString(36);
+            return 'session_' + timestamp + '_' + randomPart;
+        }
+        // Fallback for older browsers (not security critical for analytics)
+        return 'session_' + timestamp + '_' + Math.random().toString(36).substr(2, 9);
     }
 
     init() {
