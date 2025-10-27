@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>500 Internal Server Error</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #000;
+            color: #fff;
+            font-family: 'Courier New', monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            text-align: center;
+            max-width: 600px;
+        }
+        .error-code {
+            font-size: 8em;
+            font-weight: bold;
+            color: #ff0055;
+            text-shadow: 0 0 20px #ff0055;
+            margin: 20px 0;
+            animation: blink 1s infinite;
+        }
+        h1 {
+            color: #00ff00;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px #00ff00;
+        }
+        .message {
+            font-size: 1.2em;
+            margin: 20px 0;
+            line-height: 1.8;
+        }
+        img {
+            max-width: 100%;
+            margin: 30px 0;
+            border-radius: 5px;
+            box-shadow: 0 0 30px rgba(255, 0, 85, 0.5);
+        }
+        .traceback {
+            background: rgba(255, 0, 0, 0.1);
+            border: 1px solid #ff0055;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            text-align: left;
+            font-size: 0.9em;
+            overflow-x: auto;
+        }
+        .joke-section {
+            background: rgba(0, 255, 0, 0.1);
+            border-left: 3px solid #00ff00;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        button {
+            background: #ff0055;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 1.1em;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px 5px;
+            transition: all 0.3s;
+        }
+        button:hover {
+            background: #ff3377;
+            box-shadow: 0 0 20px #ff0055;
+            transform: scale(1.05);
+        }
+        @keyframes blink {
+            0%, 49%, 100% { opacity: 1; }
+            50%, 99% { opacity: 0.5; }
+        }
+        .hacker-tips {
+            background: rgba(255, 255, 0, 0.1);
+            border: 1px dashed #ffff00;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="error-code">500</div>
+        <h1>INTERNAL SERVER ERROR</h1>
+        
+        <div class="message">
+            <p>Ошибка при обработке запроса</p>
+            <p>Но на самом деле - это просто приколы! 😂</p>
+        </div>
+        
+        <img src="images/hacker meme.png" alt="Сервер смеется над тобой">
+        
+        <div class="traceback">
+            <strong>Stack Trace:</strong><br>
+            at HackerTrap.findAdmin() line 1<br>
+            at HackerTrap.tryDefaultPassword() line 2<br>
+            at HackerTrap.searchForBackdoor() line 3<br>
+            at HackerTrap.checkCommonVulnerabilities() line 4<br>
+            at HackerTrap.getOwned() line 5<br>
+            <br>
+            <strong>Exception:</strong> HackerNotFoundException: You got trapped!
+        </div>
+        
+        <div class="joke-section">
+            <strong>💡 Что произошло?</strong><br><br>
+            Ты попытался получить доступ к несуществующему сервисному пути!<br>
+            AEROTECH - это статический сайт. Нет никакого Apache, Nginx или Node.js<br>
+            Только HTML, CSS и JavaScript (и много приколов над хакерами) 🎭
+        </div>
+        
+        <div class="hacker-tips">
+            <strong>🎯 Советы для будущих попыток:</strong><br>
+            ✗ /admin - уже проверили? 🎣<br>
+            ✗ /api - там тоже ловушка! 🪤<br>
+            ✗ /config.php - просто текстовый файл 📄<br>
+            ✗ Может, попытаться что-нибудь честное? 🤔<br>
+        </div>
+        
+        <div style="margin-top: 30px;">
+            <button onclick="goHome()">⬅️ На главную</button>
+            <button onclick="tryAgain()">🔄 Попробовать еще раз</button>
+            <button onclick="surrender()">🏳️ Сдаться</button>
+        </div>
+    </div>
+    
+    <script>
+        function goHome() {
+            window.location.href = '/index.html';
+        }
+        
+        function tryAgain() {
+            const jokes = [
+                '😂 Ты не сдаешься! Мне нравится твой боевой дух!',
+                '🤦 Наверное, пятидесятая попытка будет удачнее?',
+                '🎪 Добро пожаловать на шоу "Кто хочет стать хакером"!',
+                '🏆 Ты уже в лиге "Самых упорных интернет-юмористов"!',
+                '⚡ Посвящая себя делу - вот что я уважаю!',
+                '💪 Продолжай в том же духе - в конце концов, попадешь!',
+                '🎰 Это не взлом, это казино безопасности! 🎲'
+            ];
+            const random = jokes[Math.floor(Math.random() * jokes.length)];
+            alert(random);
+        }
+        
+        function surrender() {
+            alert('🏳️ Честь тебе и хвала!\n\nМожет, отправить резюме?\n\nsecurity@aerotech.local\n\n(Это тоже приколы, но мы действительно ищем способных людей!) 😄');
+        }
+    </script>
+</body>
+</html>

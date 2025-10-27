@@ -2,24 +2,78 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Admin Panel</title>
+    <title>Admin Panel - AEROTECH</title>
     <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            margin: 0;
-            padding: 0;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
             background: #000;
+            font-family: 'Courier New', monospace;
+            color: #0f0;
+        }
+        .container {
+            text-align: center;
+            animation: glitch 0.3s infinite;
         }
         img {
-            max-width: 100%;
-            height: auto;
+            max-width: 90%;
+            margin-bottom: 20px;
+            filter: brightness(1.2) contrast(1.1);
+        }
+        h1 {
+            font-size: 2.5em;
+            color: #ff0055;
+            text-shadow: 0 0 10px #ff0055, 0 0 20px #ff0000;
+            margin-bottom: 20px;
+            animation: pulse 1s infinite;
+        }
+        .text {
+            font-size: 1.2em;
+            color: #0f0;
+            text-shadow: 0 0 5px #0f0;
+            line-height: 1.8;
+        }
+        .warnings {
+            margin-top: 30px;
+            border: 2px solid #ff0055;
+            padding: 20px;
+            border-radius: 5px;
+            background: rgba(255, 0, 85, 0.1);
+        }
+        .warning-item {
+            margin: 10px 0;
+            font-size: 1.1em;
+        }
+        @keyframes glitch {
+            0%, 100% { transform: translate(0); }
+            20% { transform: translate(-2px, 2px); }
+            40% { transform: translate(-2px, -2px); }
+            60% { transform: translate(2px, 2px); }
+            80% { transform: translate(2px, -2px); }
+        }
+        @keyframes pulse {
+            0%, 100% { text-shadow: 0 0 10px #ff0055, 0 0 20px #ff0000; }
+            50% { text-shadow: 0 0 20px #ff0055, 0 0 30px #ff0000, 0 0 40px #ff00ff; }
         }
     </style>
 </head>
 <body>
-    <img src="images/hacker meme.png" alt="Nice try!">
+    <div class="container">
+        <img src="images/hacker meme.png" alt="GOTCHA!">
+        <h1>🚨 ADMIN ACCESS DENIED 🚨</h1>
+        <div class="text">
+            <p>Nice try, buddy! 🎣</p>
+            <p>Это не админ-панель, это ловушка! 😂</p>
+        </div>
+        <div class="warnings">
+            <div class="warning-item">⚠️ Попытка доступа залогирована</div>
+            <div class="warning-item">⚠️ IP адрес отправлен в лучи смерти</div>
+            <div class="warning-item">⚠️ Вы - звезда в нашей галерее неудачников</div>
+            <div class="warning-item">⚠️ Может быть, попробуешь на других сайтах? 😏</div>
+        </div>
+    </div>
 </body>
 </html>

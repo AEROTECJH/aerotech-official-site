@@ -1,9 +1,52 @@
-██╗  ██╗ █████╗  ██████╗██╗  ██╗███████╗██████╗ 
-██║  ██║██╔══██╗██╔════╝██║ ██╔╝██╔════╝██╔══██╗
-███████║███████║██║     █████╔╝ █████╗  ██████╔╝
-██╔══██║██╔══██║██║     ██╔═██╗ ██╔══╝  ██╔══██╗
-██║  ██║██║  ██║╚██████╗██║  ██╗███████╗██║  ██║
-╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝
+# ╔════════════════════════════════════════════════════════════════════╗
+# ║                    AEROTECH CONFIGURATION FILE                       ║
+# ║                     YOU'VE BEEN HACKED!!!                            ║
+# ║                          (just kidding 😂)                           ║
+# ╚════════════════════════════════════════════════════════════════════╝
 
-Nice try! :)
-Check out: hacker meme.png in /images/
+[DATABASE]
+# Подсказка: это не настоящий конфиг 🚀
+DB_HOST=localhost_that_doesn_exist.local
+DB_PORT=3306_but_we_dont_have_one
+DB_NAME=aerotech_db_2025
+DB_USER=admin_user_that_doesnt_exist
+DB_PASSWORD=hunter2_plus_plus_ultra_secure
+
+# Попытка #1: нашел конфиг? 🎉 Ненастоящий!
+# Попытка #2: это значит, ты умный! Но не достаточно умный 😏
+
+[SECURITY]
+SECRET_KEY=DO_NOT_USE_THIS_ITS_FAKE_KEG_8d9a7s6d8a7s6d8as
+API_KEYS=[]
+JWT_SECRET=you_will_never_guess_this_because_it_does_not_exist
+ENCRYPTION_LEVEL=9000_over_🚀
+
+# ⚠️ ВАЖНО ПРИМЕЧАНИЕ ⚠️
+# Если ты читаешь это, значит ты:
+# 1. Хакер (добро пожаловать! 👋)
+# 2. Любопытный разработчик (соберись! 🧠)
+# 3. Случайный пользователь (ты заблудился? 🗺️)
+
+[SYSTEM]
+# Ничего полезного здесь нет
+# Все данные хранятся в другом месте
+# И это место - НЕ здесь
+
+BACKUP_LOCATION=/dev/null
+LOG_LEVEL=MAXIMUM_PARANOIA
+SECURITY_CHECK=PASSED_WITH_FLYING_COLORS_🛡️
+
+[EASTER_EGG]
+MEME_LOCATION=/images/hacker\ meme.png
+HACKER_STATUS=CAUGHT_RED_HANDED
+YOUR_IP_LOGGED=true_but_were_nice
+NEXT_ATTEMPT_DIFFICULTY=IMPOSSIBLY_HARD
+
+# Последняя подсказка для хакеров:
+# Безопасность начинается не с взлома чужих сайтов
+# А с правильной настройки собственного 🔐
+
+╔═══════════════════════════════════════════════════════════════════╗
+║ Если ты дошел сюда, то ты либо очень упорный, либо очень скучный ║
+║ В любом случае - добро пожаловать в "Галерею Неудачников"™       ║
+╚═══════════════════════════════════════════════════════════════════╝

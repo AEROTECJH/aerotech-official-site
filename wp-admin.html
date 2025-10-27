@@ -2,24 +2,90 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>WordPress Admin</title>
+    <title>WordPress Dashboard</title>
     <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            margin: 0;
-            padding: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
-            background: #000;
+            font-family: 'Segoe UI', sans-serif;
+        }
+        .wp-container {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 50px rgba(0, 0, 0, 0.3);
+            max-width: 600px;
+            padding: 40px;
+            text-align: center;
+        }
+        .wp-logo {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .message {
+            color: #666;
+            font-size: 1.1em;
+            margin: 20px 0;
         }
         img {
             max-width: 100%;
-            height: auto;
+            border-radius: 8px;
+            margin: 20px 0;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        }
+        .trophy {
+            font-size: 5em;
+            margin: 20px 0;
+            animation: bounce 1s infinite;
+        }
+        .jokes {
+            background: #f0f0f0;
+            padding: 20px;
+            border-radius: 5px;
+            text-align: left;
+            margin: 20px 0;
+            border-left: 4px solid #667eea;
+        }
+        .joke {
+            margin: 10px 0;
+            color: #333;
+        }
+        .joke strong {
+            color: #764ba2;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
         }
     </style>
 </head>
 <body>
-    <img src="images/hacker meme.png" alt="Nice try!">
+    <div class="wp-container">
+        <div class="wp-logo">📝</div>
+        <h1>WordPress Dashboard</h1>
+        <p class="message">Поздравляем, вы нашли "WordPress админ-панель"! 🎉</p>
+        
+        <img src="images/hacker meme.png" alt="You got hacked... just kidding!">
+        
+        <div class="trophy">🏆</div>
+        
+        <div class="jokes">
+            <p class="joke"><strong>» Факт 1:</strong> AEROTECH не использует WordPress. Это статический сайт. Попытка №101 была близка! 😂</p>
+            <p class="joke"><strong>» Факт 2:</strong> Твоя попытка залогирована и отправлена в "Галерею Неудачников"™</p>
+            <p class="joke"><strong>» Факт 3:</strong> Хорошая попытка, но мы немного умнее, чем базовые пароли 🧠</p>
+            <p class="joke"><strong>» Факт 4:</strong> Может, поискать в других местах? Вот тебе подсказка: везде здесь ловушки 🎣</p>
+        </div>
+        
+        <p style="margin-top: 20px; color: #999; font-size: 0.9em;">
+            💡 Если тебе интересно, как работает AEROTECH - <a href="index.html" style="color: #667eea;">вернись на главную</a>
+        </p>
+    </div>
 </body>
 </html>

@@ -2,24 +2,128 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Login</title>
+    <title>Login - AEROTECH Security System</title>
     <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            margin: 0;
-            padding: 0;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            background: #000;
+            background: linear-gradient(45deg, #000, #1a1a1a);
+            font-family: 'Courier New', monospace;
+            color: #0f0;
+        }
+        .login-form {
+            border: 3px solid #00ff00;
+            padding: 40px;
+            background: rgba(0, 0, 0, 0.8);
+            box-shadow: 0 0 30px rgba(0, 255, 0, 0.5), inset 0 0 20px rgba(0, 255, 0, 0.1);
+            max-width: 500px;
+            text-align: center;
+        }
+        h1 {
+            color: #ff0055;
+            margin-bottom: 20px;
+            font-size: 2em;
+            text-shadow: 0 0 10px #ff0055;
+        }
+        .form-group {
+            margin: 20px 0;
+            text-align: left;
+        }
+        input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            background: #1a1a1a;
+            border: 2px solid #00ff00;
+            color: #0f0;
+            font-family: 'Courier New', monospace;
+            font-size: 1em;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #ff0055;
+            color: white;
+            border: none;
+            font-size: 1.1em;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: all 0.3s;
+        }
+        button:hover {
+            background: #ff3377;
+            box-shadow: 0 0 20px #ff0055;
         }
         img {
             max-width: 100%;
-            height: auto;
+            margin-top: 20px;
+            display: none;
+        }
+        .message {
+            margin-top: 20px;
+            color: #ff0055;
+            font-weight: bold;
+            min-height: 30px;
+            animation: blink 1s infinite;
+        }
+        @keyframes blink {
+            0%, 49%, 100% { opacity: 1; }
+            50%, 99% { opacity: 0.5; }
         }
     </style>
 </head>
 <body>
-    <img src="images/hacker meme.png" alt="Nice try!">
+    <div class="login-form">
+        <h1>🔐 SECURE LOGIN</h1>
+        <form onsubmit="handleSubmit(event)">
+            <div class="form-group">
+                <label>Username:</label>
+                <input type="text" id="username" placeholder="admin" required>
+            </div>
+            <div class="form-group">
+                <label>Password:</label>
+                <input type="password" id="password" placeholder="••••••••" required>
+            </div>
+            <button type="submit">LOGIN</button>
+        </form>
+        <div class="message" id="message"></div>
+        <img id="meme" src="images/hacker meme.png" alt="GOTCHA!">
+    </div>
+    <script>
+        function handleSubmit(e) {
+            e.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const message = document.getElementById('message');
+            const meme = document.getElementById('meme');
+            
+            // Выводим разные приколы в зависимости от ввода
+            const jokes = [
+                '❌ Неверный пароль! Может, попробуешь "password123"? 😏',
+                '❌ Ой, это был неправильный логин... или это был правильный? 🤔',
+                '❌ Близко, но не совсем! Может, еще раз? 🎲',
+                '❌ Admin/Admin? Серьезно? Это 2025 год, чувак! 🤦',
+                '❌ Я вижу, ты используешь часто встречаемые пароли... 👀',
+                '❌ Твой попытка залогирована и отправлена спецслужбам! (шутка)',
+                '❌ Этот логин уже 100 раз пробовали сегодня 😴',
+                '❌ Может, проверишь, правильно ли ты вводишь текст? 👀',
+                '❌ БИНГО! Ты нашел ловушку! 🎉',
+                '❌ Ошибка 403: Access Denied от Аэротеха 🚀'
+            ];
+            
+            const randomJoke = jokes[Math.floor(Math.random() * jokes.length)];
+            message.textContent = randomJoke;
+            meme.style.display = 'block';
+            
+            // Очищаем поля
+            setTimeout(() => {
+                document.getElementById('username').value = '';
+                document.getElementById('password').value = '';
+            }, 500);
+        }
+    </script>
 </body>
 </html>

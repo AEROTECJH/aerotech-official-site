@@ -2,24 +2,135 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>phpMyAdmin</title>
+    <title>phpMyAdmin 5.0.4 deb1+0~20190506.7+debian~bpo9+sury~php72</title>
     <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            margin: 0;
-            padding: 0;
+            background: #f5f5f5;
+            font-family: 'Courier New', monospace;
             display: flex;
+            min-height: 100vh;
+        }
+        .sidebar {
+            width: 250px;
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+        }
+        .sidebar h2 {
+            color: #3498db;
+            margin-bottom: 20px;
+            font-size: 1.1em;
+        }
+        .sidebar-item {
+            padding: 8px;
+            margin: 5px 0;
+            background: rgba(52, 152, 219, 0.2);
+            border-left: 3px solid #3498db;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .sidebar-item:hover {
+            background: rgba(52, 152, 219, 0.4);
+            padding-left: 15px;
+        }
+        .main {
+            flex: 1;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
-            background: #000;
+            text-align: center;
+        }
+        .warning-banner {
+            background: #e74c3c;
+            color: white;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+            font-weight: bold;
+            width: 100%;
+            max-width: 600px;
         }
         img {
-            max-width: 100%;
-            height: auto;
+            max-width: 80%;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        h1 {
+            color: #e74c3c;
+            margin: 20px 0;
+            font-size: 2.5em;
+        }
+        .message {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            max-width: 600px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin: 20px 0;
+        }
+        .message p {
+            margin: 10px 0;
+            color: #333;
+            font-size: 1.1em;
+        }
+        .code {
+            background: #2c3e50;
+            color: #00ff00;
+            padding: 10px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            margin: 10px 0;
+            overflow-x: auto;
         }
     </style>
 </head>
 <body>
-    <img src="images/hacker meme.png" alt="Nice try!">
+    <div class="sidebar">
+        <h2>📊 Databases</h2>
+        <div class="sidebar-item">information_schema</div>
+        <div class="sidebar-item">mysql</div>
+        <div class="sidebar-item">performance_schema</div>
+        <div class="sidebar-item" onclick="alert('ERROR: Connection refused!')">aerotech_db</div>
+        <h2>⚙️ Tools</h2>
+        <div class="sidebar-item">Export</div>
+        <div class="sidebar-item">Import</div>
+        <div class="sidebar-item" onclick="triggerTrap()">Settings</div>
+    </div>
+    
+    <div class="main">
+        <div class="warning-banner">
+            🚨 ERROR 403: DATABASE CONNECTION FAILED 🚨
+        </div>
+        
+        <h1>БАЗА ДАННЫХ НЕ НАЙДЕНА!</h1>
+        
+        <img src="images/hacker meme.png" alt="You thought you had it!">
+        
+        <div class="message">
+            <p><strong>Что произошло?</strong></p>
+            <p>1. AEROTECH не использует обычные базы данных MySQL 🙅</p>
+            <p>2. Это статический сайт, созданный правильно и безопасно 🛡️</p>
+            <p>3. Твоя попытка не прошла незамеченной 👀</p>
+            
+            <p style="margin-top: 20px;"><strong>Попробуй что-нибудь другое? 😏</strong></p>
+            
+            <div class="code">
+                $ mysql -u root -p<br>
+                ERROR 1130: Host '*.hack' is not allowed to connect<br>
+                ERROR 1045: Access denied for user 'hacker'@'localhost'
+            </div>
+            
+            <p>Может, вернешься к честной работе? 🤔</p>
+        </div>
+    </div>
+    
+    <script>
+        function triggerTrap() {
+            alert('⚠️ ВНИМАНИЕ!\n\nТвой IP адрес залогирован!\n\n(Это шутка, но попыток достаточно 😂)');
+        }
+    </script>
 </body>
 </html>
