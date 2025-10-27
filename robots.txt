@@ -2,9 +2,16 @@ User-agent: *
 Allow: /
 
 # Контент-служебные файлы, которые не нужно индексировать
-Disallow: /blog/articles/
 Disallow: /test-changes.txt
 Disallow: /workinprogress.html
+Disallow: /admin.html
+Disallow: /login.html
+Disallow: /wp-admin.html
+Disallow: /phpmyadmin.html
+Disallow: /api.html
+Disallow: /config.txt
+Disallow: /.env
+Disallow: /backup.sql
 
 Host: arlist.tech
 Sitemap: https://arlist.tech/sitemap.xml
