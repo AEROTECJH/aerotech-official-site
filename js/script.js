@@ -693,6 +693,126 @@ class CardAnimations {
     }
 }
 
+// Animated Counter for Statistics
+class AnimatedCounter {
+    constructor() {
+        this.stats = $$('.hero-stat-value, .achievement-number');
+        this.hasAnimated = new Set();
+        this.init();
+    }
+
+    init() {
+        if (!this.stats.length) return;
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !this.hasAnimated.has(entry.target)) {
+                    this.hasAnimated.add(entry.target);
+                    this.animateCounter(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        this.stats.forEach(stat => observer.observe(stat));
+    }
+
+    animateCounter(stat) {
+        const text = stat.textContent;
+        const hasPercent = text.includes('%');
+        const hasPlus = text.includes('+');
+        const hasCm = text.includes('см');
+        const hasHours = text.includes('часа');
+        
+        let targetValue;
+        let suffix = '';
+        
+        if (hasPercent) {
+            targetValue = parseFloat(text);
+            suffix = '%';
+        } else if (hasHours) {
+            targetValue = parseInt(text);
+            suffix = '+ часа';
+        } else if (hasCm) {
+            targetValue = 1;
+            suffix = ' см';
+        } else if (hasPlus) {
+            targetValue = parseInt(text);
+            suffix = '+';
+        } else {
+            targetValue = parseFloat(text);
+        }
+
+        if (isNaN(targetValue)) return;
+
+        let currentValue = 0;
+        const increment = targetValue / 60;
+        const duration = 1500;
+        const frameTime = duration / 60;
+
+        const updateCounter = () => {
+            currentValue += increment;
+            if (currentValue < targetValue) {
+                if (hasPercent) {
+                    stat.textContent = `${currentValue.toFixed(1)}${suffix}`;
+                } else if (hasPlus || suffix === '+') {
+                    stat.textContent = `${Math.floor(currentValue)}${suffix}`;
+                } else {
+                    stat.textContent = `${Math.floor(currentValue)}${suffix}`;
+                }
+                requestAnimationFrame(() => setTimeout(updateCounter, frameTime));
+            } else {
+                stat.textContent = text;
+            }
+        };
+
+        updateCounter();
+    }
+}
+
+// Parallax Effect for Sections
+class ParallaxSections {
+    constructor() {
+        this.sections = $$('.about-section, .advantages-section, .applications-section');
+        this.init();
+    }
+
+    init() {
+        if (!this.sections.length) return;
+
+        let ticking = false;
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    this.updateParallax();
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        }, { passive: true });
+    }
+
+    updateParallax() {
+        const scrolled = window.pageYOffset;
+        
+        this.sections.forEach((section, index) => {
+            const rect = section.getBoundingClientRect();
+            const sectionTop = rect.top + scrolled;
+            const sectionHeight = section.offsetHeight;
+            
+            // Only apply parallax when section is in viewport
+            if (rect.top < window.innerHeight && rect.bottom > 0) {
+                const parallaxSpeed = 0.05 * (index + 1);
+                const offset = (scrolled - sectionTop + window.innerHeight) * parallaxSpeed;
+                
+                const background = section.querySelector('::before');
+                if (background) {
+                    section.style.backgroundPositionY = `${offset}px`;
+                }
+            }
+        });
+    }
+}
+
 // Инициализация
 document.addEventListener('DOMContentLoaded', () => {
     // Применяем фичефлаги до инициализации UI
@@ -719,6 +839,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Анимации карточек
     new CardAnimations();
+
+    // Анимация счетчиков статистики
+    new AnimatedCounter();
+
+    // Параллакс для секций
+    new ParallaxSections();
 
     // Sticky CTA наблюдатель
     new StickyObserver();
