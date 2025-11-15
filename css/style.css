@@ -3358,9 +3358,9 @@ section {
 
 /* Футер */
 .main-footer {
-    background: var(--bg-secondary);
+    background: linear-gradient(180deg, var(--bg-color) 0%, var(--bg-secondary) 100%);
     border-top: 1px solid var(--border-color);
-    padding: var(--space-3xl) 0 var(--space-xl);
+    padding: var(--space-4xl) 0 var(--space-2xl);
     position: relative;
 }
 
@@ -3378,6 +3378,145 @@ section {
         transparent
     );
     opacity: 0.6;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+    gap: var(--space-2xl);
+    margin-bottom: var(--space-3xl);
+}
+
+.footer-column {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+}
+
+.footer-logo {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-family: var(--font-mono);
+    line-height: 1;
+    margin-bottom: var(--space-sm);
+}
+
+.footer-logo .logo-text {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 700;
+    background: linear-gradient(135deg, 
+        var(--accent-color), 
+        var(--accent-secondary)
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+}
+
+.footer-description {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin: 0;
+    max-width: 300px;
+}
+
+.footer-heading {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: var(--space-sm);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.footer-nav {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+}
+
+.footer-nav a,
+.footer-contact-link {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: all var(--transition-base);
+    position: relative;
+    display: inline-block;
+    width: fit-content;
+}
+
+.footer-nav a::before,
+.footer-contact-link::before {
+    content: '→';
+    position: absolute;
+    left: -20px;
+    opacity: 0;
+    transition: all var(--transition-base);
+    color: var(--accent-color);
+}
+
+.footer-nav a:hover,
+.footer-contact-link:hover {
+    color: var(--accent-color);
+    transform: translateX(10px);
+}
+
+.footer-nav a:hover::before,
+.footer-contact-link:hover::before {
+    opacity: 1;
+    left: -15px;
+}
+
+.footer-contact {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+}
+
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: var(--space-2xl);
+    border-top: 1px solid var(--border-color-light);
+    flex-wrap: wrap;
+    gap: var(--space-md);
+}
+
+.footer-text {
+    color: var(--text-muted);
+    font-size: clamp(0.85rem, 1.5vw, 0.95rem);
+}
+
+.arlist-signature {
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: clamp(1rem, 2vw, 1.5rem);
+    letter-spacing: 0.3em;
+    color: rgba(255, 255, 255, 0.08);
+    text-transform: uppercase;
+}
+
+@media (max-width: 768px) {
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-xl);
+    }
+    
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+        gap: var(--space-md);
+    }
+    
+    .arlist-signature {
+        font-size: 1.2rem;
+    }
 }
 
 .footer-content {
