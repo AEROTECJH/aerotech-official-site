@@ -89,20 +89,21 @@ video {
 }
 
 :root {
-    /* Modern color palette with better contrast */
+    /* Enhanced modern color palette with richer tones */
     --bg-color: #0a0a0a;
     --bg-secondary: #1a1a1a;
     --bg-tertiary: #2a2a2a;
     --bg-card: #1f1f1f;
     --text-color: #ffffff;
-    --text-secondary: #a0a0a0;
-    --text-muted: #666666;
+    --text-secondary: #b8b8b8;
+    --text-muted: #6a6a6a;
     --accent-color: #00e5ff;
-    --accent-secondary: #0055ff;
-    --accent-tertiary: #e5ff00;
-    --accent-gradient: linear-gradient(90deg, var(--accent-color), var(--accent-secondary));
-    --border-color: rgba(255, 255, 255, 0.1);
-    --border-color-light: rgba(255, 255, 255, 0.05);
+    --accent-secondary: #0066ff;
+    --accent-tertiary: #00ffaa;
+    --accent-gradient: linear-gradient(135deg, var(--accent-color), var(--accent-secondary));
+    --accent-glow: rgba(0, 229, 255, 0.4);
+    --border-color: rgba(255, 255, 255, 0.12);
+    --border-color-light: rgba(255, 255, 255, 0.06);
     
     /* Typography - Fluid responsive scale */
     --font-mono: 'IBM Plex Mono', 'Courier New', monospace;
@@ -175,10 +176,11 @@ body {
     font-family: var(--font-sans);
     background-color: var(--bg-color);
     background-image: 
-        radial-gradient(circle at 10% 20%, rgba(0, 229, 204, 0.03) 0%, transparent 50%),
-        radial-gradient(circle at 90% 80%, rgba(0, 180, 255, 0.03) 0%, transparent 50%);
+        radial-gradient(circle at 10% 20%, rgba(0, 229, 255, 0.06) 0%, transparent 60%),
+        radial-gradient(circle at 90% 80%, rgba(0, 102, 255, 0.04) 0%, transparent 60%),
+        radial-gradient(circle at 50% 50%, rgba(0, 255, 170, 0.02) 0%, transparent 70%);
     color: var(--text-color);
-    line-height: 1.65;
+    line-height: 1.7;
     width: 100%;
     max-width: 100vw;
     position: relative;
@@ -1699,6 +1701,71 @@ body {
     margin-right: auto;
 }
 
+.hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: clamp(2rem, 4vw, 4rem);
+    flex-wrap: wrap;
+    margin-bottom: clamp(2rem, 4vw, 3rem);
+    margin-top: var(--space-2xl);
+}
+
+.hero-stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1.5rem 2rem;
+    background: rgba(0, 229, 255, 0.05);
+    border: 1px solid rgba(0, 229, 255, 0.2);
+    border-radius: var(--radius-lg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: all var(--transition-base);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-stat-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--accent-gradient);
+    transform: scaleX(0);
+    transition: transform var(--transition-base);
+}
+
+.hero-stat-item:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent-color);
+    box-shadow: 0 10px 40px var(--accent-glow);
+}
+
+.hero-stat-item:hover::before {
+    transform: scaleX(1);
+}
+
+.hero-stat-value {
+    font-size: clamp(2rem, 3vw, 3rem);
+    font-weight: 700;
+    font-family: var(--font-mono);
+    color: var(--accent-color);
+    letter-spacing: -0.02em;
+    line-height: 1;
+}
+
+.hero-stat-label {
+    font-size: clamp(0.85rem, 1.2vw, 0.95rem);
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 500;
+    text-align: center;
+}
+
 .tech-icon {
     display: inline-flex;
     align-items: center;
@@ -2247,6 +2314,67 @@ section {
     font-size: clamp(1.05rem, 2vw, 1.2rem);
     line-height: 1.8;
     color: var(--text-secondary);
+    margin-bottom: var(--space-2xl);
+}
+
+.about-highlights {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr));
+    gap: var(--space-lg);
+    margin-bottom: var(--space-2xl);
+}
+
+.about-highlight-card {
+    background: linear-gradient(135deg, rgba(0, 229, 255, 0.08), rgba(0, 102, 255, 0.05));
+    border: 1px solid rgba(0, 229, 255, 0.2);
+    border-radius: var(--radius-lg);
+    padding: var(--space-xl);
+    text-align: center;
+    transition: all var(--transition-base);
+    position: relative;
+    overflow: hidden;
+}
+
+.about-highlight-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at center, rgba(0, 229, 255, 0.1), transparent);
+    opacity: 0;
+    transition: opacity var(--transition-base);
+}
+
+.about-highlight-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--accent-color);
+    box-shadow: 0 10px 40px var(--accent-glow);
+}
+
+.about-highlight-card:hover::before {
+    opacity: 1;
+}
+
+.highlight-icon {
+    font-size: 3rem;
+    margin-bottom: var(--space-sm);
+    filter: drop-shadow(0 4px 8px rgba(0, 229, 255, 0.3));
+}
+
+.about-highlight-card h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: var(--space-sm);
+}
+
+.about-highlight-card p {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin: 0;
 }
 
 .about-pillars {
@@ -2405,12 +2533,12 @@ section {
 }
 
 .advantage-card {
-    background: var(--glass-bg);
+    background: linear-gradient(135deg, rgba(0, 229, 255, 0.08), rgba(0, 102, 255, 0.04));
     backdrop-filter: blur(var(--glass-blur));
     -webkit-backdrop-filter: blur(var(--glass-blur));
-    border: 1px solid var(--glass-border);
+    border: 1px solid rgba(0, 229, 255, 0.2);
     border-radius: var(--radius-lg);
-    padding: var(--space-xl);
+    padding: var(--space-2xl);
     box-shadow: var(--glass-shadow);
     display: grid;
     gap: var(--space-md);
@@ -2479,6 +2607,18 @@ section {
 
 .advantage-card:hover::after {
     opacity: 1;
+}
+
+.advantage-icon {
+    font-size: 3rem;
+    margin-bottom: var(--space-md);
+    display: inline-block;
+    filter: drop-shadow(0 4px 8px rgba(0, 229, 255, 0.3));
+    transition: transform var(--transition-base);
+}
+
+.advantage-card:hover .advantage-icon {
+    transform: scale(1.1) rotate(5deg);
 }
 
 .advantage-card h3 {
@@ -4717,6 +4857,25 @@ section {
     .hero-subtitle {
         font-size: 0.95rem;
         line-height: 1.65;
+    }
+    
+    .hero-stats {
+        gap: 1rem;
+        margin-top: var(--space-lg);
+    }
+    
+    .hero-stat-item {
+        padding: 1.25rem 1.5rem;
+        min-width: 45%;
+        flex: 1 1 calc(50% - 0.5rem);
+    }
+    
+    .hero-stat-value {
+        font-size: clamp(1.5rem, 5vw, 2rem);
+    }
+    
+    .hero-stat-label {
+        font-size: 0.75rem;
     }
     
     .nav-container {
